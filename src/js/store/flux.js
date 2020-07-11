@@ -1,11 +1,12 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
+			products: [
+				//this is where we will put the items that are order, create objects: item, price, etc.
 				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
+					name: "Burger",
+					ingredients: "Meat, L,T,O,CHZ", //may need to create an id for all ingrdients
+					price: 7.99 // possible currency, USD $
 				},
 				{
 					title: "SECOND",

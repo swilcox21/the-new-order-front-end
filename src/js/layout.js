@@ -6,6 +6,12 @@ import { Home } from "./views/home";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import injectContext from "./store/appContext";
+import { Login } from "./views/login";
+import { AdminMainMenu } from "./component/adminMainMenu";
+import { UserMainMenu } from "./component/userMainMenu";
+import { Inventory } from "./component/inventory";
+import { ItemAddEdit } from "./component/itemAddEdit";
+import { Payment } from "./component/payment";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -22,18 +28,12 @@ export const Layout = () => {
 				<ScrollToTop>
 					<Navbar />
 					<Switch>
-						<Route exact path="/">
-							<Home />
-						</Route>
-						<Route exact path="/demo">
-							<Demo />
-						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
-						</Route>
-						<Route>
-							<h1>Not found!</h1>
-						</Route>
+						<Route exact path="/" component={Login} />
+						<Route exact path="/admin-main-menu" component={AdminMainMenu} />
+						<Route exact path="/user-main-menu" component={UserMainMenu} />
+						<Route exact path="/inventory" component={Inventory} />
+						<Route exact path="/item-add-edit" component={ItemAddEdit} />
+						<Route exact path="/payment" component={Payment} />
 					</Switch>
 					<Footer />
 				</ScrollToTop>
