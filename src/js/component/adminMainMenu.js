@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/home.scss";
+import "../../styles/userMainMenu.scss";
 import { Link } from "react-router-dom";
 
 export const AdminMainMenu = () => {
@@ -7,9 +7,23 @@ export const AdminMainMenu = () => {
 		<div className="container-fluid">
 			<nav className="navbar navbar-light bg-light mb-3">
 				<Link to="/">
-					<span className="navbar-brand mb-0 h1">CodeVera</span>
+					<span className="navbar-brand mb-0 h1">Main Menu</span>
 				</Link>
 
+				<div className="ml-auto">
+					<Link to="/demo">
+						<button className="btn btn-danger">Inventory</button>
+					</Link>
+				</div>
+
+				<div className="ml-auto">
+					<Link to="/demo">
+						<button className="btn btn-danger">Add/Edit</button>
+					</Link>
+				</div>
+			</nav>
+
+			<div className="header d-flex justify-content-between">
 				<div className="bev">
 					<div className="ml-auto">
 						<Link to="/demo">
@@ -69,19 +83,7 @@ export const AdminMainMenu = () => {
 						</Link>
 					</div>
 				</div>
-
-				<div className="ml-auto">
-					<Link to="/demo">
-						<button className="btn btn-danger">Inventory</button>
-					</Link>
-				</div>
-
-				<div className="ml-auto">
-					<Link to="/demo">
-						<button className="btn btn-danger">Add/Edit</button>
-					</Link>
-				</div>
-			</nav>
+			</div>
 		</div>
 	);
 };
