@@ -7,19 +7,23 @@ export const AdminMainMenu = () => {
 		<div className="container-fluid">
 			<nav className="navbar navbar-light bg-white mb-3">
 				<Link to="/">
-					<span className="navbar-brand mb-0 h1 text-dark">Main Menu</span>
+					<span className="navbar-brand mb-0 h1 text-danger">Main Menu</span>
 				</Link>
 
-				<div className="ml-auto">
-					<Link to="/inventory">
-						<button className="btn btn-danger">Inventory</button>
-					</Link>
+				<div className="invbtn">
+					<div className="ml-auto">
+						<Link to="/inventory">
+							<button className="btn btn-danger">Inventory</button>
+						</Link>
+					</div>
 				</div>
 
-				<div className="ml-auto">
-					<Link to="/addEdit">
-						<button className="btn btn-danger">Add/Edit</button>
-					</Link>
+				<div className="addbtn">
+					<div className="ml-auto">
+						<Link to="/addEdit">
+							<button className="btn btn-danger">Add/Edit</button>
+						</Link>
+					</div>
 				</div>
 			</nav>
 
@@ -82,6 +86,28 @@ export const AdminMainMenu = () => {
 							</div>
 						</Link>
 					</div>
+				</div>
+			</div>
+
+			<div className="body">
+				<div className="menu">
+					<table className="menutab">
+						<tr>
+							<td>
+								<p>Menu will display here</p>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+				<div className="foodcalator">
+					<table className="foodcount">
+						<tr>
+							<td>
+								<p>Foodcalator displays here</p>
+							</td>
+						</tr>
+					</table>
 				</div>
 			</div>
 		</div>
