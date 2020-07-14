@@ -5,19 +5,19 @@ import { Link } from "react-router-dom";
 export const AdminMainMenu = () => {
 	return (
 		<div className="container-fluid">
-			<nav className="navbar navbar-light bg-light mb-3">
+			<nav className="navbar navbar-light bg-white mb-3">
 				<Link to="/">
-					<span className="navbar-brand mb-0 h1">Main Menu</span>
+					<span className="navbar-brand mb-0 h1 text-dark">Main Menu</span>
 				</Link>
 
 				<div className="ml-auto">
-					<Link to="/demo">
+					<Link to="/inventory">
 						<button className="btn btn-danger">Inventory</button>
 					</Link>
 				</div>
 
 				<div className="ml-auto">
-					<Link to="/demo">
+					<Link to="/addEdit">
 						<button className="btn btn-danger">Add/Edit</button>
 					</Link>
 				</div>
