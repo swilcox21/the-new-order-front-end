@@ -4,48 +4,66 @@ import "../../styles/home.scss";
 export const Inventory = () => {
 	return (
 		<div className="container">
-			<div className="header text-center">
+			<div className="header bg-danger text-center">
 				<h1>Inventory</h1>
 			</div>
 			<table className="table table-bordered">
 				<thead>
 					<tr>
-						<th scope="col">Item Name</th>
-						<th scope="col">First</th>
-						<th scope="col">Last</th>
-						<th scope="col">Handle</th>
-						<th scope="col">Last</th>
-						<th scope="col">Handle</th>
-						<th scope="col">Handle</th>
+						<th scope="col-4">Item Name</th>
+						<th scope="col">Category</th>
+						<th scope="col">Quantity</th>
+						<th scope="col">Price</th>
+						<th scope="col">Brand</th>
+						<th scope="col">Remarks</th>
 					</tr>
 				</thead>
+				{/* function TableRow (){
+                    const rows=[];
+                    return(
+                        {rows.map((row, index){
+                            return( */}
 				<tbody>
 					<tr>
 						<th scope="row">1</th>
-						<td>Mark</td>
-						<td>Otto</td>
-						<td>@mdo</td>
-						<td>Otto</td>
-						<td>@mdo</td>
-						<td>@mdo</td>
+						<td />
+						<td />
+						<td />
+						<td />
+						<td />
 					</tr>
+
 					<tr>
 						<th scope="row">2</th>
-						<td>Jacob</td>
-						<td>Thornton</td>
-						<td>@fat</td>
-						<td>Thornton</td>
-						<td>@fat</td>
-						<td>@fat</td>
+						<td />
+						<td />
+						<td />
+						<td />
+						<td />
 					</tr>
 					<tr>
 						<th scope="row">3</th>
-						<td>Jacob</td>
-						<td>Thornton</td>
-						<td>@fat</td>
-						<td>Thornton</td>
-						<td>@fat</td>
-						<td>@fat</td>
+						<td />
+						<td />
+						<td />
+						<td />
+						<td />
+					</tr>
+					<tr>
+						<th scope="row">4</th>
+						<td />
+						<td />
+						<td />
+						<td />
+						<td />
+					</tr>
+					<tr>
+						<th scope="row">5</th>
+						<td />
+						<td />
+						<td />
+						<td />
+						<td />
 					</tr>
 				</tbody>
 			</table>
