@@ -3,14 +3,14 @@ import "../../styles/home.scss";
 
 export const Inventory = () => {
 	return (
-		<div className="container">
-			<div className="header bg-danger text-center">
+		<div className="container-fluid text-center">
+			<div className="header text-center">
 				<h1>Inventory</h1>
 			</div>
 			<table className="table table-bordered">
 				<thead>
 					<tr>
-						<th scope="col-4">Item Name</th>
+						<th scope="col">Item Name</th>
 						<th scope="col">Category</th>
 						<th scope="col">Quantity</th>
 						<th scope="col">Price</th>
@@ -25,7 +25,7 @@ export const Inventory = () => {
                             return( */}
 				<tbody>
 					<tr>
-						<th scope="row">1</th>
+						<th scope="row" />
 						<td />
 						<td />
 						<td />
@@ -34,7 +34,7 @@ export const Inventory = () => {
 					</tr>
 
 					<tr>
-						<th scope="row">2</th>
+						<th scope="row" />
 						<td />
 						<td />
 						<td />
@@ -42,7 +42,7 @@ export const Inventory = () => {
 						<td />
 					</tr>
 					<tr>
-						<th scope="row">3</th>
+						<th scope="row" />
 						<td />
 						<td />
 						<td />
@@ -50,7 +50,7 @@ export const Inventory = () => {
 						<td />
 					</tr>
 					<tr>
-						<th scope="row">4</th>
+						<th scope="row" />
 						<td />
 						<td />
 						<td />
@@ -58,7 +58,7 @@ export const Inventory = () => {
 						<td />
 					</tr>
 					<tr>
-						<th scope="row">5</th>
+						<th scope="row" />
 						<td />
 						<td />
 						<td />
