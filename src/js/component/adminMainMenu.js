@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/userMainMenu.scss";
+import "../../styles/adminMainMenu.scss";
 import { Link } from "react-router-dom";
 
 export const AdminMainMenu = () => {
@@ -10,45 +10,10 @@ export const AdminMainMenu = () => {
 					<span className="navbar-brand mb-0 h1 text-danger">Main Menu</span>
 				</Link>
 
-				<div className="tables">
-					<div className="dropdown">
-						<button
-							className="btn btn-secondary dropdown-toggle bg-danger"
-							type="button"
-							id="dropdownMenuButton"
-							data-toggle="dropdown"
-							aria-haspopup="true"
-							aria-expanded="false">
-							Dropdown button
-						</button>
-						<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							<a className="dropdown-item" href="#">
-								Action
-							</a>
-							<a className="dropdown-item" href="#">
-								Another action
-							</a>
-							<a className="dropdown-item" href="#">
-								Something else here
-							</a>
-						</div>
-					</div>
-				</div>
-
-				<div className="invbtn">
-					<div className="ml-auto">
-						<Link to="/inventory">
-							<button className="btn btn-danger">Inventory</button>
-						</Link>
-					</div>
-				</div>
-
-				<div className="addbtn">
-					<div className="ml-auto">
-						<Link to="/addEdit">
-							<button className="btn btn-danger">Add/Edit</button>
-						</Link>
-					</div>
+				<div className="ml-auto">
+					<Link to="itemAddEdit">
+						<button className="btn btn-danger">Add / Edit</button>
+					</Link>
 				</div>
 			</nav>
 
@@ -125,11 +90,21 @@ export const AdminMainMenu = () => {
 					</table>
 				</div>
 
-				<div className="foodcalator">
-					<table className="foodcount">
+				<div className="startedOrders">
+					<table className="inprogress">
 						<tr>
 							<td>
-								<p>Foodcalator displays here</p>
+								<p>Orders in Progress Display Here</p>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+				<div className="completedOrders">
+					<table className="completed">
+						<tr>
+							<td>
+								<p>Completed Orders Display Here</p>
 							</td>
 						</tr>
 					</table>

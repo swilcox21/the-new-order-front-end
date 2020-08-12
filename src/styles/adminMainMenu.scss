@@ -12,11 +12,6 @@ img {
 
 }
 
-.invbtn {
-
-    margin-left: 80%;
-
-}
 
 .menutab {
 
@@ -24,18 +19,27 @@ img {
     margin-left: 10%;
     margin-top: 15%;
     margin-bottom: 15%;
-    width: 400px;
-    height: 400px;
-
+    width: 300px;
+    height: 500px;
 }
 
-.foodcount {
+.inprogress {
 
     border: 2px solid red;
     margin-left: 40%;
-    margin-top: 15%;
-    width: 400px;
-    height: 400px;
+    margin-top: 22%;
+    margin-bottom: 15%;
+    width: 200px;
+    height: 500px;
+}
+
+.completed {
+    border: 2px solid red;
+    margin-left: 40%;
+    margin-top: 22%;
+    margin-bottom: 15%;
+    width: 200px;
+    height: 500px;
 }
 
 .body {
@@ -46,6 +50,6 @@ img {
 
 .tables {
 
-    
 
 }
+
