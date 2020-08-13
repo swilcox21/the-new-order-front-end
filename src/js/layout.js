@@ -27,10 +27,12 @@ export const Layout = () => {
 		<div className="d-flex flex-column h-100">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<Navbar />
 					<Switch>
 						<Route exact path="/" component={Login} />
-						<Route exact path="/landing-page" component={LandingPage} />
+						<Route exact path="/landing-page">
+							<Navbar />
+							<LandingPage />
+						</Route>
 						<Route exact path="/admin-main-menu" component={AdminMainMenu} />
 						<Route exact path="/user-main-menu" component={UserMainMenu} />
 						<Route exact path="/inventory" component={Inventory} />
