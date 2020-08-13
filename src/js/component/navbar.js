@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-export const Navbar = () => {
+export const Navbar = props => {
 	return (
 		// <div className="container-fluid justify-content-between">
 		<nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -20,11 +21,13 @@ export const Navbar = () => {
 			</button>
 			<div className="collapse navbar-collapse" id="navbarNavDropdown">
 				<ul className="navbar-nav">
-					<li className="nav-item active">
-						<a className="nav-link" href="#">
-							Home <span className="sr-only">(current)</span>
-						</a>
-					</li>
+					{props.test === "home" ? null : (
+						<li className="nav-item active">
+							<a className="nav-link" href="#">
+								Home <span className="sr-only">(current)</span>
+							</a>
+						</li>
+					)}
 					<li className="nav-item">
 						<a className="nav-link" href="#">
 							Order
@@ -73,4 +76,7 @@ export const Navbar = () => {
 		// 	</div>
 		// </nav>
 	);
+};
+Navbar.propTypes = {
+	test: PropTypes.string
 };

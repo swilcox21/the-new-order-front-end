@@ -10,7 +10,7 @@ export const LandingPage = () => {
 				<div className="carousel-inner">
 					<div className="carousel-item active">
 						<img
-							src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fabcnews.go.com%2FUS%2Ffood-truck-tongues-tails-wagging-duck-neck-chicken%2Fstory%3Fid%3D66116754&psig=AOvVaw0SYnBgXGqnWy2k6ZTk-zTb&ust=1597247535283000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJiMt_bBk-sCFQAAAAAdAAAAABAK"
+							src="https://www.history.com/.image/c_fill%2Ccs_srgb%2Cfl_progressive%2Ch_400%2Cq_auto:good%2Cw_620/MTU3ODc4NjAyNzI5MjY4NTUz/hungry-food-trucks-istock_000021186450large-2.jpg"
 							className="d-block w-100"
 							alt="food truck"
 						/>
