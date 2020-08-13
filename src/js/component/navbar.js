@@ -64,6 +64,7 @@ export const Navbar = props => {
 				</ul>
 			</div>
 		</nav>
+		//{" "}
 		// </div>
 		// <nav className="navbar navbar-light bg-danger mb-3">
 		// 	<Link to="/">
