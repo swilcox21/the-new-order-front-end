@@ -15,6 +15,7 @@ import { Payment } from "./component/payment";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { LandingPage } from "./component/landingPage";
+import { Maps } from "./component/maps";
 
 //create your first component
 export const Layout = () => {
@@ -32,6 +33,7 @@ export const Layout = () => {
 							<Navbar />
 							<LandingPage />
 						</Route>
+						<Route exact path="/maps" component={Maps} />
 						<Route exact path="/admin-main-menu" component={AdminMainMenu} />
 						<Route exact path="/user-main-menu" component={UserMainMenu} />
 						<Route exact path="/item-add-edit" component={ItemAddEdit} />
