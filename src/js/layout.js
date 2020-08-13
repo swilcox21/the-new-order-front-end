@@ -14,7 +14,7 @@ import { Payment } from "./component/payment";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-import { LandingPage } from "./component/landingPage";
+import { LandingPage } from "./views/landingPage";
 
 //create your first component
 export const Layout = () => {
