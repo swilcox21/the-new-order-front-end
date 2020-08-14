@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../../styles/home.scss";
 
-export const Login = () => {
+export const SignUp = () => {
 	const { number, setNumber } = useState("");
 	function handlerSubmit() {}
 	return (

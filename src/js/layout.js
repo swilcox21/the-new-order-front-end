@@ -6,7 +6,7 @@ import { Home } from "./views/home";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import injectContext from "./store/appContext";
-import { Login } from "./views/login";
+import { SignUp } from "./views/signUp";
 import { AdminMainMenu } from "./component/adminMainMenu";
 import { UserMainMenu } from "./component/userMainMenu";
 import { ItemAddEdit } from "./component/itemAddEdit";
@@ -29,8 +29,8 @@ export const Layout = () => {
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Switch>
-						<Route exact path="/" component={Login} />
-						<Route exact path="/landing-page">
+						<Route exact path="/signUp" component={SignUp} />
+						<Route exact path="/">
 							<Navbar />
 							<LandingPage />
 						</Route>
