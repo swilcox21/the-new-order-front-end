@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 
 export const Navbar = props => {
 	return (
-		// <div className="container-fluid justify-content-between">
-		<nav className="navbar navbar-expand-lg navbar-light bg-light">
+		// <div className="container d-flex justify-content-between">
+		<nav className="navbar navbar-expand-lg navbar-light bg-light ">
 			<a className="navbar-brand" href="#">
 				The New Order
 			</a>
@@ -29,14 +29,18 @@ export const Navbar = props => {
 						</li>
 					)}
 					<li className="nav-item">
-						<a className="nav-link" href="#">
-							Order
-						</a>
+						<Link to="/user-main-menu">
+							<a className="nav-link" href="#">
+								Place an Order
+							</a>
+						</Link>
 					</li>
 					<li className="nav-item">
-						<a className="nav-link" href="#">
-							Find a Food Truck
-						</a>
+						<Link to="/maps">
+							<a className="nav-link" href="#">
+								Find a Food Truck
+							</a>
+						</Link>
 					</li>
 					<li className="nav-item dropdown">
 						<a
@@ -53,18 +57,16 @@ export const Navbar = props => {
 							<a className="dropdown-item" href="#">
 								Login
 							</a>
-							<a className="dropdown-item" href="#">
-								Register your business
-							</a>
-							<a className="dropdown-item" href="#">
-								Something else here
-							</a>
+							<Link to="/signUp">
+								<a className="dropdown-item" href="#">
+									Register your business
+								</a>
+							</Link>
 						</div>
 					</li>
 				</ul>
 			</div>
 		</nav>
-		//{" "}
 		// </div>
 		// <nav className="navbar navbar-light bg-danger mb-3">
 		// 	<Link to="/">

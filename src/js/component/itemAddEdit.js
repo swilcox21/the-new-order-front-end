@@ -69,3 +69,4 @@ export const ItemAddEdit = () => {
 		</div>
 	);
 };
+export const ItemAddEdit = () => <h1>ItemAdd</h1>;
