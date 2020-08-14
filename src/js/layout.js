@@ -34,7 +34,7 @@ export const Layout = () => {
 							<Navbar />
 							<LandingPage />
 						</Route>
-						<Route exact path="/maps" component={Maps} />
+						{<Route exact path="/maps" component={Maps} />}
 						<Route exact path="/admin-main-menu" component={AdminMainMenu} />
 						<Route exact path="/user-main-menu" component={UserMainMenu} />
 						<Route exact path="/item-add-edit" component={ItemAddEdit} />
