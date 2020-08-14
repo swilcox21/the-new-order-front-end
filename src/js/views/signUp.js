@@ -3,12 +3,18 @@ import ReactDOM from "react-dom";
 import { useForm } from "react-hook-form";
 import "../../styles/home.scss";
 
+<<<<<<< HEAD:src/js/views/login.js
 export const Login = () => {
 	const { register, handleSubmit } = useForm();
 	const onSubmit = data => {
 		console.log(data);
 	};
 
+=======
+export const SignUp = () => {
+	const { number, setNumber } = useState("");
+	function handlerSubmit() {}
+>>>>>>> a7641d73248f93382cf9101985cd358ee6d1bd07:src/js/views/signUp.js
 	return (
 		<div className="container text-center d-flex p-5 mt-5 h-75 bg-danger">
 			<div className="w-50 border border-white">
