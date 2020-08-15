@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import ReactDOM from "react-dom";
-import { useForm } from "react-hook-form";
+import { Context } from "../store/appContext";
 import "../../styles/home.scss";
 
 export const SignUp = () => {
-	const { register, handleSubmit } = useForm();
-	const onSubmit = data => {
-		console.log(data);
-	};
-
+	const { store, actions } = useContext(Context);
+	const [name, setName] = useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [phone, setPhone] = useState("");
 	return (
 		<div className="container text-center d-flex p-5 mt-5 h-75 bg-danger">
 			<div className="w-50 border border-white">
@@ -17,42 +17,53 @@ export const SignUp = () => {
 				</div>
 			</div>
 			<div className="w-50">
-				<form
-					className="d-flex flex-column mr-auto ml-auto w-75 h-75 justify-content-between mt-5"
-					onSubmit={() => handleSubmit(onSubmit)}>
+				<form className="d-flex flex-column mr-auto ml-auto w-75 h-75 justify-content-between mt-5">
 					<h3 className="text-white">{"Let's grow your business"}</h3>
 					<input
+						onChange={event => setName(event.target.value)}
 						type="text"
 						id="name"
 						name="name"
-						ref={register}
 						placeholder="Vendor Name"
 						className="rounded"
 					/>
-					<input type="text" id="email" name="email" ref={register} placeholder="Email" className="rounded" />
 					<input
+						onChange={event => setEmail(event.target.value)}
+						type="text"
+						id="email"
+						name="email"
+						placeholder="Email"
+						className="rounded"
+					/>
+					<input
+						onChange={event => setPassword(event.target.value)}
 						type="password"
 						id="password"
 						name="password"
-						ref={register}
 						placeholder="Password"
 						className="rounded"
 					/>
 					<input
+						onChange={event => setPhone(event.target.value)}
 						type="tel"
 						id="phone"
 						name="phone"
-						ref={register}
 						placeholder="Phone Number"
 						className="rounded"
 					/>
-					<input
+					<button
+						onClick={async event => {
+							event.preventDefault();
+							let result = await actions.signUp(name, email, password, phone);
+							if (result) {
+								history.push("/admin-main-menu");
+							}
+						}}
 						type="submit"
 						name="submit"
-						ref={register}
-						value="SIGN UP"
-						className="w-50 ml-auto mr-auto rounded bg-white"
-					/>
+						className="w-50 ml-auto mr-auto rounded bg-white">
+						{"SIGN UP"}
+					</button>
 				</form>
 			</div>
 		</div>
