@@ -82,7 +82,7 @@ export const ItemAddEdit = () => {
 							Add
 						</a>
 						<a className="dropdown-item" href="#">
-                			Edit
+							Edit
 						</a>
 					</div>
 				</div>
