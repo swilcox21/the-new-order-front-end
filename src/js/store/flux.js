@@ -1,3 +1,5 @@
+const backendApiUrl = "";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -38,6 +40,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			signUp: async (name, email, password, phone) => {
+				let response = await fetch(backendApiUrl + "/add", {
+					//need to fix fetch url
+					method: "POST",
+					body: JSON.stringify({
+						name: name,
+						email: email,
+						password: password,
+						phone: phone
+					}),
+					headers: {
+						"Content-Type": "application/json"
+					}
+				});
+				if (response.ok) {
+					return true;
+				} else {
+					return false;
+				}
 			}
 		}
 	};
