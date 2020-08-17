@@ -62,31 +62,21 @@ export const ItemAddEdit = () => {
 									<img src="https://findicons.com/files/icons/2515/muffin/256/muffin6.png" />
 								</button>
 							</div>
+							<div className="dropdown-menu">
+								<a className="dropdown-item" href="#">
+									Add
+								</a>
+								<a className="dropdown-item" href="#">
+									Edit
+								</a>
+							</div>
 						</Link>
 					</div>
 				</div>
-
-				<div className="input-group mb-3" />
-				<div className="input-group-prepend">
-					<button
-						className="btn btn-outline-secondary dropdown-toggle"
-						type="button"
-						data-toggle="dropdown"
-						aria-haspopup="true"
-						aria-expanded="false">
-						Dropdown
-					</button>
-
-					<div className="dropdown-menu">
-						<a className="dropdown-item" href="#">
-							Add
-						</a>
-						<a className="dropdown-item" href="#">
-                			Edit
-						</a>
-					</div>
-				</div>
 			</div>
+
+			
+			
 		</div>
 	);
 };
