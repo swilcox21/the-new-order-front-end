@@ -73,6 +73,30 @@ export const ItemAddEdit = () => {
 						</Link>
 					</div>
 				</div>
+<<<<<<< HEAD
+=======
+
+				<div className="input-group mb-3" />
+				<div className="input-group-prepend">
+					<button
+						className="btn btn-outline-secondary dropdown-toggle"
+						type="button"
+						data-toggle="dropdown"
+						aria-haspopup="true"
+						aria-expanded="false">
+						Dropdown
+					</button>
+
+					<div className="dropdown-menu">
+						<a className="dropdown-item" href="#">
+							Add
+						</a>
+						<a className="dropdown-item" href="#">
+							Edit
+						</a>
+					</div>
+				</div>
+>>>>>>> 6b7a43603acc76b1f106fbfdceecac89b9ee8a0c
 			</div>
 
 			
