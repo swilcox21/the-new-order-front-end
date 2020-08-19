@@ -17,6 +17,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
+			login: (bubu, baba) => {
+				console.log("Hello");
+				fetch(`${apiUrlErnesto}login`, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+
+					body: JSON.stringify({
+						email: bubu,
+						password: baba
+					})
+				})
+					.then(response => response.json())
+					.then(token => {
+						if (typeof token.msg != "undefined") {
+							// Notify.error(token.msg);
+						} else {
+							setStore({ token: token.jwt });
+						}
+					});
+			},
+
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
