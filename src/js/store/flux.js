@@ -1,3 +1,5 @@
+const backendApiUrl = "https://3000-f75c3e6d-1cce-4471-9ff4-032e22b207f1.ws-us02.gitpod.io/";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -61,6 +63,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			signUp: async (name, email, password, phone) => {
+				let response = await fetch(backendApiUrl + "/add", {
+					//need to fix fetch url
+					method: "POST",
+					body: JSON.stringify({
+						name: name,
+						email: email,
+						password: password,
+						phone: phone
+					}),
+					headers: {
+						"Content-Type": "application/json"
+					}
+				});
+				if (response.ok) {
+					return true;
+				} else {
+					return false;
+				}
 			}
 		}
 	};

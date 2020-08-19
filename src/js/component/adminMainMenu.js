@@ -11,7 +11,7 @@ export const AdminMainMenu = () => {
 				</Link>
 
 				<div className="ml-auto">
-					<Link to="itemAddEdit">
+					<Link to="item-add-edit">
 						<button className="btn btn-danger">Add / Edit</button>
 					</Link>
 				</div>
