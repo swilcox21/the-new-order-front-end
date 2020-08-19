@@ -3,6 +3,7 @@ const backendApiUrl = "https://3000-f75c3e6d-1cce-4471-9ff4-032e22b207f1.ws-us02
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			token: null,
 			products: [
 				//this is where we will put the items that are order, create objects: item, price, etc.
 				{
@@ -19,17 +20,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-			login: (bubu, baba) => {
+			protectedEndpoint: () => {
+				const store = getStore();
+				fetch(`${backendApiUrl}profile`, {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${store.token}`
+					}
+				});
+			},
+			login: (email, password) => {
 				console.log("Hello");
-				fetch(`${apiUrlErnesto}login`, {
+				fetch(`${backendApiUrl}login`, {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
 					},
 
 					body: JSON.stringify({
-						email: bubu,
-						password: baba
+						email: email,
+						password: password
 					})
 				})
 					.then(response => response.json())

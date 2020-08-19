@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-=======
 import React, { useContext, useState } from "react";
->>>>>>> be539086dd67dff35d41744f8326e05a8361068c
 import ReactDOM from "react-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.scss";

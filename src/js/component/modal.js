@@ -53,7 +53,10 @@ export const Modal = props => {
 						<button type="button" className="btn btn-secondary" data-dismiss="modal">
 							Close
 						</button>
-						<button type="button" onClick={() => actions.login()} className="btn btn-primary">
+						<button
+							type="button"
+							onClick={() => actions.login(email, password)}
+							className="btn btn-primary">
 							Login
 						</button>
 					</div>
