@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const UserMainMenu = () => {
 	return (
-		<div className="container-fluid">
+		<div className="container-fluid h-100 w-100">
 			<div className="header d-flex justify-content-between">
 				<div className="bev">
 					<div className="ml-auto">
