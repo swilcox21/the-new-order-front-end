@@ -21,5 +21,6 @@ export const UserMainMenu = () => {
 				<div className="shopping-cart" />
 			</div>
 		</div>
+        
 	);
 };
