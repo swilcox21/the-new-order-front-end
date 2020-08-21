@@ -98,7 +98,7 @@ export const AdminMainMenu = () => {
 				</p>
 			</div>
 			<div className="body">
-				{/*DRAG AND DROP START*/}
+				{/*DRAG AND DROP START
 				<div className="dragdrop">
 					<div draggable="true" className="box">
 						A
@@ -112,11 +112,22 @@ export const AdminMainMenu = () => {
 				</div>
 				{/*DRAG AND DROP END*/}
 
-				{/*<div className="menu">
+				<div className="menu">
 					<table className="menutab">
 						<tr>
 							<td>
 								<p>New Orders will display here</p>
+								<div className="dragdrop">
+									<div draggable="true" className="box">
+										Cheese Burger
+									</div>
+									<div draggable="true" className="box">
+										Tacos
+									</div>
+									<div draggable="true" className="box">
+										Milkshake Vanilla
+									</div>
+								</div>
 							</td>
 						</tr>
 					</table>
@@ -140,7 +151,7 @@ export const AdminMainMenu = () => {
 							</td>
 						</tr>
 					</table>
-				</div>*/}
+				</div>
 			</div>
 		</div>
 	);
