@@ -16,6 +16,10 @@ export const UserMainMenu = () => {
 					</a>
 				</p>
 			</div>
+			<div>
+				<div className="menu-view border" />
+				<div className="shopping-cart" />
+			</div>
 		</div>
 	);
 };
