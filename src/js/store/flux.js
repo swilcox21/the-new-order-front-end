@@ -76,8 +76,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ demo: demo });
 			},
 			signUp: async (name, email, password, phone) => {
-				let response = await fetch(backendApiUrl + "/add", {
-					//need to fix fetch url
+				let response = await fetch(backendApiUrl + "/signup", {
 					method: "POST",
 					body: JSON.stringify({
 						name: name,
