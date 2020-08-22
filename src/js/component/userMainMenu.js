@@ -20,10 +20,10 @@ export const UserMainMenu = () => {
 				<div className="menu-view border border-dark m-auto">
 					<h1>{"menu view"}</h1>
 				</div>
-				<div className="shopping-cart border border-dark m-auto">
+				<div className="shopping-cart border border-dark ml-auto w-50">
 					<section>
-						<div className="row">
-							<div className="col-lg-8">
+						<div className="row d-flex flex-column">
+							<div className="pl-4 pr-4">
 								<div className="mb-3">
 									<div className="pt-4 wish-list">
 										<h5 className="mb-4">
@@ -177,10 +177,6 @@ export const UserMainMenu = () => {
 												</div>
 											</div>
 										</div>
-										<p className="text-primary mb-0">
-											<i className="fas fa-info-circle mr-1" /> Do not delay the purchase, adding
-											items to your cart does not mean booking them.
-										</p>
 									</div>
 								</div>
 
@@ -197,25 +193,25 @@ export const UserMainMenu = () => {
 										<h5 className="mb-4">We accept</h5>
 
 										<img
-											className="mr-2"
+											className="payment mr-2"
 											width="20px"
 											src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
 											alt="Visa"
 										/>
 										<img
-											className="mr-2"
+											className="payment mr-2"
 											width="20px"
 											src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
 											alt="American Express"
 										/>
 										<img
-											className="mr-2"
+											className="payment mr-2"
 											width="20px"
 											src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
 											alt="Mastercard"
 										/>
 										<img
-											className="mr-2"
+											className="payment mr-2"
 											width="20px"
 											src="https://mdbootstrap.com/wp-content/plugins/woocommerce/includes/gateways/paypal/assets/images/paypal.png"
 											alt="PayPal acceptance mark"
@@ -224,7 +220,7 @@ export const UserMainMenu = () => {
 								</div>
 							</div>
 
-							<div className="col-lg-4">
+							<div className="tally pr-4 pl-4">
 								<div className="mb-3">
 									<div className="pt-4">
 										<h5>Tally Up</h5>
