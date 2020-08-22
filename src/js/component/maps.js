@@ -31,10 +31,10 @@ const stores = [
 		lng: -80.2114
 	}
 ];
-export const SecondMapView = props => {
+export const Maps = props => {
 	const history = useHistory();
 	return (
-		<div className="container w-100 h-400px" style={{ width: "100%", height: "100vh" }}>
+		<div className="container d-flex" style={{ height: "100vh", width: "100%" }}>
 			<GoogleMapReact
 				bootstrapURLKeys={{
 					key: "AIzaSyD9TcEj0Qk8yov_y_BdZTYv3SG9-3NMQAI"
