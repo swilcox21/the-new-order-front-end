@@ -1,84 +1,49 @@
-import React from "react";
+import React, { useContext, useState, useCallback } from "react";
 import "../../styles/adminMainMenu.scss";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const AdminMainMenu = () => {
-	function handleDragStart(e) {
-		this.style.opacity = "0.4";
-	}
-
-	function handleDragEnd(e) {
-		this.style.opacity = "1";
-	}
-
-	let items = document.querySelectorAll(".container .box");
-	items.forEach(function(item) {
-		item.addEventListener("dragstart", handleDragStart, false);
-		item.addEventListener("dragend", handleDragEnd, false);
-	});
-
-	document.addEventListener("DOMContentLoaded", event => {
-		function handleDragStart(e) {
-			this.style.opacity = "0.4";
-		}
-
-		function handleDragEnd(e) {
-			this.style.opacity = "1";
-
-			items.forEach(function(item) {
-				item.classList.remove("over");
-			});
-		}
-
-		function handleDragOver(e) {
-			if (e.preventDefault) {
-				e.preventDefault();
+	const { store, actions } = useContext(Context);
+	const [draggedOrder, setDraggedOrder] = useState(null);
+	const handleDragStart = useCallback(order => setDraggedOrder(order), []);
+	const handleDrop = useCallback(
+		e => {
+			console.log(
+				`${e.target.id == "closed" ? "closing" : e.target.id == "started" ? "starting" : "receiving"} order ${
+					draggedOrder.id
+				}`
+			);
+			if (e.target.id == "created") {
+				actions.updateOrder(
+					{
+						[`${e.target.id}_at`]: new Date(),
+						started_at: null,
+						closed_at: null
+					},
+					draggedOrder.id
+				);
+			} else if (e.target.id == "started") {
+				actions.updateOrder(
+					{
+						[`${e.target.id}_at`]: new Date(),
+						closed_at: null
+					},
+					draggedOrder.id
+				);
+			} else {
+				actions.updateOrder(
+					{
+						[`${e.target.id}_at`]: new Date(),
+						started_at: draggedOrder.started_at || new Date()
+					},
+					draggedOrder.id
+				);
 			}
-
-			return false;
-		}
-
-		function handleDragEnter(e) {
-			this.classList.add("over");
-		}
-
-		function handleDragLeave(e) {
-			this.classList.remove("over");
-		}
-
-		let items = document.querySelectorAll(".container .box");
-		items.forEach(function(item) {
-			item.addEventListener("dragstart", handleDragStart, false);
-			item.addEventListener("dragover", handleDragOver, false);
-			item.addEventListener("dragenter", handleDragEnter, false);
-			item.addEventListener("dragleave", handleDragLeave, false);
-			item.addEventListener("dragend", handleDragEnd, false);
-		});
-	});
-	function handleDrop(e) {
-		e.stopPropagation(); // stops the browser from redirecting.
-		return false;
-	}
-
-	function handleDragStart(e) {
-		this.style.opacity = "0.4";
-
-		dragSrcEl = this;
-
-		e.dataTransfer.effectAllowed = "move";
-		e.dataTransfer.setData("text/html", this.innerHTML);
-	}
-
-	function handleDrop(e) {
-		e.stopPropagation();
-
-		if (dragSrcEl !== this) {
-			dragSrcEl.innerHTML = this.innerHTML;
-			this.innerHTML = e.dataTransfer.getData("text/html");
-		}
-
-		return false;
-	}
+			setDraggedOrder(null);
+		},
+		[draggedOrder, actions.updateOrder]
+	);
 	return (
 		<div className="container-fluid">
 			<div className="jumbotron3 image mb-3">
@@ -97,62 +62,141 @@ export const AdminMainMenu = () => {
 					</a>
 				</p>
 			</div>
-			<div className="body">
-				{/*DRAG AND DROP START
-				<div className="dragdrop">
-					<div draggable="true" className="box">
-						A
-					</div>
-					<div draggable="true" className="box">
-						B
-					</div>
-					<div draggable="true" className="box">
-						C
+			<div className="d-flex flex-row justify-content-between" style={{ height: "600px" }}>
+				<div
+					className="menu d-flex flex-column"
+					style={{ width: "28%", height: "100%", border: "2px solid red" }}>
+					<p>New Orders will display here</p>
+					<div
+						className="dragdrop h-100"
+						id="created"
+						onDragOver={e => {
+							e.preventDefault();
+							e.stopPropagation();
+						}}
+						onDrop={handleDrop}>
+						{store.orders.map(order => {
+							if (order.started_at == null && order.cancel_order == null && order.closed_at == null) {
+								return (
+									<div
+										key={order.id}
+										draggable
+										className=" box bg-danger"
+										onDrag={e => {
+											e.preventDefault();
+											e.stopPropagation();
+										}}
+										onDragStart={e => handleDragStart(order)}>
+										<p>{order.name}</p>
+										<p>{order.number}</p>
+									</div>
+								);
+							}
+						})}
 					</div>
 				</div>
-				{/*DRAG AND DROP END*/}
 
-				<div className="menu">
-					<table className="menutab">
-						<tr>
-							<td>
-								<p>New Orders will display here</p>
-								<div className="dragdrop">
-									<div draggable="true" className="box">
-										Cheese Burger
+				<div
+					className="startedOrders d-flex flex-column"
+					style={{ width: "28%", height: "100%", border: "2px solid red" }}>
+					<p>Orders in Progress Display Here</p>
+					<div
+						className="dragdrop h-100"
+						id="started"
+						onDragOver={e => {
+							e.preventDefault();
+							e.stopPropagation();
+						}}
+						onDrop={handleDrop}>
+						{store.orders.map(order => {
+							if (order.started_at != null && order.cancel_order == null && order.closed_at == null) {
+								return (
+									<div
+										key={order.id}
+										draggable
+										className={
+											draggedOrder == order.id
+												? "box bg-danger dragged"
+												: "box bg-dangerbox bg-danger"
+										}
+										onDrag={e => {
+											e.preventDefault();
+											e.stopPropagation();
+										}}
+										onDragStart={e => handleDragStart(order)}>
+										<p>{order.name}</p>
+										<p>{order.number}</p>
 									</div>
-									<div draggable="true" className="box">
-										Tacos
-									</div>
-									<div draggable="true" className="box">
-										Milkshake Vanilla
-									</div>
-								</div>
-							</td>
-						</tr>
-					</table>
+								);
+							}
+						})}
+					</div>
 				</div>
-
-				<div className="startedOrders">
-					<table className="inprogress">
-						<tr>
-							<td>
-								<p>Orders in Progress Display Here</p>
-							</td>
-						</tr>
-					</table>
-				</div>
-
-				<div className="completedOrders">
-					<table className="completed">
-						<tr>
-							<td>
-								<p>Completed Orders Display Here</p>
-							</td>
-						</tr>
-					</table>
+				<div
+					className="completedOrders d-flex flex-column"
+					style={{ width: "28%", height: "100%", border: "2px solid red" }}>
+					<p>Completed Orders Display Here</p>
+					<div
+						className="dragdrop h-100"
+						id="closed"
+						onDragOver={e => {
+							e.preventDefault();
+							e.stopPropagation();
+						}}
+						onDrop={handleDrop}>
+						{store.orders.map(order => {
+							if (order.started_at != null && order.cancel_order == null && order.closed_at != null) {
+								return (
+									<div
+										key={order.id}
+										draggable
+										className=" box bg-danger"
+										onDrag={e => {
+											e.preventDefault();
+											e.stopPropagation();
+										}}
+										onDragStart={e => handleDragStart(order)}>
+										<p>{order.name}</p>
+										<p>{order.number}</p>
+									</div>
+								);
+							}
+						})}
+					</div>
 				</div>
 			</div>
+			{/* <button
+                type="button"
+                className="btn btn-danger"
+                data-toggle="modal"
+                data-target="#exampleModal">
+                View Order
+            </button> */}
+			{/* <div
+                className="modal fade"
+                id="exampleModal"
+                tabIndex="-1"
+                role="dialog"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">
+                                Modal title
+                            </h5>
+                            <button
+                                type="button"
+                                className="close"
+                                data-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div className="modal-body">...</div>
+                    </div>
+                </div>
+            </div> */}
 		</div>
 	);
 };
