@@ -75,11 +75,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
-			signUp: async (name, email, password, phone) => {
-				let response = await fetch(backendApiUrl + "/signup", {
+			signUp: async (vendor_name, email, password, phone) => {
+				let response = await fetch(backendApiUrl + "signup", {
 					method: "POST",
 					body: JSON.stringify({
-						name: name,
+						vendor_name: vendor_name,
 						email: email,
 						password: password,
 						phone: phone
@@ -89,6 +89,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				});
 				if (response.ok) {
+					await getActions().login(email, password);
 					return true;
 				} else {
 					return false;

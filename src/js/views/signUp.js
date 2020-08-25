@@ -1,14 +1,17 @@
 import React, { useContext, useState } from "react";
 import ReactDOM from "react-dom";
+import { Link, useHistory } from "react-router-dom";
+import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import "../../styles/home.scss";
 
-export const SignUp = () => {
+export const SignUp = props => {
 	const { store, actions } = useContext(Context);
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [phone, setPhone] = useState("");
+	let history = useHistory();
 	return (
 		<div className="container text-center d-flex p-5 mt-5 h-75 bg-danger">
 			<div className="w-50 border border-white">
@@ -68,4 +71,13 @@ export const SignUp = () => {
 			</div>
 		</div>
 	);
+};
+
+//proptypes
+SignUp.propTypes = {
+	name: PropTypes.string,
+	email: PropTypes.string,
+	password: PropTypes.string,
+	phone: PropTypes.string,
+	index: PropTypes.number
 };
