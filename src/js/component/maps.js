@@ -1,35 +1,99 @@
-// // <!DOCTYPE html>
-// {/* <html>
-//   <head>
-//     <style>
+import React from "react";
+import PropTypes from "prop-types";
+import GoogleMapReact from "google-map-react";
+import { useHistory } from "react-router-dom";
+import "../../styles/maps.scss";
 
-//       #map {
-//         height: 400px;  /* The height is 400 pixels */
-//         width: 100%;  /* The width is the width of the web page */
-//        }
-//     </style>
-//   </head>
-//   <body>
-//     <h3>My Google Maps Demo</h3>
+const center = {
+	lat: 25.7617,
+	lng: -80.1918
+};
+const zoom = 10;
+const stores = [
+	{
+		name: "store 1",
+		lat: 25.79,
+		lng: -80.1911
+	},
+	{
+		name: "store 2",
+		lat: 25.68,
+		lng: -80.2
+	},
+	{
+		name: "store 3",
+		lat: 25.82,
+		lng: -80.1899
+	},
+	{
+		name: "store 5",
+		lat: 25.77,
+		lng: -80.2114
+	}
+];
+export const Maps = props => {
+	const history = useHistory();
+	return (
+		<div className="container d-flex" style={{ height: "100vh", width: "100%" }}>
+			<GoogleMapReact
+				bootstrapURLKeys={{
+					key: "AIzaSyD9TcEj0Qk8yov_y_BdZTYv3SG9-3NMQAI"
+				}}
+				defaultCenter={center}
+				defaultZoom={zoom}>
+				{stores.map((store, index) => {
+					return (
+						<div
+							key={index}
+							className="rounded"
+							style={{
+								width: "10px",
+								height: "10px",
+								backgroundColor: "red"
+							}}
+							lat={store.lat}
+							lng={store.lng}
+							text={store.name}
+							onClick={e => history.push("/stores/1")}
+						/>
+					);
+				})}
+			</GoogleMapReact>
+		</div>
+	);
+};
 
-//     <div id="map"></div>
-//     <script>
+// import React, { Component } from "react";
+// import GoogleMapReact from "google-map-react";
 
-// function initMap() {
-//   // The location of Uluru
-//   var uluru = {lat: -25.344, lng: 131.036};
-//   // The map, centered at Uluru
-//   var map = new google.maps.Map(
-//       document.getElementById('map'), {zoom: 4, center: uluru});
-//   // The marker, positioned at Uluru
-//   var marker = new google.maps.Marker({position: uluru, map: map});
+// const AnyReactComponent = ({ text }) => <div>{text}</div>;
+
+// class SimpleMap extends Component {
+// 	static defaultProps = {
+// 		center: {
+// 			lat: 59.95,
+// 			lng: 30.33
+// 		},
+// 		zoom: 11
+// 	};
+
+// 	render() {
+// 		return (
+// 			// Important! Always set the container height explicitly
+// 			<div style={{ height: "100vh", width: "100%" }}>
+// 				<GoogleMapReact
+// 					bootstrapURLKeys={{ key: AIzaSyD9TcEj0Qk8yov_y_BdZTYv3SG9 }}
+// 					defaultCenter={this.props.center}
+// 					defaultZoom={this.props.zoom}>
+// 					<AnyReactComponent lat={59.955413} lng={30.337844} text="My Marker" />
+// 				</GoogleMapReact>
+// 			</div>
+// 		);
+// 	}
 // }
-// </script>
-//     <script defer
+
+// export default SimpleMap;
+
+// Maps.propTypes = {};
+
 //     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9TcEj0Qk8yov_y_BdZTYv3SG9-3NMQAI&callback=initMap">
-//     </script>
-
-//   </body>
-// </html>
-
-//  */}

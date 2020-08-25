@@ -2,13 +2,13 @@ import React from "react";
 
 export const LandingPage = () => {
 	return (
-		<div className="container text-center">
+		<div className="container d-flex flex-column">
 			<div className="header text-center">
 				<h1>Welcome to The New Order</h1>
 			</div>
 			<div className="motto" />
 			<div className="row d-flex justify-content-md-center">
-				<div className="col-md-8 ">
+				<div className="col-md-7 ">
 					<div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
 						<div className="carousel-inner">
 							<div className="carousel-item active">
