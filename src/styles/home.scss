@@ -14,3 +14,18 @@
     height: 50px !important;
     width: 80px !important;
 }
+
+a.qty {
+  line-height: .80em;
+  border-radius: 2em;
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+  background: #43ace3;  
+  color: #fff;
+}
+
+a.qty:hover {
+  background: #3b9ac6;
+}
+

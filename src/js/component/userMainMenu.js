@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import "../../styles/home.scss";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const UserMainMenu = () => {
+	const { store, actions } = useContext(Context);
+	const [special_instructions, setSpecial_instructions] = useState("");
+	const [quantity, setQuantity] = useState(1);
 	return (
 		<div className="container-fluid">
 			<div className="jumbotron2 image mb-3">
@@ -44,40 +48,39 @@ export const UserMainMenu = () => {
 												<div>
 													<div className="d-flex justify-content-between">
 														<div>
-															<h5>Blue denim shirt</h5>
+															<h5>Burger</h5>
 															<p className="mb-3 text-muted text-uppercase small">
-																Shirt - blue
+																{"Special Intructions:"}
 															</p>
-															<p className="mb-2 text-muted text-uppercase small">
-																Color: blue
-															</p>
-															<p className="mb-3 text-muted text-uppercase small">
-																Size: M
-															</p>
+															<input
+																onChange={event =>
+																	setSpecial_instructions(event.target.value)
+																}
+																type="text"
+																id="name"
+																name="name"
+															/>
 														</div>
-														<div>
-															<div className="def-number-input number-input safari_only mb-0 w-100">
-																<button
-																	onClick="this.parentNode.querySelector('input[type=number]').stepDown()"
-																	className="minus decrease"
-																/>
+														<div className="">
+															<div className="col col-qty d-flex text-center w-75">
+																<a
+																	href="#"
+																	className="qty qty-minus w-25"
+																	onClick={() => setQuantity(quantity - 1)}>
+																	{"-"}
+																</a>
 																<input
-																	className="quantity"
-																	min="0"
-																	name="quantity"
-																	value="1"
-																	type="number"
+																	className="w-50 text-center"
+																	type="numeric"
+																	value={quantity}
 																/>
-																<button
-																	onClick="this.parentNode.querySelector('input[type=number]').stepUp()"
-																	className="plus increase"
-																/>
+																<a
+																	href="#"
+																	className="qty qty-plus w-25"
+																	onClick={() => setQuantity(quantity + 1)}>
+																	{"+"}
+																</a>
 															</div>
-															<small
-																id="passwordHelpBlock"
-																className="form-text text-muted text-center">
-																(Note, 1 piece)
-															</small>
 														</div>
 													</div>
 													<div className="d-flex justify-content-between align-items-center">
@@ -130,28 +133,19 @@ export const UserMainMenu = () => {
 															</p>
 														</div>
 														<div>
-															<div className="def-number-input number-input safari_only mb-0 w-100">
-																<button
-																	onClick="this.parentNode.querySelector('input[type=number]').stepDown()"
-																	className="minus decrease"
-																/>
+															<div className="col col-qty d-flex text-center w-75">
+																<a href="#" className="qty qty-minus w-25">
+																	-
+																</a>
 																<input
-																	className="quantity"
-																	min="0"
-																	name="quantity"
-																	value="1"
-																	type="number"
+																	className="w-50 text-center"
+																	type="numeric"
+																	value="3"
 																/>
-																<button
-																	onClick="this.parentNode.querySelector('input[type=number]').stepUp()"
-																	className="plus increase"
-																/>
+																<a href="#" className="qty qty-plus w-25">
+																	+
+																</a>
 															</div>
-															<small
-																id="passwordHelpBlock"
-																className="form-text text-muted text-center">
-																(Note, 1 piece)
-															</small>
 														</div>
 													</div>
 													<div className="d-flex justify-content-between align-items-center">
@@ -179,15 +173,6 @@ export const UserMainMenu = () => {
 										</div>
 									</div>
 								</div>
-
-								<div className="mb-3">
-									<div className="pt-4">
-										<h5 className="mb-4">Expected Pickup</h5>
-
-										<p className="mb-0"> sometype of js to pull expected time</p>
-									</div>
-								</div>
-
 								<div className="mb-3">
 									<div className="pt-4">
 										<h5 className="mb-4">We accept</h5>
