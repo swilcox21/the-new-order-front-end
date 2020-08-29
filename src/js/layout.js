@@ -17,6 +17,7 @@ import { Footer } from "./component/footer";
 
 import { LandingPage } from "./views/landingPage";
 import { Maps } from "./component/maps";
+import { OrderConfirmation } from "./component/orderConfirmation";
 
 //create your first component
 export const Layout = () => {
@@ -39,6 +40,7 @@ export const Layout = () => {
 						<Route exact path="/user-main-menu" component={UserMainMenu} />
 						<Route exact path="/item-add-edit" component={ItemAddEdit} />
 						<Route exact path="/payment" component={Payment} />
+						<Route exact path="/order-confirmation" component={OrderConfirmation} />
 					</Switch>
 					<Footer />
 				</ScrollToTop>

@@ -4,6 +4,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			token: null,
+			vendor_locations: [
+				{
+					vendor_id: 1,
+					name: "Bob's Burgers",
+					lat: 25.7617,
+					lng: -80.1918
+				},
+				{
+					vendor_id: 2,
+					name: "Magic Tacos",
+					lat: 25.7598,
+					lng: -80.1916
+				},
+				{
+					vendor_id: 3,
+					name: "Willy Wonkas",
+					lat: 25.7623,
+					lng: -80.1921
+				},
+				{
+					vendor_id: 4,
+					name: "Cupcake Kingdom",
+					lat: 25.7631,
+					lng: -80.1919
+				}
+			],
 			products: [
 				//this is where we will put the items that are order, create objects: item, price, etc.
 				{
