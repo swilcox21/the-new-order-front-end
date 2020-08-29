@@ -6,6 +6,10 @@ import { Context } from "../store/appContext";
 export const AdminMainMenu = () => {
 	const { store, actions } = useContext(Context);
 	const [draggedOrder, setDraggedOrder] = useState(null);
+	const [showModal, setShowModal] = useState({
+		show: false,
+		order_id: null
+	});
 	const handleDragStart = useCallback(order => setDraggedOrder(order), []);
 	const handleDrop = useCallback(
 		e => {
@@ -66,7 +70,9 @@ export const AdminMainMenu = () => {
 				<div
 					className="menu d-flex flex-column"
 					style={{ width: "28%", height: "100%", border: "2px solid red" }}>
-					<p>New Orders will display here</p>
+					<strong>
+						<p>New Orders will display here</p>
+					</strong>
 					<div
 						className="dragdrop h-100"
 						id="created"
@@ -89,6 +95,16 @@ export const AdminMainMenu = () => {
 										onDragStart={e => handleDragStart(order)}>
 										<p>{order.name}</p>
 										<p>{order.number}</p>
+										<button
+											className="btn btn-danger"
+											onClick={e =>
+												setShowModal({
+													show: true,
+													order_id: order.id
+												})
+											}>
+											View Order
+										</button>
 									</div>
 								);
 							}
@@ -99,7 +115,9 @@ export const AdminMainMenu = () => {
 				<div
 					className="startedOrders d-flex flex-column"
 					style={{ width: "28%", height: "100%", border: "2px solid red" }}>
-					<p>Orders in Progress Display Here</p>
+					<strong>
+						<p>Orders in Progress Display Here</p>
+					</strong>
 					<div
 						className="dragdrop h-100"
 						id="started"
@@ -126,6 +144,16 @@ export const AdminMainMenu = () => {
 										onDragStart={e => handleDragStart(order)}>
 										<p>{order.name}</p>
 										<p>{order.number}</p>
+										<button
+											className="btn btn-danger"
+											onClick={e =>
+												setShowModal({
+													show: true,
+													order_id: order.id
+												})
+											}>
+											View Order
+										</button>
 									</div>
 								);
 							}
@@ -135,7 +163,9 @@ export const AdminMainMenu = () => {
 				<div
 					className="completedOrders d-flex flex-column"
 					style={{ width: "28%", height: "100%", border: "2px solid red" }}>
-					<p>Completed Orders Display Here</p>
+					<strong>
+						<p>Completed Orders Display Here</p>
+					</strong>
 					<div
 						className="dragdrop h-100"
 						id="closed"
@@ -158,6 +188,16 @@ export const AdminMainMenu = () => {
 										onDragStart={e => handleDragStart(order)}>
 										<p>{order.name}</p>
 										<p>{order.number}</p>
+										<button
+											className="btn btn-danger"
+											onClick={e =>
+												setShowModal({
+													show: true,
+													order_id: order.id
+												})
+											}>
+											View Order
+										</button>
 									</div>
 								);
 							}
@@ -165,38 +205,32 @@ export const AdminMainMenu = () => {
 					</div>
 				</div>
 			</div>
-			{/* <button
-                type="button"
-                className="btn btn-danger"
-                data-toggle="modal"
-                data-target="#exampleModal">
-                View Order
-            </button> */}
-			{/* <div
-                className="modal fade"
-                id="exampleModal"
-                tabIndex="-1"
-                role="dialog"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div className="modal-dialog" role="document">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">
-                                Modal title
-                            </h5>
-                            <button
-                                type="button"
-                                className="close"
-                                data-dismiss="modal"
-                                aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div className="modal-body">...</div>
-                    </div>
-                </div>
-            </div> */}
+			{showModal.show && (
+				<div className="modal d-block" id="exampleModal" tabIndex="-1" role="dialog">
+					<div className="modal-dialog" role="document">
+						<div className="modal-content">
+							<div className="modal-header">
+								<h5 className="modal-title" id="exampleModalLabel">
+									{showModal.order_id}
+								</h5>
+								<button
+									type="button"
+									className="close"
+									onClick={e =>
+										setShowModal({
+											show: false,
+											order_id: null
+										})
+									}
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div className="modal-body">...</div>
+						</div>
+					</div>
+				</div>
+			)}
 		</div>
 	);
 };
