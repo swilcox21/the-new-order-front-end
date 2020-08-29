@@ -30,17 +30,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					lng: -80.1919
 				}
 			],
-			products: [
+
+			product: [
 				//this is where we will put the items that are order, create objects: item, price, etc.
 				{
+					id: 1,
 					name: "Burger",
-					ingredients: "Meat, L,T,O,CHZ", //may need to create an id for all ingrdients
 					price: 7.99 // possible currency, USD $
 				},
 				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
+					id: 2,
+					name: "Flan",
+					price: 4.99
 				}
 			],
 			orders: [
@@ -126,10 +127,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					expected_pickup: null,
 					vendor_id: 1,
 					sub_total_price: 15.0,
-					total_proce: 15.0 * 1.07
+					total_price: 15.0 * 1.07
 				}
 			],
-			orderForDetail: {}
+			orderForDetail: {},
+			orderItem: {
+				id: 1,
+				order_id: 1,
+				product_id: 1,
+				quantity: 2,
+				unit_price: 5.0,
+				special_instructions: null
+			}
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
