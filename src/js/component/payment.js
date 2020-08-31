@@ -1,32 +1,11 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import "../../styles/payment.scss";
+import { Link } from "react-router-dom";
 import stripeImage from "../../img/Stripe.png";
 import paypalImage from "../../img/Paypal.png";
 import cashImage from "../../img/Cash.png";
 
 export const Payment = () => {
-	// 	<div classNameName="container-fluid">
-	// 		<div classNameName="header">
-	// 			<div classNameName="stripebtn">
-	// 				<button classNameName="stripe">
-	// 					<img src={stripeImage} />
-	// 				</button>
-	// 			</div>
-
-	// 			<div classNameName="paypalbtn">
-	// 				<button classNameName="paypal">
-	// 					<img src={paypalImage} />
-	// 				</button>
-	// 			</div>
-
-	// 			<div classNameName="cashbtn">
-	// 				<button classNameName="cash">
-	// 					<img src={cashImage} />
-	// 				</button>
-	// 			</div>
-	// 		</div>
-	// 	</div>
-	// );
 	return (
 		<div className="new-container ml-auto mr-auto mb-3 mt-3">
 			<div className="row">
@@ -69,14 +48,7 @@ export const Payment = () => {
 						<div className="row">
 							<div className="col-md-12 mb-3">
 								<label htmlFor="Name">{"Name"}</label>
-								<input
-									type="text"
-									className="form-control"
-									id="Name"
-									placeholder=""
-									value=""
-									required
-								/>
+								<input type="text" className="form-control" id="Name" placeholder="" required />
 							</div>
 						</div>
 
@@ -165,9 +137,11 @@ export const Payment = () => {
 							</div>
 						</div>
 						<hr className="mb-4" />
-						<button className="btn btn-primary btn-lg btn-block" type="button">
-							Continue to checkout
-						</button>
+						<Link to="/order-confirmation">
+							<button className="btn btn-primary btn-lg btn-block" type="button">
+								{"Checkout"}
+							</button>
+						</Link>
 					</form>
 				</div>
 			</div>
