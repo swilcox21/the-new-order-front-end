@@ -2,7 +2,7 @@ import React from "react";
 
 export const LandingPage = () => {
 	return (
-		<div className="container d-flex flex-column">
+		<div className="container fluid d-flex flex-column  ">
 			<div className="header text-center">
 				<h1>Welcome to The New Order</h1>
 			</div>
@@ -10,15 +10,15 @@ export const LandingPage = () => {
 			<div className="row d-flex justify-content-md-center">
 				<div className="col-md-7 ">
 					<div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
-						<div className="carousel-inner">
-							<div className="carousel-item active">
+						<div className="carousel-inner ">
+							<div className="carousel-item active ">
 								<img
 									src="https://www.rd.com/wp-content/uploads/2018/11/food-truck.jpg"
 									className="d-block w-100 h-100"
 									alt="food truck"
 								/>
 							</div>
-							<div className="carousel-item">
+							<div className="carousel-item ">
 								<img
 									src="https://www.catersource.com/sites/default/files/Kruzin%20Cuisine%20Food%20Truck%20%20%282%29.jpg"
 									className="d-block w-100 h-100"
@@ -28,6 +28,13 @@ export const LandingPage = () => {
 							<div className="carousel-item">
 								<img
 									src="https://cdn2.lamag.com/wp-content/uploads/sites/6/2017/03/foodtruck.jpg"
+									className="d-block w-100 h-100"
+									alt="food truck"
+								/>
+							</div>
+							<div className="carousel-item">
+								<img
+									src="https://s.abcnews.com/images/US/dog-food-truck-14-ht-jef-191010_hpMain_16x9_992.jpg"
 									className="d-block w-100 h-100"
 									alt="food truck"
 								/>

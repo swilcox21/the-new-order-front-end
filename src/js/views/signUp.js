@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import "../../styles/home.scss";
+import "../../styles/signUp.scss";
 
 export const SignUp = props => {
 	const { store, actions } = useContext(Context);
@@ -13,22 +14,19 @@ export const SignUp = props => {
 	const [phone, setPhone] = useState("");
 	let history = useHistory();
 	return (
-		<div className="container text-center d-flex p-5 mt-5 h-75 bg-danger">
-			<div className="w-50 border border-white">
-				<div>
-					<h1 className="w-50 text-center mr-auto ml-auto mt-5 text-white">{"Welcome to the New Order"}</h1>
-				</div>
-			</div>
+		<div className="container10 text-center d-flex p-5 mt-5 h-75 ">
+			<div className="w-50" />
 			<div className="w-50">
-				<form className="d-flex flex-column mr-auto ml-auto w-75 h-75 justify-content-between mt-5">
-					<h3 className="text-white">{"Let's grow your business"}</h3>
+				<form className="d-flex flex-column mr-auto ml-auto w-75 h-75 justify-content-between mt-0">
+					<h3 className="w-50 text-center mr-auto ml-auto mt-0 text-white">{"Welcome to The New Order"}</h3>
+					<h4 className="text-white">{"Let's grow your business"}</h4>
 					<input
 						onChange={event => setName(event.target.value)}
 						type="text"
 						id="name"
 						name="name"
 						placeholder="Vendor Name"
-						className="rounded"
+						className="rounded mb-3 mt-3"
 					/>
 					<input
 						onChange={event => setEmail(event.target.value)}
@@ -36,7 +34,7 @@ export const SignUp = props => {
 						id="email"
 						name="email"
 						placeholder="Email"
-						className="rounded"
+						className="rounded mb-3"
 					/>
 					<input
 						onChange={event => setPassword(event.target.value)}
@@ -44,7 +42,7 @@ export const SignUp = props => {
 						id="password"
 						name="password"
 						placeholder="Password"
-						className="rounded"
+						className="rounded mb-3"
 					/>
 					<input
 						onChange={event => setPhone(event.target.value)}
@@ -52,7 +50,7 @@ export const SignUp = props => {
 						id="phone"
 						name="phone"
 						placeholder="Phone Number"
-						className="rounded"
+						className="rounded mb-4"
 					/>
 					<button
 						onClick={async event => {

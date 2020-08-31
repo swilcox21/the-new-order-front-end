@@ -7,10 +7,9 @@ export const Navbar = props => {
 	const [state, setState] = useState({});
 	const onSubmit = data => {};
 	return (
-		// <div className="container d-flex justify-content-between">
 		<>
-			<nav className="navbar navbar-expand-lg navbar-light bg-light ">
-				<a className="navbar-brand" href="#">
+			<nav className="navbar navbar-expand-lg navbar-light bg-info">
+				<a className="navbar-brand " href="#">
 					The New Order
 				</a>
 				<button
@@ -24,31 +23,31 @@ export const Navbar = props => {
 					<span className="navbar-toggler-icon" />
 				</button>
 				<div className="collapse navbar-collapse" id="navbarNavDropdown">
-					<ul className="navbar-nav">
-						{props.test === "home" ? null : (
+					<ul className="navbar-nav ">
+						{/* {props.test === "home" ? null : (
 							<li className="nav-item active">
 								<a className="nav-link" href="#">
 									Home <span className="sr-only">(current)</span>
 								</a>
 							</li>
-						)}
-						<li className="nav-item">
+						)} */}
+						<li className="nav-item ">
 							<Link to="/maps">
-								<a className="nav-link" href="#">
+								<a className="nav-link text-dark" href="#">
 									Place an Order
 								</a>
 							</Link>
 						</li>
 						<li className="nav-item">
 							<Link to="/maps">
-								<a className="nav-link" href="#">
-									Find a Food Truck
+								<a className="nav-link text-dark" href="#">
+									Find a Vendor
 								</a>
 							</Link>
 						</li>
 						<li className="nav-item dropdown">
 							<a
-								className="nav-link dropdown-toggle"
+								className="nav-link dropdown-toggle text-dark"
 								href="#"
 								id="navbarDropdownMenuLink"
 								role="button"
@@ -72,9 +71,21 @@ export const Navbar = props => {
 								</Link>
 							</div>
 						</li>
+						{/* <form className="form-inline my-2 my-lg-0">
+							<input
+								className="form-control mr-sm-2"
+								type="search"
+								placeholder="Find a Vendor"
+								aria-label="Search"
+							/>
+							<button className="btn btn-success my-2 my-sm-0" type="submit">
+								Search
+							</button>
+						</form> */}
 					</ul>
 				</div>
 			</nav>
+
 			<Modal />
 		</>
 	);

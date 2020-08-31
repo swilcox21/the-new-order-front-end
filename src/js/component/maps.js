@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import GoogleMapReact from "google-map-react";
 import { useHistory } from "react-router-dom";
@@ -14,19 +14,34 @@ const zoom = 14;
 export const Maps = props => {
 	const history = useHistory();
 	const { store, index } = useContext(Context);
+	const [searchName, setSearchName] = useState("");
+	const handleChange = event => {
+		setSearchName(event.target.value);
+	};
+
 	return (
 		<div className="container-fluid d-flex flex-column" style={{ height: "100vh", width: "100%" }}>
-			<div className="jumbotron2 image mb-3">
-				<h1 className="display-4 text-center text-dark">{"Find Your Craving Here"}</h1>
-				<p className="lead text-center text-dark">
+			<div className="jumbotron8 image mb-3">
+				<h1 className="display-4 text-center text-light">{"Find Your Craving Here"}</h1>
+				<p className="lead text-center text-light">
 					<strong>{"Chefs don't make mistakes; they make new dishes"}</strong>
 				</p>
-
-				<p className="lead">
-					<a className="btn btn-dark text-white btn-lg" href="#" role="button">
-						{"Search for a Vendor"}
-					</a>
-				</p>
+				<form className="form-inline my-2 my-lg-0">
+					<input
+						className="form-control mr-sm-2"
+						type="search"
+						placeholder="Find a Vendor"
+						aria-label="Search"
+						value={searchName}
+						onChange={handleChange}
+					/>
+					<button
+						className="btn btn-success my-2 my-sm-0"
+						type="submit"
+						onClick={e => actions.getResults(searchName)}>
+						Search
+					</button>
+				</form>
 			</div>
 
 			<GoogleMapReact
@@ -39,18 +54,22 @@ export const Maps = props => {
 					return (
 						<div
 							key={index}
-							className=" fa fa-map-pin text-danger "
-							style={{ height: "100%", width: "100%" }}
+							className=" fas fa-map-marker-alt text-danger "
+							style={{ height: "40px", width: "40px" }}
 							title={vendor_location.name}
 							tooltip={vendor_location.name}
 							lat={vendor_location.lat}
 							lng={vendor_location.lng}
 							text={vendor_location.name}
-							onClick={e => history.push(`/stores/${vendor_location.vendor_id}`)}
+							onClick={e => history.push(`/user-main-menu/${vendor_location.vendor_id}`)}
 						/>
 					);
 				})}
 			</GoogleMapReact>
 		</div>
 	);
+};
+
+Maps.propTypes = {
+	name: PropTypes.string
 };
