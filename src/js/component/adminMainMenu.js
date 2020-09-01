@@ -55,11 +55,11 @@ export const AdminMainMenu = () => {
 				<p className="lead text-center text-dark">
 					<strong>{"Chefs don't make mistakes; they make new dishes"}</strong>
 				</p>
-				<p className="lead">
+				{/*<p className="lead">
 					<a className="btn btn-dark text-white btn-lg" href="#" role="button">
 						{"View Past Orders"}
 					</a>
-				</p>
+                </p>*/}
 				<p className="lead">
 					<a className="btn btn-dark text-white btn-lg" href="#" role="button">
 						{"Go Online"}

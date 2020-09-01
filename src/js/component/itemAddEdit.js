@@ -7,6 +7,9 @@ export const ItemAddEdit = () => {
 	const [openEdit, setOpenEdit] = useState(false);
 	const [drop, setDrop] = useState(false);
 	const [index, setindex] = useState(null);
+	const [name, setName] = useState("");
+	const [price, setPrice] = useState("");
+	const [description, setDescription] = useState("");
 	return (
 		<div className="container-fluid">
 			<div className="jumbotron image mb-3">
