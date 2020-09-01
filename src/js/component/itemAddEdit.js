@@ -7,6 +7,9 @@ export const ItemAddEdit = () => {
 	const [openEdit, setOpenEdit] = useState(false);
 	const [drop, setDrop] = useState(false);
 	const [index, setindex] = useState(null);
+	const [name, setName] = useState("");
+	const [price, setPrice] = useState("");
+	const [description, setDescription] = useState("");
 	return (
 		<div className="container-fluid">
 			<div className="jumbotron image mb-3">
@@ -18,7 +21,9 @@ export const ItemAddEdit = () => {
 
 			<div className="header d-flex justify-content-between">
 				{/*Beverage button*/}
-				<div className="col-2">
+				<div
+					className="col-2 d-flex flex-column"
+					style={{ width: "28%", height: "600px", border: "2px solid red" }}>
 					<button
 						onClick={() => {
 							setDrop(!drop);
@@ -110,7 +115,9 @@ export const ItemAddEdit = () => {
 
 				{/*Appetizer button*/}
 
-				<div className="col-2">
+				<div
+					className="col-2 d-flex flex-column"
+					style={{ width: "28%", height: "600px", border: "2px solid red" }}>
 					<button
 						onClick={() => {
 							setDrop(!drop);
@@ -200,7 +207,9 @@ export const ItemAddEdit = () => {
 					) : null}
 				</div>
 				{/*Sandwhich button*/}
-				<div className="col-2">
+				<div
+					className="col-2 d-flex flex-column"
+					style={{ width: "28%", height: "600px", border: "2px solid red" }}>
 					<button
 						onClick={() => {
 							setDrop(!drop);
@@ -290,7 +299,9 @@ export const ItemAddEdit = () => {
 					) : null}
 				</div>
 				{/*Entrees button*/}
-				<div className="col-2">
+				<div
+					className="col-2 d-flex flex-column"
+					style={{ width: "28%", height: "600px", border: "2px solid red" }}>
 					<button
 						onClick={() => {
 							setDrop(!drop);
@@ -380,7 +391,9 @@ export const ItemAddEdit = () => {
 					) : null}
 				</div>
 				{/*Dessert button*/}
-				<div className="col-2">
+				<div
+					className="col-2 d-flex flex-column"
+					style={{ width: "28%", height: "600px", border: "2px solid red" }}>
 					<button
 						onClick={() => {
 							setDrop(!drop);
