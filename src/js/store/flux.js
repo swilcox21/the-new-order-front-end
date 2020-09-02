@@ -28,6 +28,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					name: "Cupcake Kingdom",
 					lat: 25.7631,
 					lng: -80.1919
+				},
+				{
+					vendor_id: 5,
+					name: "Juicy",
+					lat: 25.7655,
+					lng: -80.2012
 				}
 			],
 			categories: ["Beverages", "Appetizers", "Sandwiches", "Entrees", "Desserts"],

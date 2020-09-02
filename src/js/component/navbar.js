@@ -10,7 +10,7 @@ export const Navbar = props => {
 	return (
 		<>
 			<nav className="navbar navbar-expand-lg ">
-				<a className="navbar-brand " href="#">
+				<a className="navbar-brand text-white" href="#">
 					The New Order
 				</a>
 				<button
@@ -34,21 +34,21 @@ export const Navbar = props => {
 						)} */}
 						<li className="nav-item ">
 							<Link to="/maps">
-								<a className="nav-link text-dark" href="#">
+								<a className="nav-link text-white" href="#">
 									Place an Order
 								</a>
 							</Link>
 						</li>
-						<li className="nav-item">
+						<li className="nav-item ">
 							<Link to="/maps">
-								<a className="nav-link text-dark" href="#">
+								<a className="nav-link text-white" href="#">
 									Find a Vendor
 								</a>
 							</Link>
 						</li>
 						<li className="nav-item dropdown">
 							<a
-								className="nav-link dropdown-toggle text-dark"
+								className="nav-link dropdown-toggle text-white"
 								href="#"
 								id="navbarDropdownMenuLink"
 								role="button"
