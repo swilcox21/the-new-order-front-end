@@ -30,18 +30,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 					lng: -80.1919
 				}
 			],
-
-			product: [
-				//this is where we will put the items that are order, create objects: item, price, etc.
+			categories: ["Beverages", "Appetizers", "Sandwiches", "Entrees", "Desserts"],
+			vendors: [
 				{
+					email: "hotty@gmail.com",
 					id: 1,
-					name: "Burger",
-					price: 7.99 // possible currency, USD $
+					orders: [],
+					phone: "1234567895",
+					products: [],
+					vendor_name: "hot toddy"
 				},
 				{
-					id: 2,
-					name: "Flan",
-					price: 4.99
+					email: "juicy@gmail.com",
+					id: 3,
+					orders: [],
+					phone: "1234567807",
+					products: [
+						{
+							category: "beverages",
+							description: "wheat ale",
+							id: 1,
+							name: "Blue Moon",
+							price: "3.0",
+							vendor_id: 3
+						}
+					],
+					vendor_name: "juicy"
 				}
 			],
 			orders: [
@@ -248,6 +262,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} else {
 					return false;
 				}
+			},
+			//shopping cart requests
+			addCartItem: async (name, special_instructions, id, unit_price, order_id) => {
+				let response = await fetch(backendApiUrl + "user-main-menu/" + order_id, {
+					method: "POST",
+					body: JSON.stringify({
+						name: name,
+						special_instructions: special_instructions,
+						id: id,
+						unit_price: unit_price,
+						order_id: order_id
+					}),
+					headers: {
+						"Content-Type": "application/json"
+					}
+				});
+			},
+			deleteCartItem: async (name, special_instructions, id, unit_price) => {
+				let response = await fetch(backendApiUrl + "user-main-menu/" + id, {
+					//would be id or order_id that goes here
+					method: "DELETE",
+					body: JSON.stringify({
+						name: name,
+						special_instructions: special_instructions,
+						id: id,
+						unit_price: unit_price
+					}),
+					headers: {
+						"Content-Type": "application/json"
+					}
+				});
 			}
 		}
 	};
