@@ -30,7 +30,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					lng: -80.1919
 				}
 			],
-			categories: ["Beverages", "Appetizers", "Sandwiches", "Entrees", "Desserts"],
+			categories: ["beverages", "appetizers", "sandwiches", "entrees", "desserts"],
 			vendors: [
 				{
 					email: "hotty@gmail.com",
@@ -48,10 +48,82 @@ const getState = ({ getStore, getActions, setStore }) => {
 					products: [
 						{
 							category: "beverages",
-							description: "wheat ale",
+							description: "Lager",
 							id: 1,
+							name: "Stella",
+							unit_price: 3,
+							vendor_id: 3
+						},
+						{
+							category: "beverages",
+							description: "Wheat ale",
+							id: 2,
 							name: "Blue Moon",
-							price: "3.0",
+							unit_price: 3,
+							vendor_id: 3
+						},
+						{
+							category: "beverages",
+							description: "IPA",
+							id: 3,
+							name: "Wicked Weed Pernicious",
+							unit_price: 3,
+							vendor_id: 3
+						},
+						{
+							category: "appetizers",
+							description: "Cripsy fried squid and octupus w/ a lemon aioli",
+							id: 4,
+							name: "Calamari",
+							unit_price: 10,
+							vendor_id: 3
+						},
+						{
+							category: "entrees",
+							description: "Tomato Basil Marinera w/ a twist",
+							id: 5,
+							name: "Pasta",
+							unit_price: 15,
+							vendor_id: 3
+						},
+						{
+							category: "entrees",
+							description: "Our special breading served w/ homemade honey mustard",
+							id: 6,
+							name: "Chicken Tenders",
+							unit_price: 10,
+							vendor_id: 3
+						},
+						{
+							category: "appetizers",
+							description: "Steamed in our secret butter sauce",
+							id: 7,
+							name: "Mussels",
+							unit_price: 14,
+							vendor_id: 3
+						},
+						{
+							category: "desserts",
+							description: "melts in your mouth",
+							id: 8,
+							name: "Chocolate Mousse",
+							unit_price: 7,
+							vendor_id: 3
+						},
+						{
+							category: "desserts",
+							description: "If chocalate isn't your thing, then this also melts in your mouth jeje",
+							id: 9,
+							name: "Flan",
+							unit_price: 7,
+							vendor_id: 3
+						},
+						{
+							category: "sandwiches",
+							description: "Less on the french, more on the dip",
+							id: 9,
+							name: "French Dip",
+							unit_price: 12,
 							vendor_id: 3
 						}
 					],

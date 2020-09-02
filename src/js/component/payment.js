@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
 import "../../styles/payment.scss";
 import { Link } from "react-router-dom";
-import stripeImage from "../../img/Stripe.png";
-import paypalImage from "../../img/Paypal.png";
-import cashImage from "../../img/Cash.png";
+import PropTypes from "prop-types";
+import { Context } from "../store/appContext";
 
-export const Payment = () => {
+export const Payment = props => {
+	const { store, actions } = useContext(Context);
 	return (
 		<div className="new-container ml-auto mr-auto mb-3 mt-3">
 			<div className="row">
@@ -17,24 +17,21 @@ export const Payment = () => {
 					<ul className="list-group mb-3">
 						<li className="list-group-item d-flex justify-content-between lh-condensed">
 							<div>
-								<h6 className="my-0">Product name</h6>
-								<small className="text-muted">Brief description</small>
+								<h6 className="my-0">{props.name}</h6>
 							</div>
-							<span className="text-muted">$12</span>
+							<span className="text-muted">{props.price}</span>
 						</li>
 						<li className="list-group-item d-flex justify-content-between lh-condensed">
 							<div>
-								<h6 className="my-0">Second product</h6>
-								<small className="text-muted">Brief description</small>
+								<h6 className="my-0">{props.name}</h6>
 							</div>
-							<span className="text-muted">$8</span>
+							<span className="text-muted">{props.price}</span>
 						</li>
 						<li className="list-group-item d-flex justify-content-between lh-condensed">
 							<div>
-								<h6 className="my-0">Third item</h6>
-								<small className="text-muted">Brief description</small>
+								<h6 className="my-0">{props.name}</h6>
 							</div>
-							<span className="text-muted">$5</span>
+							<span className="text-muted">{props.price}</span>
 						</li>
 						<li className="list-group-item d-flex justify-content-between">
 							<span>Total (USD)</span>
@@ -147,4 +144,16 @@ export const Payment = () => {
 			</div>
 		</div>
 	);
+};
+
+/**
+ * Define the data-types for
+ * your component's properties
+ **/
+
+Payment.propTypes = {
+	history: PropTypes.object,
+	name: PropTypes.string,
+	price: PropTypes.number,
+	match: PropTypes.object
 };
