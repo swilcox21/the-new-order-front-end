@@ -65,6 +65,13 @@ export const AdminMainMenu = () => {
 						{"Go Online"}
 					</a>
 				</p>
+				<Link to="/item-add-edit">
+					<p className="lead">
+						<a className="btn btn-dark text-white btn-lg" href="#" role="button">
+							{"Add/Edit Items"}
+						</a>
+					</p>
+				</Link>
 			</div>
 			<div className="d-flex flex-row justify-content-between" style={{ height: "600px" }}>
 				<div
