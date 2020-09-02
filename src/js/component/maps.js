@@ -44,10 +44,10 @@ export const Maps = props => {
 				</form>
 			</div>
 			{store.searchResults != null ? (
-				<div>
-					<ul>
+				<div className="card" style="width: 18rem;">
+					<ul className="list-group list-group-flush">
 						{store.searchResults.map(result => {
-							return <li key={result.id}>{result.vendor_name}</li>;
+							<li className="list-group-item key={result.id}">{result.vendor_name}</li>;
 						})}
 					</ul>
 				</div>
