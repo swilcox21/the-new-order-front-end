@@ -13,7 +13,7 @@ const zoom = 14;
 
 export const Maps = props => {
 	const history = useHistory();
-	const { store, index } = useContext(Context);
+	const { store, actions } = useContext(Context);
 	const [searchName, setSearchName] = useState("");
 	const handleChange = event => {
 		setSearchName(event.target.value);
@@ -37,35 +37,44 @@ export const Maps = props => {
 					/>
 					<button
 						className="btn btn-success my-2 my-sm-0"
-						type="submit"
+						type="button"
 						onClick={e => actions.getResults(searchName)}>
 						Search
 					</button>
 				</form>
 			</div>
-
-			<GoogleMapReact
-				bootstrapURLKeys={{
-					key: "AIzaSyD9TcEj0Qk8yov_y_BdZTYv3SG9-3NMQAI"
-				}}
-				defaultCenter={center}
-				defaultZoom={zoom}>
-				{store.vendor_locations.map((vendor_location, index) => {
-					return (
-						<div
-							key={index}
-							className=" fas fa-map-marker-alt text-danger "
-							style={{ height: "40px", width: "40px" }}
-							title={vendor_location.name}
-							tooltip={vendor_location.name}
-							lat={vendor_location.lat}
-							lng={vendor_location.lng}
-							text={vendor_location.name}
-							onClick={e => history.push(`/user-main-menu/${vendor_location.vendor_id}`)}
-						/>
-					);
-				})}
-			</GoogleMapReact>
+			{store.searchResults != null ? (
+				<div className="card" style="width: 18rem;">
+					<ul className="list-group list-group-flush">
+						{store.searchResults.map(result => {
+							<li className="list-group-item key={result.id}">{result.vendor_name}</li>;
+						})}
+					</ul>
+				</div>
+			) : (
+				<GoogleMapReact
+					bootstrapURLKeys={{
+						key: "AIzaSyD9TcEj0Qk8yov_y_BdZTYv3SG9-3NMQAI"
+					}}
+					defaultCenter={center}
+					defaultZoom={zoom}>
+					{store.vendor_locations.map((vendor_location, index) => {
+						return (
+							<div
+								key={index}
+								className=" fas fa-map-marker-alt text-danger "
+								style={{ height: "40px", width: "40px" }}
+								title={vendor_location.name}
+								tooltip={vendor_location.name}
+								lat={vendor_location.lat}
+								lng={vendor_location.lng}
+								text={vendor_location.name}
+								onClick={e => history.push(`/user-main-menu/${vendor_location.vendor_id}`)}
+							/>
+						);
+					})}
+				</GoogleMapReact>
+			)}
 		</div>
 	);
 };

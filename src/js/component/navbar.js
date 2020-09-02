@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Modal } from "./modal";
+import "../../styles/navbar.scss";
 
 export const Navbar = props => {
 	const [state, setState] = useState({});
 	const onSubmit = data => {};
 	return (
 		<>
-			<nav className="navbar navbar-expand-lg navbar-light bg-info">
+			<nav className="navbar navbar-expand-lg ">
 				<a className="navbar-brand " href="#">
 					The New Order
 				</a>

@@ -168,15 +168,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			getResults: searchName => {
 				const store = getStore();
-				fetch(
-					`https://3000-b482edc3-9165-4e55-917b-cfd3f78431ee.ws-us02.gitpod.io/vendors?name=${vendor_name}`,
-					{
-						method: "GET",
-						headers: {
-							"Content-Type": "application/json"
-						}
+				fetch(`${backendApiUrl}vendors?name=${searchName}`, {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json"
 					}
-				);
+				})
+					.then(response => response.json())
+					.then(result => setStore({ searchResults: result }));
 			},
 			// Use getActions to call a function within a fuction
 			updateOrder: async (updateDict, orderId) => {
