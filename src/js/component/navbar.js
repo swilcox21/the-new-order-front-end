@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Modal } from "./modal";
 import "../../styles/navbar.scss";
+import { Context } from "../store/appContext";
 
 export const Navbar = props => {
+	const { store, actions } = useContext(Context);
 	const [state, setState] = useState({});
 	const onSubmit = data => {};
 	return (
@@ -39,6 +41,15 @@ export const Navbar = props => {
 								</a>
 							</Link>
 						</li>
+						{store.token != null ? (
+							<li className="nav-item ">
+								<Link to="/item-add-edit">
+									<a className="nav-link text-white" href="#">
+										Add Item
+									</a>
+								</Link>
+							</li>
+						) : null}
 						<li className="nav-item ">
 							<Link to="/maps">
 								<a className="nav-link text-white" href="#">

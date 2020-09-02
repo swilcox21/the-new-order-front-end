@@ -1,4 +1,4 @@
-const backendApiUrl = "https://3000-a9e77093-c97a-44b3-b9fd-a511d32e002c.ws-us02.gitpod.io/";
+const backendApiUrl = "https://3000-b482edc3-9165-4e55-917b-cfd3f78431ee.ws-us02.gitpod.io/";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -21,19 +21,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 					vendor_id: 3,
 					name: "Willy Wonkas",
 					lat: 25.7623,
-					lng: -80.1921
+					lng: -80.1947
 				},
 				{
 					vendor_id: 4,
 					name: "Cupcake Kingdom",
-					lat: 25.7631,
-					lng: -80.1919
+					lat: 25.764,
+					lng: -80.1925
 				},
 				{
 					vendor_id: 5,
 					name: "Juicy",
 					lat: 25.7655,
 					lng: -80.2012
+				},
+				{
+					vendor_id: 6,
+					name: "The Morning Catch",
+					lat: 25.7645,
+					lng: -80.1945
 				}
 			],
 			categories: ["beverages", "appetizers", "sandwiches", "entrees", "desserts"],
