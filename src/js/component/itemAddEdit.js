@@ -68,7 +68,7 @@ export const ItemAddEdit = () => {
 										<div className="form-group">
 											<label>Price</label>
 											<input
-												onClick={e =>
+												onChange={e =>
 													setCreate({
 														...create,
 														price: e.target.value
@@ -83,7 +83,7 @@ export const ItemAddEdit = () => {
 										<div className="form-group">
 											<label>Description</label>
 											<input
-												onClick={e =>
+												onChange={e =>
 													setCreate({
 														...create,
 														description: e.target.value

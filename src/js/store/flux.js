@@ -1,4 +1,4 @@
-const backendApiUrl = "https://3000-b482edc3-9165-4e55-917b-cfd3f78431ee.ws-us02.gitpod.io/";
+const backendApiUrl = "https://3000-a9e77093-c97a-44b3-b9fd-a511d32e002c.ws-us02.gitpod.io/";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -227,6 +227,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}
 		},
 		actions: {
+			createProduct: item => {
+				fetch(backendApiUrl, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						authorization: "Bearer " + store.token
+					},
+					body: JSON.stringify(item)
+				});
+			},
+
 			getResults: searchName => {
 				const store = getStore();
 				fetch(`${backendApiUrl}vendors?name=${searchName}`, {
