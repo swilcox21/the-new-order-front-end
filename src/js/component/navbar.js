@@ -57,6 +57,7 @@ export const Navbar = props => {
 								</a>
 							</Link>
 						</li>
+
 						<li className="nav-item dropdown">
 							<a
 								className="nav-link dropdown-toggle text-white"
@@ -68,6 +69,7 @@ export const Navbar = props => {
 								aria-expanded="false">
 								Vendors
 							</a>
+
 							<div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 								<div
 									type="button"
@@ -76,6 +78,8 @@ export const Navbar = props => {
 									data-target="#exampleModal">
 									Login
 								</div>
+								{/* </Link> */}
+								{/* ) : null} */}
 								<Link to="/signUp">
 									<a className="dropdown-item" href="#">
 										Register your business
