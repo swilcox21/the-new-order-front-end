@@ -202,15 +202,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					total_proce: 15.0 * 1.07
 				}
 			],
-			orderForDetail: {},
-			orderItem: {
-				id: 1,
-				order_id: 1,
-				product_id: 1,
-				quantity: 2,
-				unit_price: 5.0,
-				special_instructions: null
-			}
+			orderForDetail: {}
 		},
 		actions: {
 			createProduct: item => {

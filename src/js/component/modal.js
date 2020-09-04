@@ -49,17 +49,22 @@ export const Modal = props => {
 							/>
 						</div>
 					</div>
+					{/* {store.token != null ? ( */}
 					<div className="modal-footer">
 						<button type="button" className="btn btn-secondary" data-dismiss="modal">
 							Close
 						</button>
+
+						{/* <Link to="/item-add-edit"> */}
 						<button
 							type="button"
 							onClick={() => actions.login(email, password)}
 							className="btn btn-primary">
 							Login
 						</button>
+						{/* </Link> */}
 					</div>
+					{/* ) : null} */}
 				</div>
 			</div>
 		</div>
