@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "../../styles/home.scss";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
@@ -7,13 +7,101 @@ import PropTypes from "prop-types";
 export const UserMainMenu = props => {
 	const { store, actions } = useContext(Context);
 	//shopping cart hooks and functions
-	const [special_instructions, setSpecial_instructions] = useState("");
-	const [quantity, setQuantity] = useState(1);
-	const [cart, setCart] = useState([]);
-	const [cartItemsTotal, setCartItemsTotal] = useState(0);
+
+	const [cart, setCart] = useState([
+		{
+			name: "Blue Moon",
+			product_id: 1,
+			quantity: 1,
+			unit_price: 3.0,
+			special_instructions: null
+		}
+	]);
 	const [cartTotal, setCartTotal] = useState(0);
+	// const cartItemsTotal = () => {
+	// 	let total = 0;
+	// 	let orderItem = 0;
+	// 	cart.forEach(product => {
+	// 		orderItem += quantity;
+	// 	});
+	// 	cartTotal = total += orderItem;
+	// 	return cartTotal;
+	// };
+	// const cartItemsTotal = () => {
+	// 	let totalOfProduct = 0;
+	// 	cart.forEach(product => {
+	// 		totalOfProduct += quantity;
+	// 	});
+	// 	setCartTotal((cartTotal += totalOfProduct));
+	// 	return cartTotal;
+	// };
+
+	const handleInstructions = (event, product) => {
+		let finalCart = [];
+		for (let orderItem of cart) {
+			if (orderItem.product_id == product.product_id) {
+				finalCart.push({
+					...orderItem,
+					special_instructions: event.target.value
+				});
+			} else {
+				finalCart.push(orderItem);
+			}
+		}
+		setCart(finalCart);
+	};
+	const handleQuantityDecrease = (event, product) => {
+		let finalCart = [];
+		for (let orderItem of cart) {
+			if (orderItem.product_id == product.product_id) {
+				finalCart.push({
+					...orderItem,
+					quantity: (event.target.value -= 1)
+				});
+			} else {
+				finalCart.push(orderItem);
+			}
+		}
+		setCart(finalCart);
+	};
+	const handleQuantityIncrease = (event, product) => {
+		let finalCart = [];
+		for (let orderItem of cart) {
+			if (orderItem.product_id == product.product_id) {
+				finalCart.push({
+					...orderItem,
+					quantity: (event.target.value += 1)
+				});
+			} else {
+				finalCart.push(orderItem);
+			}
+		}
+		setCart(finalCart);
+	};
+
+	useEffect(
+		() => {
+			cartItemsTotal();
+		},
+		[cart]
+	);
+
+	const cartItemsTotal = () => {
+		let totalCartItems = 0;
+		for (let i = 0; i < cart.length; i++) {
+			totalCartItems += cart[i].quantity;
+		}
+		setCartTotal(totalCartItems);
+		console.log(totalCartItems);
+	};
+
 	const addToCart = product => {
 		setCart([...cart, product]);
+	};
+	const removeFromCart = product => {
+		let finalCart = [...cart];
+		finalCart = finalCart.filter(orderItem => orderItem.id !== product.id);
+		setCart(finalCart);
 	};
 	//main menu variables required to link vendor to menu page
 	const params = useParams();
@@ -50,13 +138,15 @@ export const UserMainMenu = props => {
 									if (product.category == "beverages") {
 										return (
 											<div key={product.id}>
-												<div className="card card-body">
-													<span className="float-right font-weight-bold">
-														{"$" + product.unit_price}
-													</span>
-													<h6 className="text-truncate">{product.name}</h6>
-													<p className="small">{product.description}</p>
-												</div>
+												<a onClick={() => addToCart(product)}>
+													<div className="card card-body">
+														<span className="float-right font-weight-bold">
+															{"$" + product.unit_price}
+														</span>
+														<h6 className="text-truncate">{product.name}</h6>
+														<p className="small">{product.description}</p>
+													</div>
+												</a>
 											</div>
 										);
 									}
@@ -71,13 +161,15 @@ export const UserMainMenu = props => {
 									if (product.category == "appetizers") {
 										return (
 											<div key={product.id}>
-												<div className="card card-body">
-													<span className="float-right font-weight-bold">
-														{"$" + product.unit_price}
-													</span>
-													<h6 className="text-truncate">{product.name}</h6>
-													<p className="small">{product.description}</p>
-												</div>
+												<a onClick={() => addToCart(product)}>
+													<div className="card card-body">
+														<span className="float-right font-weight-bold">
+															{"$" + product.unit_price}
+														</span>
+														<h6 className="text-truncate">{product.name}</h6>
+														<p className="small">{product.description}</p>
+													</div>
+												</a>
 											</div>
 										);
 									}
@@ -92,13 +184,15 @@ export const UserMainMenu = props => {
 									if (product.category == "entrees") {
 										return (
 											<div key={product.id}>
-												<div className="card card-body">
-													<span className="float-right font-weight-bold">
-														{"$" + product.unit_price}
-													</span>
-													<h6 className="text-truncate">{product.name}</h6>
-													<p className="small">{product.description}</p>
-												</div>
+												<a onClick={() => addToCart(product)}>
+													<div className="card card-body">
+														<span className="float-right font-weight-bold">
+															{"$" + product.unit_price}
+														</span>
+														<h6 className="text-truncate">{product.name}</h6>
+														<p className="small">{product.description}</p>
+													</div>
+												</a>
 											</div>
 										);
 									}
@@ -113,7 +207,7 @@ export const UserMainMenu = props => {
 									if (product.category == "sandwiches") {
 										return (
 											<div key={product.id}>
-												<button>
+												<a onClick={() => addToCart(product)}>
 													<div className="card card-body">
 														<span className="float-right font-weight-bold">
 															{"$" + product.unit_price}
@@ -121,7 +215,7 @@ export const UserMainMenu = props => {
 														<h6 className="text-truncate">{product.name}</h6>
 														<p className="small">{product.description}</p>
 													</div>
-												</button>
+												</a>
 											</div>
 										);
 									}
@@ -136,7 +230,7 @@ export const UserMainMenu = props => {
 									if (product.category == "desserts") {
 										return (
 											<div key={product.id}>
-												<button onClick={() => addToCart(product)}>
+												<a onClick={() => addToCart(product)}>
 													<div className="card card-body">
 														<span className="float-right font-weight-bold">
 															{"$" + product.unit_price}
@@ -144,7 +238,7 @@ export const UserMainMenu = props => {
 														<h6 className="text-truncate">{product.name}</h6>
 														<p className="small">{product.description}</p>
 													</div>
-												</button>
+												</a>
 											</div>
 										);
 									}
@@ -168,69 +262,69 @@ export const UserMainMenu = props => {
 								<div className="mb-3">
 									<div className="pt-4 wish-list">
 										<h5 className="mb-4">
-											Cart (<span>{cartItemsTotal}</span> items)
+											Cart (<span>{cartTotal}</span> items)
 										</h5>
 
 										<div className="row mb-4">
-											<div className="col-md-7 col-lg-9 col-xl-9">
+											<div className="col-md-9 col-lg-12 col-xl-12">
 												<div>
-													{store.vendors[indexVendor].products.map((product, category) => {
+													{cart.map(product => {
 														return (
 															<div key={product.id}>
 																<div className="d-flex justify-content-between">
-																	<div key={product.id}>
+																	<div className="col col-6">
 																		<h5>{product.name}</h5>
 																		<p className="mb-3 text-muted text-uppercase small">
 																			{"Special Intructions:"}
 																		</p>
 																		<input
 																			onChange={event =>
-																				setSpecial_instructions(
-																					event.target.value
-																				)
+																				handleInstructions(event, product)
 																			}
 																			type="text"
 																			id="name"
 																			name="name"
 																		/>
 																	</div>
-																	<div className="">
+																	<div className="col col-6">
 																		<div className="col col-qty d-flex text-center w-75">
 																			<a
 																				href="#"
 																				className="qty qty-minus w-25"
-																				onClick={() =>
-																					setQuantity(quantity - 1)
+																				onClick={event =>
+																					handleQuantityDecrease(
+																						event,
+																						product
+																					)
 																				}>
 																				{"-"}
 																			</a>
 																			<input
 																				className="w-50 text-center"
 																				type="numeric"
-																				value={quantity}
+																				value={product.quantity}
 																			/>
 																			<a
 																				href="#"
 																				className="qty qty-plus w-25"
-																				onClick={() =>
-																					setQuantity(quantity + 1)
+																				onClick={event =>
+																					handleQuantityIncrease(
+																						event,
+																						product
+																					)
 																				}>
 																				{"+"}
 																			</a>
 																		</div>
 																	</div>
 																</div>
-																<div className="d-flex justify-content-between align-items-center">
+																<div className="d-flex justify-content-between align-items-center p-3 mb-3">
 																	<div>
 																		<a
 																			href="#!"
 																			type="button"
 																			className="card-link-secondary small text-uppercase mr-3"
-																			onClick={() =>
-																				actions.deleteCartItem(
-																					props.match.params.id
-																				)
-																			}>
+																			onClick={() => removeFromCart(product)}>
 																			<i className="fas fa-trash-alt mr-1" />{" "}
 																			{"Remove item"}
 																		</a>
@@ -243,7 +337,7 @@ export const UserMainMenu = props => {
 																	<p className="mb-0">
 																		<span>
 																			<strong id="summary">
-																				{product.unit_price}
+																				{"$" + product.unit_price}
 																			</strong>
 																		</span>
 																	</p>
@@ -251,75 +345,10 @@ export const UserMainMenu = props => {
 															</div>
 														);
 													})}
-													;
 												</div>
 											</div>
 										</div>
 										<hr className="mb-4" />
-										<div className="row mb-4">
-											<div className="col-md-5 col-lg-3 col-xl-3">
-												<div className="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
-													<img
-														className="img-fluid w-100"
-														src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg"
-														alt="Sample"
-													/>
-												</div>
-											</div>
-											<div className="col-md-7 col-lg-9 col-xl-9">
-												<div>
-													<div className="d-flex justify-content-between">
-														<div>
-															<h5>{props.name}</h5>
-															<p className="mb-3 text-muted text-uppercase small">
-																Shirt - blue
-															</p>
-															<p className="mb-2 text-muted text-uppercase small">
-																Color: blue
-															</p>
-															<p className="mb-3 text-muted text-uppercase small">
-																Size: M
-															</p>
-														</div>
-														<div>
-															<div className="col col-qty d-flex text-center w-75">
-																<a href="#" className="qty qty-minus w-25">
-																	-
-																</a>
-																<input
-																	className="w-50 text-center"
-																	type="numeric"
-																	value="3"
-																/>
-																<a href="#" className="qty qty-plus w-25">
-																	+
-																</a>
-															</div>
-														</div>
-													</div>
-													<div className="d-flex justify-content-between align-items-center">
-														<div>
-															<a
-																href="#!"
-																type="button"
-																className="card-link-secondary small text-uppercase mr-3">
-																<i className="fas fa-trash-alt mr-1" /> Remove item{" "}
-															</a>
-															<a
-																href="#!"
-																type="button"
-																className="card-link-secondary small text-uppercase"
-															/>
-														</div>
-														<p className="mb-0">
-															<span>
-																<strong id="summary">$17.99</strong>
-															</span>
-														</p>
-													</div>
-												</div>
-											</div>
-										</div>
 									</div>
 								</div>
 								<div className="mb-3">
@@ -374,7 +403,7 @@ export const UserMainMenu = props => {
 										</ul>
 
 										<button type="button" className="btn btn-primary btn-block">
-											go to checkout
+											{"Checkout"}
 										</button>
 									</div>
 								</div>
