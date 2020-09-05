@@ -55,7 +55,7 @@ export const Modal = props => {
 							Close
 						</button>
 
-						{/* <Link to="/item-add-edit"> */}
+						{/* <Link to="/admin-main-menu"> */}
 						<button
 							type="button"
 							onClick={() => actions.login(email, password)}
@@ -68,48 +68,6 @@ export const Modal = props => {
 				</div>
 			</div>
 		</div>
-		// <div className="modal" tabIndex="-1">
-		// 	<div className="modal-dialog">
-		// 		<div className="modal-content">
-		// 			<div className="modal-header ">
-		// 				<h5 className="modal-title">Vendor Login</h5>
-		// 				<button type="button" className="close" data-dismiss="modal" aria-label="Close">
-		// 					<span aria-hidden="true">&times;</span>
-		// 				</button>
-		// 			</div>
-		// 			<div className="modal-body">
-		// 				<div className="form-group">
-		// 					<label htmlFor="exampleInputEmail1">Email address</label>
-		// 					<input
-		// 						type="email"
-		// 						className="form-control"
-		// 						id="exampleInputEmail1"
-		// 						aria-describedby="emailHelp"
-		// 					/>
-		// 				</div>
-		// 				<div className="form-group">
-		// 					<label htmlFor="exampleInputPassword1">Password</label>
-		// 					<input type="password" className="form-control" id="exampleInputPassword1" />
-		// 				</div>
-		// 			</div>
-		// 			<div className="modal-footer">
-		// 				<button
-		// 					type="button"
-		// 					onClick={() => props.onClose()}
-		// 					className="btn btn-secondary"
-		// 					data-dismiss="modal">
-		// 					Close
-		// 				</button>
-		// 				<Link to="/admin-main-menu">
-		// 					<button type="button" className="btn btn-primary" onClick={()=> props.onSubmit()}
-		// 					>
-		// 						Login
-		// 					</button>
-		// 				</Link>
-		// 			</div>
-		// 		</div>
-		// 	</div>
-		// </div>
 	);
 };
 

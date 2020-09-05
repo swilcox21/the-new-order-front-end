@@ -50,6 +50,9 @@ export const Maps = props => {
 							return (
 								<li className="list-group-item" key={result.id}>
 									{result.vendor_name}
+									<button type="button" className="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
 								</li>
 							);
 						})}
