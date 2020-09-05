@@ -43,7 +43,7 @@ export const Navbar = props => {
 						</li>
 						{store.token != null ? (
 							<li className="nav-item ">
-								<Link to="/item-add-edit">
+								<Link to="/admin-main-menu">
 									<a className="nav-link text-white" href="#">
 										Add Item
 									</a>
