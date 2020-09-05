@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import "../../styles/itemAddEdit.scss";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-
 export const ItemAddEdit = () => {
 	const [openAdd, setOpenAdd] = useState(false);
 	const [openEdit, setOpenEdit] = useState(false);
@@ -47,6 +46,11 @@ export const ItemAddEdit = () => {
 									type="button">
 									{category}
 								</button>
+								{store.currentVendor.products
+									.filter(item => item.category == category)
+									.map((item, index) => {
+										return <button key={index}>{item.name}</button>;
+									})}
 								{create.category == category ? (
 									<form>
 										<div className="form-group">
@@ -64,7 +68,6 @@ export const ItemAddEdit = () => {
 												placeholder="Menu Item"
 											/>
 										</div>
-
 										<div className="form-group">
 											<label>Price</label>
 											<input

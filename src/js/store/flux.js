@@ -4,6 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			token: null,
+			currentVendor: [],
 			vendor_locations: [
 				{
 					vendor_id: 1,
@@ -157,20 +158,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					sub_total_price: 12.5,
 					total_proce: 12.5 * 1.07
 				},
-				{
-					id: 2,
-					name: "Ernesto Medina",
-					email: "ernesto.m.medina.m@gmail.com",
-					phone: "+584143026661",
-					created_at: new Date().toISOString,
-					started_at: new Date().toISOString,
-					cancel_order: null,
-					closed_at: null,
-					expected_pickup: null,
-					vendor_id: 1,
-					sub_total_price: 12.5,
-					total_proce: 12.5 * 1.07
-				},
+
 				{
 					id: 3,
 					name: "Horacio Medina",
@@ -212,31 +200,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					vendor_id: 1,
 					sub_total_price: 15.0,
 					total_proce: 15.0 * 1.07
-				},
-				{
-					id: 6,
-					name: "Someone Else",
-					email: "someone@gmail.com",
-					phone: "+584142283868",
-					created_at: new Date().toISOString,
-					started_at: null,
-					cancel_order: null,
-					closed_at: null,
-					expected_pickup: null,
-					vendor_id: 1,
-					sub_total_price: 15.0,
-					total_price: 15.0 * 1.07
 				}
 			],
-			orderForDetail: {},
-			orderItem: {
-				id: 1,
-				order_id: 1,
-				product_id: 1,
-				quantity: 2,
-				unit_price: 5.0,
-				special_instructions: null
-			}
+			orderForDetail: {}
 		},
 		actions: {
 			createProduct: item => {
@@ -248,7 +214,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 						authorization: "Bearer " + store.token
 					},
 					body: JSON.stringify(item)
-				});
+				})
+					.then(() =>
+						fetch(backendApiUrl + "vendor" + "/" + store.currentVendor.id, {
+							method: "GET",
+							headers: {
+								"Content-Type": "application/json"
+							}
+						})
+					)
+					.then(res => res.json())
+					.then(data => setStore({ currentVendor: data }));
 			},
 
 			getResults: searchName => {
@@ -292,7 +268,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"Content-Type": "application/json",
 						Authorization: `Bearer ${store.token}`
 					}
-				});
+				}).then(() =>
+					fetch(`${backendApiUrl}vendor`, {
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${store.token}`
+						}
+					})
+						.then(response => response.json())
+						.then(data => setStore({ currentVendor: data }))
+				);
 			},
 			login: (email, password) => {
 				console.log("Hello");
