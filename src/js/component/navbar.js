@@ -35,26 +35,20 @@ export const Navbar = props => {
 							</li>
 						)} */}
 						<li className="nav-item ">
-							<Link to="/maps">
-								<a className="nav-link text-white" href="#">
-									Place an Order
-								</a>
+							<Link className="nav-link text-white" to="/maps">
+								Place an Order
 							</Link>
 						</li>
 						{store.token != null ? (
 							<li className="nav-item ">
-								<Link to="/admin-main-menu">
-									<a className="nav-link text-white" href="#">
-										Add Item
-									</a>
+								<Link className="nav-link text-white" to="/admin-main-menu">
+									Add Item
 								</Link>
 							</li>
 						) : null}
 						<li className="nav-item ">
-							<Link to="/maps">
-								<a className="nav-link text-white" href="#">
-									Find a Vendor
-								</a>
+							<Link className="nav-link text-white" to="/maps">
+								Find a Vendor
 							</Link>
 						</li>
 
@@ -80,10 +74,8 @@ export const Navbar = props => {
 								</div>
 								{/* </Link> */}
 								{/* ) : null} */}
-								<Link to="/signUp">
-									<a className="dropdown-item" href="#">
-										Register your business
-									</a>
+								<Link className="dropdown-item" to="/signUp">
+									Register your business
 								</Link>
 							</div>
 						</li>
