@@ -50,13 +50,13 @@ export const UserMainMenu = props => {
 		}
 		setCart(finalCart);
 	};
-	const handleQuantityDecrease = (event, product) => {
+	const handleQuantityDecrease = product => {
 		let finalCart = [];
 		for (let orderItem of cart) {
 			if (orderItem.product_id == product.product_id) {
 				finalCart.push({
 					...orderItem,
-					quantity: (event.target.value -= 1)
+					quantity: (cart.quantity -= 1)
 				});
 			} else {
 				finalCart.push(orderItem);
@@ -64,14 +64,15 @@ export const UserMainMenu = props => {
 		}
 		setCart(finalCart);
 	};
-	const handleQuantityIncrease = (event, product) => {
+	const handleQuantityIncrease = product => {
 		let finalCart = [];
 		for (let orderItem of cart) {
 			if (orderItem.product_id == product.product_id) {
 				finalCart.push({
 					...orderItem,
-					quantity: (event.target.value += 1)
+					quantity: orderItem.quantity + 1
 				});
+				console.log("finalCart", finalCart);
 			} else {
 				finalCart.push(orderItem);
 			}
@@ -96,7 +97,11 @@ export const UserMainMenu = props => {
 	};
 
 	const addToCart = product => {
-		setCart([...cart, product]);
+		let orderItem = {
+			...product,
+			quantity: 1
+		};
+		setCart([...cart, orderItem]);
 	};
 	const removeFromCart = product => {
 		let finalCart = [...cart];
@@ -106,6 +111,9 @@ export const UserMainMenu = props => {
 	//main menu variables required to link vendor to menu page
 	const params = useParams();
 	const indexVendor = store.vendors.findIndex(item => item.id == params.bubu);
+	useEffect(() => {
+		actions.getVendorMenu(params.bubu);
+	}, []);
 
 	return (
 		<div className="container-fluid">
@@ -127,131 +135,43 @@ export const UserMainMenu = props => {
 					<div className="container py-5">
 						<div className="row">
 							<div className="col-lg-10 mx-auto col-12 text-center mb-3">
-								<h1 className="mt-0 text-primary">{store.vendors[indexVendor].vendor_name}</h1>
+								<h1 className="mt-0 text-primary">
+									{store.vendors.map(vendor => {
+										if (vendor.id == params.bubu) {
+											return vendor.vendor_name;
+										}
+									})}
+								</h1>
 							</div>
-							<div className="col-12 mt-4">
-								<h3 className="text-center">Beverages</h3>
-								<hr className="accent my-5" />
-							</div>
-							<div className="card-columns w-75 m-auto">
-								{store.vendors[indexVendor].products.map((product, category) => {
-									if (product.category == "beverages") {
-										return (
-											<div key={product.id}>
-												<a onClick={() => addToCart(product)}>
-													<div className="card card-body">
-														<span className="float-right font-weight-bold">
-															{"$" + product.unit_price}
-														</span>
-														<h6 className="text-truncate">{product.name}</h6>
-														<p className="small">{product.description}</p>
-													</div>
-												</a>
-											</div>
-										);
-									}
-								})}
-							</div>
-							<div className="col-12 mt-4">
-								<h3 className="text-center">Starters</h3>
-								<hr className="accent my-5" />
-							</div>
-							<div className="card-columns w-75 m-auto">
-								{store.vendors[indexVendor].products.map((product, category) => {
-									if (product.category == "appetizers") {
-										return (
-											<div key={product.id}>
-												<a onClick={() => addToCart(product)}>
-													<div className="card card-body">
-														<span className="float-right font-weight-bold">
-															{"$" + product.unit_price}
-														</span>
-														<h6 className="text-truncate">{product.name}</h6>
-														<p className="small">{product.description}</p>
-													</div>
-												</a>
-											</div>
-										);
-									}
-								})}
-							</div>
-							<div className="col-12 mt-4">
-								<h3 className="text-center">Entrees</h3>
-								<hr className="accent my-5" />
-							</div>
-							<div className="card-columns w-75 m-auto">
-								{store.vendors[indexVendor].products.map((product, category) => {
-									if (product.category == "entrees") {
-										return (
-											<div key={product.id}>
-												<a onClick={() => addToCart(product)}>
-													<div className="card card-body">
-														<span className="float-right font-weight-bold">
-															{"$" + product.unit_price}
-														</span>
-														<h6 className="text-truncate">{product.name}</h6>
-														<p className="small">{product.description}</p>
-													</div>
-												</a>
-											</div>
-										);
-									}
-								})}
-							</div>
-							<div className="col-12 mt-4">
-								<h3 className="text-center">Sandwiches</h3>
-								<hr className="accent my-5" />
-							</div>
-							<div className="card-columns w-75 m-auto">
-								{store.vendors[indexVendor].products.map((product, category) => {
-									if (product.category == "sandwiches") {
-										return (
-											<div key={product.id}>
-												<a onClick={() => addToCart(product)}>
-													<div className="card card-body">
-														<span className="float-right font-weight-bold">
-															{"$" + product.unit_price}
-														</span>
-														<h6 className="text-truncate">{product.name}</h6>
-														<p className="small">{product.description}</p>
-													</div>
-												</a>
-											</div>
-										);
-									}
-								})}
-							</div>
-							<div className="col-12 mt-4">
-								<h3 className="text-center">Desserts</h3>
-								<hr className="accent my-5" />
-							</div>
-							<div className="card-columns w-75 m-auto">
-								{store.vendors[indexVendor].products.map((product, category) => {
-									if (product.category == "desserts") {
-										return (
-											<div key={product.id}>
-												<a onClick={() => addToCart(product)}>
-													<div className="card card-body">
-														<span className="float-right font-weight-bold">
-															{"$" + product.unit_price}
-														</span>
-														<h6 className="text-truncate">{product.name}</h6>
-														<p className="small">{product.description}</p>
-													</div>
-												</a>
-											</div>
-										);
-									}
-								})}
-							</div>
-							<div className="col-12 mt-5 border border-right-0 border-left-0">
-								<div className="row">
-									<div className="col h5">{store.vendors[indexVendor].vendor_name}</div>
-									<div className="col h5 text-right">
-										{"Contact:"} {store.vendors[indexVendor].phone}
-									</div>
-								</div>
-							</div>
+							{store.categories.map((category, index) => {
+								return (
+									<>
+										<div className="col-12 mt-4">
+											<h3 className="text-center">{category}</h3>
+											<hr className="accent my-5" />
+										</div>
+										<div className="card-columns w-75 m-auto">
+											{store.vendorMenu.map(product => {
+												if (product.category == category) {
+													return (
+														<div key={product.id}>
+															<div
+																className="card card-body"
+																onClick={() => addToCart(product)}>
+																<span className="float-right font-weight-bold">
+																	{"$" + product.price}
+																</span>
+																<h6 className="text-truncate">{product.name}</h6>
+																<p className="small">{product.description}</p>
+															</div>
+														</div>
+													);
+												}
+											})}
+										</div>
+									</>
+								);
+							})}
 						</div>
 					</div>
 				</div>
@@ -262,7 +182,7 @@ export const UserMainMenu = props => {
 								<div className="mb-3">
 									<div className="pt-4 wish-list">
 										<h5 className="mb-4">
-											Cart (<span>{cartTotal}</span> items)
+											Cart (<span>{cart.length}</span> items)
 										</h5>
 
 										<div className="row mb-4">
@@ -307,11 +227,8 @@ export const UserMainMenu = props => {
 																			<a
 																				href="#"
 																				className="qty qty-plus w-25"
-																				onClick={event =>
-																					handleQuantityIncrease(
-																						event,
-																						product
-																					)
+																				onClick={() =>
+																					handleQuantityIncrease(product)
 																				}>
 																				{"+"}
 																			</a>

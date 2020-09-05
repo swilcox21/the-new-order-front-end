@@ -1,4 +1,4 @@
-const backendApiUrl = "https://3000-a9e77093-c97a-44b3-b9fd-a511d32e002c.ws-us02.gitpod.io/";
+const backendApiUrl = "https://3000-f75c3e6d-1cce-4471-9ff4-032e22b207f1.ws-us02.gitpod.io/";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -19,7 +19,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					lng: -80.1916
 				},
 				{
-					vendor_id: 3,
+					vendor_id: 5,
 					name: "Willy Wonkas",
 					lat: 25.7623,
 					lng: -80.1947
@@ -31,7 +31,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					lng: -80.1925
 				},
 				{
-					vendor_id: 5,
+					vendor_id: 3,
 					name: "Juicy",
 					lat: 25.7655,
 					lng: -80.2012
@@ -143,6 +143,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					vendor_name: "juicy"
 				}
 			],
+			vendorMenu: [],
 			orders: [
 				{
 					id: 1,
@@ -345,7 +346,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return false;
 				}
 			},
-			//shopping cart requests
+			//user main menu requests
+			getVendorMenu: async vendor_id => {
+				let response = await fetch(`${backendApiUrl}vendor-public-menu/${vendor_id}`);
+				let menuItems = await response.json();
+				if (response.ok) {
+					setStore({ vendorMenu: menuItems });
+				}
+			},
+
+			// updateQuantity: (id, quantity) => {
+
+			// },
 			addCartItem: async (name, special_instructions, id, unit_price, order_id) => {
 				let response = await fetch(backendApiUrl + "user-main-menu/" + order_id, {
 					method: "POST",
