@@ -35,12 +35,13 @@ export const ItemAddEdit = () => {
 							<div className="d-flex flex-column justify-content-between">
 								<button
 									onClick={() => {
-										setCreate({
-											name: "",
-											price: "",
-											description: "",
-											category: category
-										});
+										setOpenAdd(!openAdd),
+											setCreate({
+												name: "",
+												price: "",
+												description: "",
+												category: category
+											});
 									}}
 									className="btn btn-outline-secondary  btn-block btn-dark text-white"
 									type="button">
@@ -49,9 +50,24 @@ export const ItemAddEdit = () => {
 								{store.currentVendor.products
 									.filter(item => item.category == category)
 									.map((item, index) => {
-										return <button key={index}>{item.name}</button>;
+										return (
+											<button
+												onClick={() => {
+													setOpenAdd(!openAdd),
+														setCreate({
+															name: item.name,
+															price: item.price,
+															description: item.description,
+															category: item.category,
+															id: item.id
+														});
+												}}
+												key={index}>
+												{item.name}
+											</button>
+										);
 									})}
-								{create.category == category ? (
+								{openAdd && create.category == category ? (
 									<form>
 										<div className="form-group">
 											<label>Menu Item Name</label>
@@ -98,26 +114,41 @@ export const ItemAddEdit = () => {
 												placeholder="Enter description"
 											/>
 										</div>
+										{create.id ? (
+											<button
+												onClick={() =>
+													actions.updateProduct({
+														...create,
+														category
+													})
+												}
+												type="button"
+												className="btn btn-primary form-control">
+												edit
+											</button>
+										) : (
+											<button
+												onClick={e =>
+													actions.createProduct({
+														...create,
+														category
+													})
+												}
+												type="button"
+												className="btn btn-primary form-control">
+												save
+											</button>
+										)}
 										<button
-											onClick={e =>
-												actions.createProduct({
-													...create,
-													category
-												})
-											}
-											type="button"
-											className="btn btn-primary form-control">
-											save
-										</button>
-										<button
-											onClick={e =>
-												setCreate({
-													name: "",
-													price: "",
-													description: "",
-													category: ""
-												})
-											}
+											onClick={() => {
+												setOpenAdd(false),
+													setCreate({
+														name: "",
+														price: "",
+														description: "",
+														category: ""
+													});
+											}}
 											type="button"
 											className="btn btn-dark my-2 form-control">
 											close

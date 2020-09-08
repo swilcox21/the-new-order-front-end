@@ -1,5 +1,4 @@
-const backendApiUrl = "https://3000-f75c3e6d-1cce-4471-9ff4-032e22b207f1.ws-us02.gitpod.io/";
-
+const backendApiUrl = "https://3000-a9e77093-c97a-44b3-b9fd-a511d32e002c.ws-us02.gitpod.io/";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -159,7 +158,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					sub_total_price: 12.5,
 					total_price: 12.5 * 1.07
 				},
-
 				{
 					id: 3,
 					name: "Horacio Medina",
@@ -227,7 +225,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(res => res.json())
 					.then(data => setStore({ currentVendor: data }));
 			},
-
+			updateProduct: item => {
+				console.log("ITTTTT: ", item);
+				const store = getStore();
+				fetch(backendApiUrl + "menu-items/" + item.id, {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json",
+						authorization: "Bearer " + store.token
+					},
+					body: JSON.stringify(item)
+				})
+					.then(() =>
+						fetch(backendApiUrl + "vendor" + "/" + store.currentVendor.id, {
+							method: "GET",
+							headers: {
+								"Content-Type": "application/json"
+							}
+						})
+					)
+					.then(res => res.json())
+					.then(data => setStore({ currentVendor: data }));
+			},
 			getResults: searchName => {
 				const store = getStore();
 				fetch(`${backendApiUrl}vendors?name=${searchName}`, {
@@ -288,7 +307,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					headers: {
 						"Content-Type": "application/json"
 					},
-
 					body: JSON.stringify({
 						email: email,
 						password: password
@@ -303,30 +321,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 						}
 					});
 			},
-
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
 			loadSomeData: () => {
 				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
+                    fetch().then().then(data => setStore({ "foo": data.bar }))
+                */
 			},
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
-
 				//we have to loop the entire demo array to look for the respective index
 				//and change its color
 				const demo = store.demo.map((elm, i) => {
 					if (i === index) elm.background = color;
 					return elm;
 				});
-
 				//reset the global store
 				setStore({ demo: demo });
 			},
-
 			signUp: async (vendor_name, email, password, phone) => {
 				let response = await fetch(backendApiUrl + "signup", {
 					method: "POST",
@@ -355,28 +369,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore({ vendorMenu: menuItems });
 				}
 			},
-
 			setCartOnStore: async cart => {
 				setStore({ cart });
 			},
 			// storeCartTotals: async (sub_total_price, total_price) => {
-			// 	getStore(orders).setStore([{ sub_total_price, total_price }]);
+			//  getStore(orders).setStore([{ sub_total_price, total_price }]);
 			// },
 			// changeColor: (index, color) => {
-			// 	//get the store
-			// 	const store = getStore();
-
-			// 	//we have to loop the entire demo array to look for the respective index
-			// 	//and change its color
-			// 	const demo = store.demo.map((elm, i) => {
-			// 		if (i === index) elm.background = color;
-			// 		return elm;
-			// 	});
-
-			// 	//reset the global store
-			// 	setStore({ demo: demo });
+			//  //get the store
+			//  const store = getStore();
+			//  //we have to loop the entire demo array to look for the respective index
+			//  //and change its color
+			//  const demo = store.demo.map((elm, i) => {
+			//      if (i === index) elm.background = color;
+			//      return elm;
+			//  });
+			//  //reset the global store
+			//  setStore({ demo: demo });
 			// },
-
 			addToOrder: async (name, special_instructions, id, unit_price, order_id) => {
 				let response = await fetch(backendApiUrl + "user-main-menu/" + order_id, {
 					method: "POST",
@@ -395,5 +405,4 @@ const getState = ({ getStore, getActions, setStore }) => {
 		}
 	};
 };
-
 export default getState;
