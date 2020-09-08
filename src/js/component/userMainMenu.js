@@ -371,12 +371,14 @@ export const UserMainMenu = props => {
 											className="btn btn-primary btn-block"
 											onClick={async event => {
 												console.log(cart);
+
 												event.preventDefault();
 												let result = actions.setCartOnStore(cart);
-												let totals = actions.storeCartTotals(cartSub, tallyUpTotal(cartSub));
+												let totals = actions.setCartSubTotal(cartSub);
 												if ((result, totals)) {
 													history.push("/payment");
 												}
+												console.log(cartSub);
 											}}>
 											{"Checkout"}
 										</button>

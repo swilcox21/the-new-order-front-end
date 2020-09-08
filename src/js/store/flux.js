@@ -1,4 +1,4 @@
-const backendApiUrl = "https://3000-a9e77093-c97a-44b3-b9fd-a511d32e002c.ws-us02.gitpod.io/";
+const backendApiUrl = "https://3000-f75c3e6d-1cce-4471-9ff4-032e22b207f1.ws-us02.gitpod.io/";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -31,7 +31,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				},
 				{
 					vendor_id: 3,
-					name: "Juicy",
+					name: "Juicy Eatz",
 					lat: 25.7655,
 					lng: -80.2012
 				},
@@ -139,7 +139,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							vendor_id: 3
 						}
 					],
-					vendor_name: "juicy"
+					vendor_name: "Juicy Eatz"
 				}
 			],
 			vendorMenu: [],
@@ -370,23 +370,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			setCartOnStore: async cart => {
-				setStore({ cart });
+				setStore({ cart: cart });
 			},
-			// storeCartTotals: async (sub_total_price, total_price) => {
-			//  getStore(orders).setStore([{ sub_total_price, total_price }]);
-			// },
-			// changeColor: (index, color) => {
-			//  //get the store
-			//  const store = getStore();
-			//  //we have to loop the entire demo array to look for the respective index
-			//  //and change its color
-			//  const demo = store.demo.map((elm, i) => {
-			//      if (i === index) elm.background = color;
-			//      return elm;
-			//  });
-			//  //reset the global store
-			//  setStore({ demo: demo });
-			// },
+			setCartSubTotal: async subTotal => {
+				setStore({ subTotal: subTotal });
+			},
 			addToOrder: async (name, special_instructions, id, unit_price, order_id) => {
 				let response = await fetch(backendApiUrl + "user-main-menu/" + order_id, {
 					method: "POST",
