@@ -157,7 +157,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					expected_pickup: null,
 					vendor_id: 1,
 					sub_total_price: 12.5,
-					total_proce: 12.5 * 1.07
+					total_price: 12.5 * 1.07
 				},
 
 				{
@@ -172,7 +172,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					expected_pickup: null,
 					vendor_id: 1,
 					sub_total_price: 12.5,
-					total_proce: 12.5 * 1.07
+					total_price: 12.5 * 1.07
 				},
 				{
 					id: 4,
@@ -186,7 +186,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					expected_pickup: null,
 					vendor_id: 1,
 					sub_total_price: 15.0,
-					total_proce: 15.0 * 1.07
+					total_price: 15.0 * 1.07
 				},
 				{
 					id: 5,
@@ -200,7 +200,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					expected_pickup: null,
 					vendor_id: 1,
 					sub_total_price: 15.0,
-					total_proce: 15.0 * 1.07
+					total_price: 15.0 * 1.07
 				}
 			],
 			orderForDetail: {}
@@ -326,6 +326,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
+
 			signUp: async (vendor_name, email, password, phone) => {
 				let response = await fetch(backendApiUrl + "signup", {
 					method: "POST",
@@ -355,10 +356,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			// updateQuantity: (id, quantity) => {
-
+			setCartOnStore: async cart => {
+				setStore({ cart });
+			},
+			// storeCartTotals: async (sub_total_price, total_price) => {
+			// 	getStore(orders).setStore([{ sub_total_price, total_price }]);
 			// },
-			addCartItem: async (name, special_instructions, id, unit_price, order_id) => {
+			// changeColor: (index, color) => {
+			// 	//get the store
+			// 	const store = getStore();
+
+			// 	//we have to loop the entire demo array to look for the respective index
+			// 	//and change its color
+			// 	const demo = store.demo.map((elm, i) => {
+			// 		if (i === index) elm.background = color;
+			// 		return elm;
+			// 	});
+
+			// 	//reset the global store
+			// 	setStore({ demo: demo });
+			// },
+
+			addToOrder: async (name, special_instructions, id, unit_price, order_id) => {
 				let response = await fetch(backendApiUrl + "user-main-menu/" + order_id, {
 					method: "POST",
 					body: JSON.stringify({
@@ -367,21 +386,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						id: id,
 						unit_price: unit_price,
 						order_id: order_id
-					}),
-					headers: {
-						"Content-Type": "application/json"
-					}
-				});
-			},
-			deleteCartItem: async (name, special_instructions, id, unit_price) => {
-				let response = await fetch(backendApiUrl + "user-main-menu/" + id, {
-					//would be id or order_id that goes here
-					method: "DELETE",
-					body: JSON.stringify({
-						name: name,
-						special_instructions: special_instructions,
-						id: id,
-						unit_price: unit_price
 					}),
 					headers: {
 						"Content-Type": "application/json"

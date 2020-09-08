@@ -4,38 +4,47 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 
-export const Payment = props => {
+export const Payment = () => {
 	const { store, actions } = useContext(Context);
+
 	return (
 		<div className="new-container ml-auto mr-auto mb-3 mt-3">
 			<div className="row">
 				<div className="col-md-4 order-md-2 mb-4">
 					<h4 className="d-flex justify-content-between align-items-center mb-3">
 						<span className="text-muted">Your cart</span>
-						<span className="badge badge-secondary badge-pill">3</span>
+						<span className="badge badge-secondary badge-pill">{store.cart && store.cart.length}</span>
 					</h4>
 					<ul className="list-group mb-3">
-						<li className="list-group-item d-flex justify-content-between lh-condensed">
-							<div>
-								<h6 className="my-0">{props.name}</h6>
-							</div>
-							<span className="text-muted">{props.price}</span>
-						</li>
-						<li className="list-group-item d-flex justify-content-between lh-condensed">
-							<div>
-								<h6 className="my-0">{props.name}</h6>
-							</div>
-							<span className="text-muted">{props.price}</span>
-						</li>
-						<li className="list-group-item d-flex justify-content-between lh-condensed">
-							<div>
-								<h6 className="my-0">{props.name}</h6>
-							</div>
-							<span className="text-muted">{props.price}</span>
-						</li>
+						{store.cart &&
+							store.cart.map(orderItem => {
+								return (
+									<>
+										<li
+											className="list-group-item d-flex justify-content-between lh-condensed"
+											key={orderItem.product_id}>
+											<div className="col col-4 mr-2">
+												<h6 className="my-0">{orderItem.name}</h6>
+											</div>
+											<div className="col col-4 ml-2">
+												<span className="text-muted">
+													{"x "}
+													{orderItem.quantity}
+												</span>
+											</div>
+											<div className="col col-4">
+												<span className="text-muted">
+													{"$"}
+													{orderItem.price}
+												</span>
+											</div>
+										</li>
+									</>
+								);
+							})}
 						<li className="list-group-item d-flex justify-content-between">
 							<span>Total (USD)</span>
-							<strong>$20</strong>
+							<strong>{""}</strong>
 						</li>
 					</ul>
 				</div>

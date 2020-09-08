@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect, useCallback } from "react";
 import "../../styles/home.scss";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 
@@ -10,23 +10,8 @@ export const UserMainMenu = props => {
 
 	const [cart, setCart] = useState([]);
 	const [cartTotal, setCartTotal] = useState(0);
-	// const cartItemsTotal = () => {
-	// 	let total = 0;
-	// 	let orderItem = 0;
-	// 	cart.forEach(product => {
-	// 		orderItem += quantity;
-	// 	});
-	// 	cartTotal = total += orderItem;
-	// 	return cartTotal;
-	// };
-	// const cartItemsTotal = () => {
-	// 	let totalOfProduct = 0;
-	// 	cart.forEach(product => {
-	// 		totalOfProduct += quantity;
-	// 	});
-	// 	setCartTotal((cartTotal += totalOfProduct));
-	// 	return cartTotal;
-	// };
+	const [cartSub, setCartSub] = useState(0);
+	let history = useHistory();
 
 	const handleInstructions = (event, product) => {
 		let finalCart = [];
@@ -72,6 +57,7 @@ export const UserMainMenu = props => {
 			}
 		}
 		setCart(finalCart);
+		tallyUpSub(product);
 	};
 
 	useEffect(
@@ -106,18 +92,26 @@ export const UserMainMenu = props => {
 		};
 		delete orderItem.id;
 		setCart([...cart, orderItem]);
-	};
-	const removeFromCart = product => {
-		let finalCart = [...cart];
-		finalCart = finalCart.filter(orderItem => orderItem.id !== product.id);
-		setCart(finalCart);
+		tallyUpSub(product); //calling subtotal function
 	};
 	//totals functions
-	// const tallyUpSub = finalCart => {
-	// 	let subTotal = 0.0;
-	// 	subTotal += finalCart.product.price;
-	// 	return subTotal;
-	// };
+	const tallyUpSub = product => {
+		let subTotal = cartSub;
+		subTotal += parseFloat(product.price);
+		setCartSub(subTotal);
+	};
+	const tallyUpTotal = subTotal => {
+		const tax = subTotal * 0.06;
+		return tax + subTotal;
+	};
+	//remove from cart
+	const removeFromCart = product => {
+		let finalCart = [...cart];
+		finalCart = finalCart.filter(orderItem => orderItem.name !== product.name);
+		setCart(finalCart);
+		setCartSub(cartSub - parseFloat(product.price));
+	};
+
 	//main menu variables required to link vendor to menu page
 	const params = useParams();
 	const indexVendor = store.vendors.findIndex(item => item.id == params.bubu);
@@ -220,7 +214,7 @@ export const UserMainMenu = props => {
 								<div className="mb-3">
 									<div className="pt-4 wish-list">
 										<h5 className="mb-4">
-											Cart (<span>{cart.length}</span> items)
+											Cart (<span>{cartTotal}</span> items)
 										</h5>
 
 										<div className="row mb-4">
@@ -354,22 +348,38 @@ export const UserMainMenu = props => {
 										<ul className="list-group list-group-flush">
 											<li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
 												Subtotal
-												{/* <span>{tallyUpSub(cart)}</span> */}
+												<span>
+													{"$"}
+													{cartSub}
+												</span>
 											</li>
 											<li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
 												<div>
 													<strong>Total Price</strong>
 												</div>
 												<span>
-													<strong>$53.98</strong>
+													<strong>
+														{"$"}
+														{tallyUpTotal(cartSub)}
+													</strong>
 												</span>
 											</li>
 										</ul>
-										<Link to="/payment">
-											<button type="button" className="btn btn-primary btn-block">
-												{"Checkout"}
-											</button>
-										</Link>
+
+										<button
+											type="button"
+											className="btn btn-primary btn-block"
+											onClick={async event => {
+												console.log(cart);
+												event.preventDefault();
+												let result = actions.setCartOnStore(cart);
+												let totals = actions.storeCartTotals(cartSub, tallyUpTotal(cartSub));
+												if ((result, totals)) {
+													history.push("/payment");
+												}
+											}}>
+											{"Checkout"}
+										</button>
 									</div>
 								</div>
 							</div>
