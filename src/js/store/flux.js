@@ -1,4 +1,4 @@
-const backendApiUrl = "https://3000-f75c3e6d-1cce-4471-9ff4-032e22b207f1.ws-us02.gitpod.io/";
+const backendApiUrl = "https://3000-a9e77093-c97a-44b3-b9fd-a511d32e002c.ws-us02.gitpod.io/";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -246,6 +246,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 					)
 					.then(res => res.json())
 					.then(data => setStore({ currentVendor: data }));
+			},
+
+			deleteProduct: async item_id => {
+				console.log("ITTTTT: ", item_id);
+				const store = getStore();
+				let response = await fetch(backendApiUrl + "menu-items/" + item_id, {
+					method: "DELETE",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.token
+					}
+				});
+				if (response.ok) {
+					let getResponse = await fetch(backendApiUrl + "vendor" + "/" + store.currentVendor.id, {
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json"
+						}
+					});
+					let data = await getResponse.json();
+					setStore({ currentVendor: data });
+				}
 			},
 			getResults: searchName => {
 				const store = getStore();

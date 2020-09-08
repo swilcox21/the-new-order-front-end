@@ -35,13 +35,13 @@ export const ItemAddEdit = () => {
 							<div className="d-flex flex-column justify-content-between">
 								<button
 									onClick={() => {
-										setOpenAdd(!openAdd),
-											setCreate({
-												name: "",
-												price: "",
-												description: "",
-												category: category
-											});
+										setOpenAdd(!openAdd);
+										setCreate({
+											name: "",
+											price: "",
+											description: "",
+											category: category
+										});
 									}}
 									className="btn btn-outline-secondary  btn-block btn-dark text-white"
 									type="button">
@@ -53,14 +53,14 @@ export const ItemAddEdit = () => {
 										return (
 											<button
 												onClick={() => {
-													setOpenAdd(!openAdd),
-														setCreate({
-															name: item.name,
-															price: item.price,
-															description: item.description,
-															category: item.category,
-															id: item.id
-														});
+													setOpenAdd(!openAdd);
+													setCreate({
+														name: item.name,
+														price: item.price,
+														description: item.description,
+														category: item.category,
+														id: item.id
+													});
 												}}
 												key={index}>
 												{item.name}
@@ -115,17 +115,27 @@ export const ItemAddEdit = () => {
 											/>
 										</div>
 										{create.id ? (
-											<button
-												onClick={() =>
-													actions.updateProduct({
-														...create,
-														category
-													})
-												}
-												type="button"
-												className="btn btn-primary form-control">
-												edit
-											</button>
+											<>
+												<button
+													onClick={() =>
+														actions.updateProduct({
+															...create,
+															category
+														})
+													}
+													type="button"
+													className="btn btn-primary form-control">
+													edit
+												</button>
+												<button
+													type="button"
+													className="btn btn-default btn-sm"
+													onClick={async () => {
+														await actions.deleteProduct(create.id);
+													}}>
+													<i className="fas fa-trash" />
+												</button>
+											</>
 										) : (
 											<button
 												onClick={e =>
