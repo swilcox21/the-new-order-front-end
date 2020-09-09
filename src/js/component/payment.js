@@ -6,6 +6,8 @@ import { Context } from "../store/appContext";
 
 export const Payment = () => {
 	const { store, actions } = useContext(Context);
+	const subTotal = store.subTotal;
+	const total = subTotal + subTotal * 0.06;
 
 	return (
 		<div className="new-container ml-auto mr-auto mb-3 mt-3">
@@ -43,8 +45,12 @@ export const Payment = () => {
 								);
 							})}
 						<li className="list-group-item d-flex justify-content-between">
+							<span>Subtotal (USD)</span>
+							<strong>{subTotal}</strong>
+						</li>
+						<li className="list-group-item d-flex justify-content-between">
 							<span>Total (USD)</span>
-							<strong>{""}</strong>
+							<strong>{total}</strong>
 						</li>
 					</ul>
 				</div>
