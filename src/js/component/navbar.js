@@ -34,15 +34,10 @@ export const Navbar = props => {
 								</a>
 							</li>
 						)} */}
-						<li className="nav-item ">
-							<Link className="nav-link text-white" to="/maps">
-								Place an Order
-							</Link>
-						</li>
 						{store.token != null ? (
 							<li className="nav-item ">
 								<Link className="nav-link text-white" to="/admin-main-menu">
-									Add Item
+									Admin Main Menu
 								</Link>
 							</li>
 						) : null}
