@@ -127,14 +127,6 @@ export const ItemAddEdit = () => {
 													className="btn btn-primary form-control">
 													edit
 												</button>
-												<button
-													type="button"
-													className="btn btn-default btn-sm"
-													onClick={async () => {
-														await actions.deleteProduct(create.id);
-													}}>
-													<i className="fas fa-trash" />
-												</button>
 											</>
 										) : (
 											<button
@@ -162,6 +154,14 @@ export const ItemAddEdit = () => {
 											type="button"
 											className="btn btn-dark my-2 form-control">
 											close
+										</button>
+										<button
+											type="button"
+											className="btn btn-default btn-sm"
+											onClick={async () => {
+												await actions.deleteProduct(create.id);
+											}}>
+											<i className="fas fa-trash">Trash</i>
 										</button>
 									</form>
 								) : null}
