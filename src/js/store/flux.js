@@ -406,6 +406,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			setCartItemsTotal: async totalCartItems => {
 				setStore({ totalCartItems: totalCartItems });
 			},
+
 			addToOrder: async (name, special_instructions, id, unit_price, order_id) => {
 				let response = await fetch(backendApiUrl + "user-main-menu/" + order_id, {
 					method: "POST",

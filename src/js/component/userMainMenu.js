@@ -235,7 +235,7 @@ export const UserMainMenu = props => {
 																	<div className="col col-6">
 																		<h5>{orderItem.name}</h5>
 																		<p className="mb-3 text-muted text-uppercase small">
-																			{"Special Intructions:"}
+																			{"Special Intructions: "}
 																		</p>
 																		<input
 																			onChange={e =>
