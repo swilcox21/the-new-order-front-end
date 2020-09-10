@@ -3,7 +3,7 @@ import "../../styles/landingPage.scss";
 
 export const LandingPage = () => {
 	return (
-		<div className="container15 fluid d-flex flex-column  ">
+		<div className="container15 fluid d-flex flex-column" style={{ height: "100%" }}>
 			<div className="header text-center">
 				<h1>Welcome to The New Order</h1>
 			</div>
