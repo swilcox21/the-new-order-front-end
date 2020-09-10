@@ -43,7 +43,7 @@ export const ItemAddEdit = () => {
 											category: category
 										});
 									}}
-									className="btn btn-outline-secondary btn-block btn-dark text-white"
+									className="btn btn-block btn-dark text-white"
 									type="button">
 									{category}
 								</button>
