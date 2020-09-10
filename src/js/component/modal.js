@@ -1,20 +1,19 @@
 import React, { useState, useEffect, useContext } from "react";
-import ReactDOM, { Link } from "react-dom";
+import { Link, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import { Context } from "../store/appContext";
-
 export const Modal = props => {
-	const [state, setState] = useState({});
 	const { login, handleSubmit } = useForm();
 	const { store, actions } = useContext(Context);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-
+	const history = useHistory();
 	return (
 		<div
 			className="modal fade"
-			id="exampleModal"
+			id={props.id}
+			style={{ display: props.show ? "inline-block" : "none" }}
 			tabIndex="-1"
 			aria-labelledby="exampleModalLabel"
 			aria-hidden="true">
@@ -49,28 +48,28 @@ export const Modal = props => {
 							/>
 						</div>
 					</div>
-					{/* {store.token != null ? ( */}
 					<div className="modal-footer">
 						<button type="button" className="btn btn-secondary" data-dismiss="modal">
 							Close
 						</button>
-
-						{/* <Link to="/admin-main-menu"> */}
 						<button
+							data-dismiss="modal"
 							type="button"
-							onClick={() => actions.login(email, password)}
+							onClick={e => {
+								actions.login(email, password);
+								history.push("/admin-main-menu");
+							}}
 							className="btn btn-primary">
 							Login
 						</button>
-						{/* </Link> */}
 					</div>
-					{/* ) : null} */}
 				</div>
 			</div>
 		</div>
 	);
 };
-
 Modal.propTypes = {
-	onClose: PropTypes.func
+	onClose: PropTypes.func,
+	id: PropTypes.string,
+	show: PropTypes.bool
 };
