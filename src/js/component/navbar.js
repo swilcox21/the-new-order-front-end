@@ -18,6 +18,9 @@ export const Navbar = props => {
 
 	});
 
+	const [state, setState] = useState({
+		showModal: false
+	});
 	const onSubmit = data => {};
 
 	return (
@@ -28,6 +31,7 @@ export const Navbar = props => {
 
 				<a className="navbar-brand text-danger" href="#">
 
+				<a className="navbar-brand text-danger" href="#">
 					The New Order
 
 				</a>
@@ -54,6 +58,7 @@ export const Navbar = props => {
 
 				<div className="collapse navbar-collapse " id="navbarNavDropdown">
 
+				<div className="collapse navbar-collapse " id="navbarNavDropdown">
 					<ul className="navbar-nav ">
 
 						{/* {props.test === "home" ? null : (
@@ -70,6 +75,12 @@ export const Navbar = props => {
 
 						)} */}
 
+                            <li className="nav-item active">
+                                <a className="nav-link" href="#">
+                                    Home <span className="sr-only">(current)</span>
+                                </a>
+                            </li>
+                        )} */}
 						{store.token != null ? (
 
 							<li className="nav-item ">
@@ -150,6 +161,21 @@ export const Navbar = props => {
 
 								)}
 
+							<div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								{store.token != null ? (
+									<div onClick={() => actions.logout()} type="button" className="dropdown-item">
+										Logout
+									</div>
+								) : (
+									<div
+										onClick={() => setState({ showModal: true })}
+										type="button"
+										className="dropdown-item"
+										data-toggle="modal"
+										data-target="#exampleModal">
+										Login
+									</div>
+								)}
 								{/* </Link> */}
 
 								{/* ) : null} */}
@@ -186,6 +212,16 @@ export const Navbar = props => {
 
 						</form> */}
 
+                            <input
+                                className="form-control mr-sm-2"
+                                type="search"
+                                placeholder="Find a Vendor"
+                                aria-label="Search"
+                            />
+                            <button className="btn btn-success my-2 my-sm-0" type="submit">
+                                Search
+                            </button>
+                        </form> */}
 					</ul>
 
 				</div>
@@ -196,6 +232,7 @@ export const Navbar = props => {
 
 			<Modal id="exampleModal" show={state.showModal} onClose={() => setState({ showModal: false })} />
 
+			<Modal id="exampleModal" show={state.showModal} onClose={() => setState({ showModal: false })} />
 		</>
 
 	);

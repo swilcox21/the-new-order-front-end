@@ -1,19 +1,27 @@
 
 
 import React, { useState, useEffect, useContext } from "react";
+<<<<<<< HEAD
 
 import { Link, useHistory } from "react-router-dom";
 
+=======
+import { Link, useHistory } from "react-router-dom";
+>>>>>>> 4ff469e431b8ef076e2508ed5f9ecbd50cd5f2ae
 import PropTypes from "prop-types";
 
 import { useForm } from "react-hook-form";
 
 import { Context } from "../store/appContext";
+<<<<<<< HEAD
 
 ​
 
 export const Modal = props => {
 
+=======
+export const Modal = props => {
+>>>>>>> 4ff469e431b8ef076e2508ed5f9ecbd50cd5f2ae
 	const { login, handleSubmit } = useForm();
 
 	const { store, actions } = useContext(Context);
@@ -21,21 +29,30 @@ export const Modal = props => {
 	const [email, setEmail] = useState("");
 
 	const [password, setPassword] = useState("");
+<<<<<<< HEAD
 
 	const history = useHistory();
 
 ​
 
+=======
+	const history = useHistory();
+>>>>>>> 4ff469e431b8ef076e2508ed5f9ecbd50cd5f2ae
 	return (
 
 		<div
 
 			className="modal fade"
+<<<<<<< HEAD
 
 			id={props.id}
 
 			style={{ display: props.show ? "inline-block" : "none" }}
 
+=======
+			id={props.id}
+			style={{ display: props.show ? "inline-block" : "none" }}
+>>>>>>> 4ff469e431b8ef076e2508ed5f9ecbd50cd5f2ae
 			tabIndex="-1"
 
 			aria-labelledby="exampleModalLabel"
@@ -103,9 +120,12 @@ export const Modal = props => {
 						</div>
 
 					</div>
+<<<<<<< HEAD
 
 ​
 
+=======
+>>>>>>> 4ff469e431b8ef076e2508ed5f9ecbd50cd5f2ae
 					<div className="modal-footer">
 
 						<button type="button" className="btn btn-secondary" data-dismiss="modal">
@@ -113,6 +133,7 @@ export const Modal = props => {
 							Close
 
 						</button>
+<<<<<<< HEAD
 
 ​
 
@@ -130,14 +151,27 @@ export const Modal = props => {
 
 							}}
 
+=======
+						<button
+							data-dismiss="modal"
+							type="button"
+							onClick={e => {
+								actions.login(email, password);
+								history.push("/admin-main-menu");
+							}}
+>>>>>>> 4ff469e431b8ef076e2508ed5f9ecbd50cd5f2ae
 							className="btn btn-primary">
 
 							Login
 
 						</button>
+<<<<<<< HEAD
 
 					</div>
 
+=======
+					</div>
+>>>>>>> 4ff469e431b8ef076e2508ed5f9ecbd50cd5f2ae
 				</div>
 
 			</div>
@@ -147,6 +181,7 @@ export const Modal = props => {
 	);
 
 };
+<<<<<<< HEAD
 
 ​
 
@@ -158,6 +193,12 @@ Modal.propTypes = {
 
 	show: PropTypes.bool
 
+=======
+Modal.propTypes = {
+	onClose: PropTypes.func,
+	id: PropTypes.string,
+	show: PropTypes.bool
+>>>>>>> 4ff469e431b8ef076e2508ed5f9ecbd50cd5f2ae
 };
 
 

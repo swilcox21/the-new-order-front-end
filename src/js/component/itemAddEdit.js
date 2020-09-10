@@ -20,19 +20,26 @@ export const ItemAddEdit = () => {
 	return (
 		<div className="container-fluid">
 			<div className="jumbotron image mb-3">
-				<h1 className="display-4 text-center text-dark">{"Create Your Menu"}</h1>
-				<p className="lead text-center text-dark">
+				<h1 className="display-4 text-center text-white">{"Create Your Menu"}</h1>
+				<p className="lead text-center text-white">
 					<strong>{"Chefs don't make mistakes; they make new dishes"}</strong>
 				</p>
+
+				<button className=" btn-dark text-white">
+					<Link to="/">Home</Link>
+				</button>
+				<button className=" btn-dark text-white">
+					<Link to="admin-main-menu">Back</Link>
+				</button>
 			</div>
-			<div className="d-flex flex-row w-100 justify-content-between">
+			<div className="d-flex flex-row w-200">
 				{store.categories.map((category, index) => {
 					return (
 						<div
 							key={index}
-							className="header d-flex justify-content-between"
-							style={{ width: "100%", height: "600px", border: "2px solid red" }}>
-							<div className="d-flex flex-column justify-content-between">
+							className="header d-flex"
+							style={{ width: "200%", height: "600px", border: "2px solid red" }}>
+							<div className="d-flex flex-column" style={{ width: "200%" }}>
 								<button
 									onClick={() => {
 										setOpenAdd(!openAdd);
@@ -43,7 +50,7 @@ export const ItemAddEdit = () => {
 											category: category
 										});
 									}}
-									className="btn btn-outline-secondary  btn-block btn-dark text-white"
+									className="btn btn-block btn-dark text-white"
 									type="button">
 									{category}
 								</button>
@@ -117,12 +124,22 @@ export const ItemAddEdit = () => {
 										{create.id ? (
 											<>
 												<button
-													onClick={() =>
+													type="button"
+													className="btn btn-default btn-sm"
+													onClick={async () => {
+														await actions.deleteProduct(create.id);
+														setOpenAdd(false);
+													}}>
+													<i className="fas fa-trash">Trash</i>
+												</button>
+												<button
+													onClick={() => {
+														setOpenAdd(false);
 														actions.updateProduct({
 															...create,
 															category
-														})
-													}
+														});
+													}}
 													type="button"
 													className="btn btn-primary form-control">
 													edit
@@ -130,12 +147,13 @@ export const ItemAddEdit = () => {
 											</>
 										) : (
 											<button
-												onClick={e =>
+												onClick={e => {
+													setOpenAdd(false);
 													actions.createProduct({
 														...create,
 														category
-													})
-												}
+													});
+												}}
 												type="button"
 												className="btn btn-primary form-control">
 												save
@@ -143,25 +161,17 @@ export const ItemAddEdit = () => {
 										)}
 										<button
 											onClick={() => {
-												setOpenAdd(false),
-													setCreate({
-														name: "",
-														price: "",
-														description: "",
-														category: ""
-													});
+												setOpenAdd(false);
+												setCreate({
+													name: "",
+													price: "",
+													description: "",
+													category: ""
+												});
 											}}
 											type="button"
 											className="btn btn-dark my-2 form-control">
 											close
-										</button>
-										<button
-											type="button"
-											className="btn btn-default btn-sm"
-											onClick={async () => {
-												await actions.deleteProduct(create.id);
-											}}>
-											<i className="fas fa-trash">Trash</i>
 										</button>
 									</form>
 								) : null}

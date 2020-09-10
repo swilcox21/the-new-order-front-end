@@ -4,6 +4,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			token: null,
 			currentVendor: [],
+			cart: [],
+			subTotal: 0,
+			totalCartItems: 0,
 			vendor_locations: [
 				{
 					vendor_id: 1,
@@ -399,6 +402,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			setCartSubTotal: async subTotal => {
 				setStore({ subTotal: subTotal });
+			},
+			setCartItemsTotal: async totalCartItems => {
+				setStore({ totalCartItems: totalCartItems });
 			},
 			addToOrder: async (name, special_instructions, id, unit_price, order_id) => {
 				let response = await fetch(backendApiUrl + "user-main-menu/" + order_id, {

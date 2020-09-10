@@ -72,6 +72,13 @@ export const AdminMainMenu = () => {
 						</a>
 					</p>
 				</Link>
+				<Link to="/">
+					<p className="lead">
+						<a className="btn btn-dark text-white btn-lg" href="#" role="button">
+							{"Home"}
+						</a>
+					</p>
+				</Link>
 			</div>
 			<div className="d-flex flex-row justify-content-between" style={{ height: "600px" }}>
 				<div

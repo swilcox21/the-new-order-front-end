@@ -28,4 +28,16 @@
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 10px;
+    margin-right: 9em;
+    margin-left: 9em;
+}
+
+.form-background{
+    background-image: url("https://health.clevelandclinic.org/wp-content/uploads/sites/3/2019/06/cropped-GettyImages-643764514.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.button-background {
+    background-color: #c5504e;
 }

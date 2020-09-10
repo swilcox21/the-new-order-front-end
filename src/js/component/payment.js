@@ -10,12 +10,12 @@ export const Payment = () => {
 	const total = subTotal + subTotal * 0.06;
 
 	return (
-		<div className="new-container ml-auto mr-auto mb-3 mt-3">
+		<div className="new-container mb-3 mt-5">
 			<div className="row">
 				<div className="col-md-4 order-md-2 mb-4">
 					<h4 className="d-flex justify-content-between align-items-center mb-3">
-						<span className="text-muted">Your cart</span>
-						<span className="badge badge-secondary badge-pill">{store.cart && store.cart.length}</span>
+						<span className="text-muted">Your Cart</span>
+						<span className="badge button-background text-light badge-pill">{store.totalCartItems}</span>
 					</h4>
 					<ul className="list-group mb-3">
 						{store.cart &&
@@ -54,7 +54,7 @@ export const Payment = () => {
 						</li>
 					</ul>
 				</div>
-				<div className="col-md-8 order-md-1">
+				<div className="col-md-8 order-md-1 form-background p-4 text-light">
 					<h4 className="mb-3">{"Your Contact Information"}</h4>
 					<form className="needs-validation" noValidate>
 						<div className="row">
@@ -121,7 +121,7 @@ export const Payment = () => {
 							<div className="col-md-6 mb-3">
 								<label htmlFor="cc-name">Name on card</label>
 								<input type="text" className="form-control" id="cc-name" placeholder="" required />
-								<small className="text-muted">Full name as displayed on card</small>
+								<small className="text-light">Full name as displayed on card</small>
 								<div className="invalid-feedback">Name on card is required</div>
 							</div>
 							<div className="col-md-6 mb-3">
@@ -150,8 +150,8 @@ export const Payment = () => {
 						</div>
 						<hr className="mb-4" />
 						<Link to="/order-confirmation">
-							<button className="btn btn-primary btn-lg btn-block" type="button">
-								{"Checkout"}
+							<button className="btn btn-lg btn-block button-background text-light" type="button">
+								{"CHECKOUT"}
 							</button>
 						</Link>
 					</form>
