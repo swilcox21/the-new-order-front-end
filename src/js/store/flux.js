@@ -207,6 +207,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			orderForDetail: {}
 		},
 		actions: {
+			logout: () => {
+				setStore({ token: null });
+			},
 			createProduct: item => {
 				const store = getStore();
 				fetch(backendApiUrl + "menu-items", {
