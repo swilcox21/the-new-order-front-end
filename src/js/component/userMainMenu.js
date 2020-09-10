@@ -133,9 +133,10 @@ export const UserMainMenu = props => {
 
 	return (
 		<div className="container-fluid">
+			<link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet" />
 			<div className="jumbotron2 image mb-3">
-				<h1 className="display-4 text-center text-dark">{"Find Your Craving Here"}</h1>
-				<p className="lead text-center text-dark">
+				<h1 className="display-4 text-center text-light">{"Find Your Craving Here"}</h1>
+				<p className="lead text-center text-light">
 					<strong>{"Chefs don't make mistakes; they make new dishes"}</strong>
 				</p>
 				<p className="lead">
@@ -146,10 +147,10 @@ export const UserMainMenu = props => {
 			</div>
 			<div className="d-flex">
 				<div className="menu-view border border-dark w-50 mr-4">
-					<div className="container py-5">
-						<div className="row">
-							<div className="col-lg-10 mx-auto col-12 text-center mb-3">
-								<h1 className="mt-0 text-primary">
+					<div className="py-5 container-style">
+						<div className="row ml-auto mr-auto">
+							<div className="col-lg-10 mx-auto col-12 text-center mb-3 title-border">
+								<h1 className="mt-0 main-color menu-font">
 									{store.vendors.map(vendor => {
 										if (vendor.id == params.bubu) {
 											return vendor.vendor_name;
@@ -161,7 +162,9 @@ export const UserMainMenu = props => {
 								return (
 									<React.Fragment key={index}>
 										<div className="col-12 mt-4">
-											<h3 className="text-center">{category}</h3>
+											<h3 className="text-center to-uppercase menu-font main-color title-border pt-2 pb-2">
+												{category}
+											</h3>
 											<hr className="accent my-5" />
 										</div>
 										<div className="card-columns w-75 m-auto">
@@ -169,13 +172,13 @@ export const UserMainMenu = props => {
 												if (product.category == category) {
 													return (
 														<div
-															className="card card-body"
+															className="card card-body menu-item menu-font"
 															key={product.id}
 															onClick={() => addToCart(product)}>
-															<span className="float-right font-weight-bold">
+															<span className="float-right font-weight-bold ml-1">
 																{"$" + product.price}
 															</span>
-															<h6 className="text-truncate">{product.name}</h6>
+															<h6 className="mr-1">{product.name}</h6>
 															<p className="small">{product.description}</p>
 														</div>
 													);
@@ -185,8 +188,8 @@ export const UserMainMenu = props => {
 									</React.Fragment>
 								);
 							})}
-							<div className="col-12 mt-5 border border-right-0 border-left-0">
-								<div className="row">
+							<div className="col-12 mt-5 contact-border pl-4 pr-4 pt-2 pb-2 ml-auto mr-auto">
+								<div className="row menu-font main-color">
 									<div className="col h5">
 										{store.vendors.map(vendor => {
 											if (vendor.id == params.bubu) {
@@ -246,7 +249,7 @@ export const UserMainMenu = props => {
 																		<div className="col col-qty d-flex text-center w-75">
 																			<a
 																				href="#"
-																				className="qty qty-minus w-25"
+																				className="qty-minus w-25 quantity"
 																				onClick={() =>
 																					handleQuantityDecrease(orderItem)
 																				}>
@@ -267,7 +270,7 @@ export const UserMainMenu = props => {
 																			/>
 																			<a
 																				href="#"
-																				className="qty qty-plus w-25"
+																				className="qty-plus w-25 quantity"
 																				onClick={() =>
 																					handleQuantityIncrease(orderItem)
 																				}>
@@ -281,16 +284,11 @@ export const UserMainMenu = props => {
 																		<a
 																			href="#!"
 																			type="button"
-																			className="card-link-secondary small text-uppercase mr-3"
+																			className="card-link-secondary small text-uppercase mr-3 trash"
 																			onClick={() => removeFromCart(orderItem)}>
-																			<i className="fas fa-trash-alt mr-1" />{" "}
+																			<i className="fas fa-trash-alt mr-1" />
 																			{"Remove item"}
 																		</a>
-																		<a
-																			href="#!"
-																			type="button"
-																			className="card-link-secondary small text-uppercase"
-																		/>
 																	</div>
 																	<p className="mb-0">
 																		<span>
@@ -368,19 +366,20 @@ export const UserMainMenu = props => {
 
 										<button
 											type="button"
-											className="btn btn-primary btn-block"
+											className="btn button-background btn-block text-light"
 											onClick={async event => {
 												console.log(cart);
 
 												event.preventDefault();
 												let result = actions.setCartOnStore(cart);
 												let totals = actions.setCartSubTotal(cartSub);
-												if ((result, totals)) {
+												let totalCartItems = actions.setCartItemsTotal(cartTotal);
+												if ((result, totals, totalCartItems)) {
 													history.push("/payment");
 												}
 												console.log(cartSub);
 											}}>
-											{"Checkout"}
+											{"CHECKOUT"}
 										</button>
 									</div>
 								</div>

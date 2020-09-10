@@ -32,3 +32,62 @@ a.qty:hover {
 .card-columns {
     column-count: 2;
 }
+
+.container-style {
+    background-image: url("https://unblast.com/wp-content/uploads/2020/05/Light-Wood-Background-Texture-5.jpg");
+}
+
+.main-color,
+.trash {
+    color: #c5504e;
+}
+
+.button-background {
+    background-color: #c5504e;
+}
+
+.menu-font {
+    font-family: 'Courgette', cursive;
+}
+
+.to-uppercase {
+    text-transform: uppercase;
+}
+.title-border {
+    border-width: thick;
+    border-style: solid;
+    border-color: white;
+}
+
+.contact-border {
+    border-top-color: white;
+    border-top-width: thick;
+    border-top-style: solid;
+    border-bottom-color: white;
+    border-bottom-width: thick;
+    border-bottom-style: solid;
+}
+
+.menu-item {
+    border-color: #c5504e;
+    border-width: thin;
+    transition-timing-function: ease-out;
+}
+.menu-item:hover {
+    border-width: thick;
+}
+
+.trash:hover {
+    color: grey;
+}
+.quantity {
+    background-color: #c5504e;
+    border-radius: 1em;
+    color: white;
+    font-size: 18px;
+}
+.quantity:hover {
+    background-color: grey;
+    color: white;
+    font-size: 18px;
+}
