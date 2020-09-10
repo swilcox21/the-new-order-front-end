@@ -178,7 +178,9 @@ export const UserMainMenu = props => {
 															<span className="float-right font-weight-bold ml-1">
 																{"$" + product.price}
 															</span>
-															<h6 className="mr-1">{product.name}</h6>
+															<h6 className="mr-1">
+																<u>{product.name}</u>
+															</h6>
 															<p className="small">{product.description}</p>
 														</div>
 													);
@@ -216,16 +218,19 @@ export const UserMainMenu = props => {
 							<div className="pl-4 pr-4">
 								<div className="mb-3">
 									<div className="pt-4 wish-list">
-										<h5 className="mb-4">
-											Cart (<span>{cartTotal}</span> items)
-										</h5>
+										<h4 className="mb-4">
+											Cart{" "}
+											<span className="badge button-background text-light badge-pill ml-2">
+												{cartTotal}
+											</span>
+										</h4>
 
 										<div className="row mb-4">
 											<div className="col-md-9 col-lg-12 col-xl-12">
 												<div>
 													{cart.map(orderItem => {
 														return (
-															<div key={orderItem.product_id}>
+															<div key={orderItem.product_id} className="cart-item">
 																<div className="d-flex justify-content-between">
 																	<div className="col col-6">
 																		<h5>{orderItem.name}</h5>
@@ -338,6 +343,8 @@ export const UserMainMenu = props => {
 									</div>
 								</div>
 							</div>
+
+							<hr className="mb-4" />
 
 							<div className="tally pr-4 pl-4">
 								<div className="mb-3">
