@@ -12,7 +12,7 @@ export const AdminMainMenu = () => {
 		name: null,
 		items: null,
 		quantity: null,
-		special_instruction: null
+		special_instructions: null
 	});
 	const handleDragStart = useCallback(order => setDraggedOrder(order), []);
 	const handleDrop = useCallback(
@@ -267,9 +267,9 @@ export const AdminMainMenu = () => {
 								{showModal.items.map((item, index) => {
 									// var product = store.currentVendor.products.find(i => i.id == item.product_id)
 									return (
-										<div key={index}>
+										<div key={index} className="d-flex flex-row">
 											<div>{item.name}</div>
-											<div>{item.quantity}</div>
+											<div className="ml-auto font-weight-bold">{item.quantity}</div>
 											<div>{item.special_intructions}</div>
 										</div>
 									);
