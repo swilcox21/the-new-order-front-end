@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import GoogleMapReact from "google-map-react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import "../../styles/maps.scss";
 import { Context } from "../store/appContext";
 
@@ -43,6 +43,13 @@ export const Maps = props => {
 						Search
 					</button>
 				</form>
+				<Link to="/">
+					<p className="lead">
+						<a className="btn btn-dark text-white btn-lg" href="#" role="button">
+							{"Home"}
+						</a>
+					</p>
+				</Link>
 			</div>
 			{store.searchResults != null ? (
 				<div className="card" style={{ width: "18rem" }}>

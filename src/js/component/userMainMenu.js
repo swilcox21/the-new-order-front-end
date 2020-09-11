@@ -139,11 +139,22 @@ export const UserMainMenu = props => {
 				<p className="shadow2 lead text-center text-light">
 					<strong>{"Chefs don't make mistakes; they make new dishes"}</strong>
 				</p>
-				<p className="lead">
-					<Link className="btn btn-dark text-white btn-lg" to="/maps" role="button">
-						{"Search for a Vendor"}
-					</Link>
-				</p>
+				<div className="d-flex flex-row">
+					<p className="lead mr-1 ">
+						<Link className="btn btn-dark text-white btn-lg" to="/maps" role="button">
+							{"Search for a Vendor"}
+						</Link>
+					</p>
+					<p>
+						<Link to="/">
+							<p className="lead">
+								<a className="btn btn-dark text-white btn-lg" href="#" role="button">
+									{"Home"}
+								</a>
+							</p>
+						</Link>
+					</p>
+				</div>
 			</div>
 			<div className="d-flex">
 				<div className="menu-view border border-dark w-50 mr-4">

@@ -65,7 +65,7 @@ export const AdminMainMenu = () => {
                     </a>
                 </p>*/}
 				<div className="d-flex flex-row">
-					<p className="lead">
+					<p className="lead mr-1">
 						<a
 							className="button-clicked btn btn-dark text-white btn-lg"
 							href="#"
@@ -77,7 +77,7 @@ export const AdminMainMenu = () => {
 						</a>
 					</p>
 					<Link to="/item-add-edit">
-						<p className="lead">
+						<p className="lead mr-1">
 							<a className="btn btn-dark text-white btn-lg" href="#" role="button">
 								{"Add/Edit Items"}
 							</a>

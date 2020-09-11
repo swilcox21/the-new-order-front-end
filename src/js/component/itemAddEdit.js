@@ -24,7 +24,7 @@ export const ItemAddEdit = () => {
 				<p className="shadow2 lead text-center text-white">
 					<strong>{"Chefs don't make mistakes; they make new dishes"}</strong>
 				</p>
-				<button className=" btn btn-dark text-white btn-lg">
+				<button className=" btn btn-dark text-white btn-lg mr-1">
 					<Link to="/" style={{ color: "white" }}>
 						Home
 					</Link>
