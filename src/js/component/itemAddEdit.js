@@ -20,15 +20,19 @@ export const ItemAddEdit = () => {
 	return (
 		<div className="container-fluid">
 			<div className="jumbotron image mb-3">
-				<h1 className="display-4 text-center text-white">{"Create Your Menu"}</h1>
-				<p className="lead text-center text-white">
+				<h1 className="shadow display-4 text-center text-white">{"Create Your Menu"}</h1>
+				<p className="shadow lead text-center text-white">
 					<strong>{"Chefs don't make mistakes; they make new dishes"}</strong>
 				</p>
-				<button className=" btn-dark text-white">
-					<Link to="/">Home</Link>
+				<button className=" btn btn-dark text-white btn-lg">
+					<Link to="/" style={{ color: "white" }}>
+						Home
+					</Link>
 				</button>
-				<button className=" btn-dark text-white">
-					<Link to="admin-main-menu">Back</Link>
+				<button className=" btn btn-dark text-white btn-lg">
+					<Link to="admin-main-menu" style={{ color: "white" }}>
+						Back
+					</Link>
 				</button>
 			</div>
 			<div className="d-flex flex-row w-200">

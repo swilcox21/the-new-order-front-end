@@ -52,8 +52,8 @@ export const AdminMainMenu = () => {
 	return (
 		<div className="container-fluid">
 			<div className="jumbotron3 image mb-3">
-				<h1 className="display-4 text-center text-white">{"Your Orders Here"}</h1>
-				<p className="lead text-center text-white">
+				<h1 className="shadow display-4 text-center text-white">{"Your Orders Here"}</h1>
+				<p className="shadow lead text-center text-white">
 					<strong>{"Chefs don't make mistakes; they make new dishes"}</strong>
 				</p>
 				{/*<p className="lead">
