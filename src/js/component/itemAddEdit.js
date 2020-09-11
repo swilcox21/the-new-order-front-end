@@ -20,8 +20,8 @@ export const ItemAddEdit = () => {
 	return (
 		<div className="container-fluid">
 			<div className="jumbotron image mb-3">
-				<h1 className="shadow display-4 text-center text-white">{"Create Your Menu"}</h1>
-				<p className="shadow lead text-center text-white">
+				<h1 className="shadow2 display-4 text-center text-white">{"Create Your Menu"}</h1>
+				<p className="shadow2 lead text-center text-white">
 					<strong>{"Chefs don't make mistakes; they make new dishes"}</strong>
 				</p>
 				<button className=" btn btn-dark text-white btn-lg">

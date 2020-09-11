@@ -3,7 +3,7 @@ import "../../styles/adminMainMenu.scss";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 export const AdminMainMenu = () => {
-	const [color, setColor] = useState("red");
+	const [color, setColor] = useState("#7FFF00");
 	const { store, actions } = useContext(Context);
 	const [draggedOrder, setDraggedOrder] = useState(null);
 	const [showModal, setShowModal] = useState({
@@ -55,8 +55,8 @@ export const AdminMainMenu = () => {
 	return (
 		<div className="container-fluid">
 			<div className="jumbotron3 image mb-3">
-				<h1 className="shadow display-4 text-center text-white">{"Your Orders Here"}</h1>
-				<p className="shadow lead text-center text-white">
+				<h1 className="shadow2 display-4 text-center text-white">{"Your Orders Here"}</h1>
+				<p className="shadow2 lead text-center text-white">
 					<strong>{"Chefs don't make mistakes; they make new dishes"}</strong>
 				</p>
 				{/*<p className="lead">
@@ -66,7 +66,13 @@ export const AdminMainMenu = () => {
                 </p>*/}
 				<div className="d-flex flex-row">
 					<p className="lead">
-						<a className="btn btn-dark text-white btn-lg" href="#" role="button">
+						<a
+							className="button-clicked btn btn-dark text-white btn-lg"
+							href="#"
+							role="button"
+							onClick={() => {
+								setColor(" #7FFF00");
+							}}>
 							{"Go Online"}
 						</a>
 					</p>

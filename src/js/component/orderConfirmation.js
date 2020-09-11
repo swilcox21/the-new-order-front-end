@@ -9,7 +9,7 @@ export const OrderConfirmation = () => {
 				<h1 className="display-4 ">Thank You!</h1>
 				<p className="lead">Your order has been placed.</p>
 				<Link to="/">
-					<p className="text-white">Back to Home Page</p>
+					<p className="home text-white">Back to Home Page</p>
 				</Link>
 			</div>
 		</div>
