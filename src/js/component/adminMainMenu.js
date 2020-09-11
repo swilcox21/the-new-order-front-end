@@ -51,8 +51,8 @@ export const AdminMainMenu = () => {
 	return (
 		<div className="container-fluid">
 			<div className="jumbotron3 image mb-3">
-				<h1 className="display-4 text-center text-dark">{"Your Orders Here"}</h1>
-				<p className="lead text-center text-dark">
+				<h1 className="display-4 text-center text-white">{"Your Orders Here"}</h1>
+				<p className="lead text-center text-white">
 					<strong>{"Chefs don't make mistakes; they make new dishes"}</strong>
 				</p>
 				{/*<p className="lead">
@@ -60,25 +60,27 @@ export const AdminMainMenu = () => {
 						{"View Past Orders"}
 					</a>
                 </p>*/}
-				<p className="lead">
-					<a className="btn btn-dark text-white btn-lg" href="#" role="button">
-						{"Go Online"}
-					</a>
-				</p>
-				<Link to="/item-add-edit">
+				<div className="d-flex flex-row">
 					<p className="lead">
 						<a className="btn btn-dark text-white btn-lg" href="#" role="button">
-							{"Add/Edit Items"}
+							{"Go Online"}
 						</a>
 					</p>
-				</Link>
-				<Link to="/">
-					<p className="lead">
-						<a className="btn btn-dark text-white btn-lg" href="#" role="button">
-							{"Home"}
-						</a>
-					</p>
-				</Link>
+					<Link to="/item-add-edit">
+						<p className="lead">
+							<a className="btn btn-dark text-white btn-lg" href="#" role="button">
+								{"Add/Edit Items"}
+							</a>
+						</p>
+					</Link>
+					<Link to="/">
+						<p className="lead">
+							<a className="btn btn-dark text-white btn-lg" href="#" role="button">
+								{"Home"}
+							</a>
+						</p>
+					</Link>
+				</div>
 			</div>
 			<div className="d-flex flex-row justify-content-between" style={{ height: "600px" }}>
 				<div
