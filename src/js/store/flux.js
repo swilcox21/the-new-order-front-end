@@ -159,7 +159,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 					expected_pickup: null,
 					vendor_id: 1,
 					sub_total_price: 12.5,
-					total_price: 12.5 * 1.07
+					total_price: 12.5 * 1.07,
+					order_items: [
+						{
+							name: "Horchata",
+							quantity: 2,
+							special_instructions: "no straw"
+						},
+						{
+							name: "Calamari",
+							quantity: 1,
+							special_instructions: "extra crispy"
+						}
+					]
 				},
 				{
 					id: 3,
@@ -173,7 +185,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 					expected_pickup: null,
 					vendor_id: 1,
 					sub_total_price: 12.5,
-					total_price: 12.5 * 1.07
+					total_price: 12.5 * 1.07,
+					order_items: [
+						{
+							name: "Horchata",
+							quantity: 2,
+							special_instructions: "no straw"
+						},
+						{
+							name: "Calamari",
+							quantity: 1,
+							special_instructions: "extra crispy"
+						}
+					]
 				},
 				{
 					id: 4,
@@ -187,7 +211,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 					expected_pickup: null,
 					vendor_id: 1,
 					sub_total_price: 15.0,
-					total_price: 15.0 * 1.07
+					total_price: 15.0 * 1.07,
+					order_items: [
+						{
+							name: "Horchata",
+							quantity: 2,
+							special_instructions: "no straw"
+						},
+						{
+							name: "Calamari",
+							quantity: 1,
+							special_instructions: "extra crispy"
+						}
+					]
 				},
 				{
 					id: 5,
@@ -201,7 +237,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 					expected_pickup: null,
 					vendor_id: 1,
 					sub_total_price: 15.0,
-					total_price: 15.0 * 1.07
+					total_price: 15.0 * 1.07,
+					order_items: [
+						{
+							name: "Horchata",
+							quantity: 2,
+							special_instructions: "no straw"
+						},
+						{
+							name: "Calamari",
+							quantity: 1,
+							special_instructions: "extra crispy"
+						}
+					]
 				}
 			],
 			orderForDetail: {}
