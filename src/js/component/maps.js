@@ -26,30 +26,34 @@ export const Maps = props => {
 				<p className="shadow2 lead text-center text-white">
 					<strong>{"Chefs don't make mistakes; they make new dishes"}</strong>
 				</p>
-				<form className="form-inline my-2 my-lg-0">
-					<input
-						className="form-control mr-sm-2"
-						type="search"
-						placeholder="Find a Vendor"
-						aria-label="Search"
-						value={searchName}
-						onChange={handleChange}
-						// onClick={e => history.push(`/user-main-menu/${vendor_location.vendor_id}`)}
-					/>
-					<button
-						className="btn btn-success my-2 my-sm-0"
-						type="button"
-						onClick={e => actions.getResults(searchName)}>
-						Search
-					</button>
-				</form>
-				<Link to="/">
-					<p className="lead">
-						<a className="btn btn-dark text-white btn-lg" href="#" role="button">
-							{"Home"}
-						</a>
-					</p>
-				</Link>
+				<div className="d-flex flex-row">
+					<form className="form-inline my-2 my-lg-0">
+						<input
+							className="form-control mr-sm-2"
+							type="search"
+							placeholder="Find a Vendor"
+							aria-label="Search"
+							value={searchName}
+							onChange={handleChange}
+							// onClick={e => history.push(`/user-main-menu/${vendor_location.vendor_id}`)}
+						/>
+						<button
+							className="btn btn-success my-2 my-sm-0"
+							type="button"
+							onClick={e => actions.getResults(searchName)}>
+							Search
+						</button>
+					</form>
+					<div className="ml-auto">
+						<Link to="/">
+							<p className="lead">
+								<a className="btn btn-dark text-white btn-lg" href="#" role="button">
+									{"Home"}
+								</a>
+							</p>
+						</Link>
+					</div>
+				</div>
 			</div>
 			{store.searchResults != null ? (
 				<div className="card" style={{ width: "18rem" }}>
