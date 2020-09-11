@@ -5,3 +5,11 @@
     background-repeat: no-repeat;
 }
 
+.button-background {
+    background-color: red;
+    color: white;
+}
+
+.button-background::a {
+    color: white !important;
+}

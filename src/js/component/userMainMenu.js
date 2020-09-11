@@ -101,7 +101,7 @@ export const UserMainMenu = props => {
 		setCartSub(subTotal);
 	};
 	const tallyUpTotal = subTotal => {
-		const tax = subTotal * 0.06;
+		const tax = subTotal * 0.07;
 		return tax + subTotal;
 	};
 	//remove from cart

@@ -8,7 +8,9 @@ export const AdminMainMenu = () => {
 	const [draggedOrder, setDraggedOrder] = useState(null);
 	const [showModal, setShowModal] = useState({
 		show: false,
-		order_id: null
+		order_id: null,
+		name: null,
+		items: null
 	});
 	const handleDragStart = useCallback(order => setDraggedOrder(order), []);
 	const handleDrop = useCallback(
@@ -95,34 +97,37 @@ export const AdminMainMenu = () => {
 							e.stopPropagation();
 						}}
 						onDrop={handleDrop}>
-						{store.orders.map(order => {
-							if (order.started_at == null && order.cancel_order == null && order.closed_at == null) {
-								return (
-									<div
-										key={order.id}
-										draggable
-										className=" box bg-danger"
-										onDrag={e => {
-											e.preventDefault();
-											e.stopPropagation();
-										}}
-										onDragStart={e => handleDragStart(order)}>
-										<p>{order.name}</p>
-										<p>{order.number}</p>
-										<button
-											className="btn btn-danger"
-											onClick={e =>
-												setShowModal({
-													show: true,
-													order_id: order.id
-												})
-											}>
-											View Order
-										</button>
-									</div>
-								);
-							}
-						})}
+						{store.token != null &&
+							store.currentVendor.orders.map(order => {
+								if (order.started_at == null && order.cancel_order == null && order.closed_at == null) {
+									return (
+										<div
+											key={order.id}
+											draggable
+											className=" box bg-danger"
+											onDrag={e => {
+												e.preventDefault();
+												e.stopPropagation();
+											}}
+											onDragStart={e => handleDragStart(order)}>
+											<p>{order.name}</p>
+											<p>{order.number}</p>
+											<button
+												className="btn btn-danger"
+												onClick={e =>
+													setShowModal({
+														show: true,
+														order_id: order.id,
+														name: order.name,
+														items: order.order_items
+													})
+												}>
+												View Order
+											</button>
+										</div>
+									);
+								}
+							})}
 					</div>
 				</div>
 
@@ -227,6 +232,7 @@ export const AdminMainMenu = () => {
 								<h5 className="modal-title" id="exampleModalLabel">
 									{showModal.order_id}
 								</h5>
+								<p>{showModal.name}</p>
 								<button
 									type="button"
 									className="close"
@@ -240,7 +246,18 @@ export const AdminMainMenu = () => {
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
-							<div className="modal-body">...</div>
+							<div className="modal-body">
+								{showModal.items.map((item, index) => {
+									var product = store.currentVendor.products.find(i => i.id == item.product_id);
+									return (
+										<div key={index}>
+											<div>{product.name}</div>
+											<div>{product.quantity}</div>
+											<div>{product.special_intructions}</div>
+										</div>
+									);
+								})}
+							</div>
 						</div>
 					</div>
 				</div>
