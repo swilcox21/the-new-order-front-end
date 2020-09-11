@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { Modal } from "./modal";
 import "../../styles/navbar.scss";
 import { Context } from "../store/appContext";
+
 export const Navbar = props => {
 	const { store, actions } = useContext(Context);
 	const [state, setState] = useState({

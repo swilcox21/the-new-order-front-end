@@ -1,12 +1,19 @@
 import React, { useState, useEffect, useContext } from "react";
+
 import { Link, useHistory } from "react-router-dom";
+
 import PropTypes from "prop-types";
+
 import { useForm } from "react-hook-form";
+
 import { Context } from "../store/appContext";
 export const Modal = props => {
 	const { login, handleSubmit } = useForm();
+
 	const { store, actions } = useContext(Context);
+
 	const [email, setEmail] = useState("");
+
 	const [password, setPassword] = useState("");
 	const history = useHistory();
 	return (
@@ -23,13 +30,16 @@ export const Modal = props => {
 						<h5 className="modal-title" id="exampleModalLabel">
 							Vendor Login
 						</h5>
+
 						<button type="button" className="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
+
 					<div className="modal-body">
 						<div className="form-group">
 							<label htmlFor="exampleInputEmail1">Email address</label>
+
 							<input
 								type="email"
 								className="form-control"
@@ -38,8 +48,10 @@ export const Modal = props => {
 								onChange={e => setEmail(e.target.value)}
 							/>
 						</div>
+
 						<div className="form-group">
 							<label htmlFor="exampleInputPassword1">Password</label>
+
 							<input
 								type="password"
 								className="form-control"
