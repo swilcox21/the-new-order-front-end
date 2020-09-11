@@ -52,19 +52,27 @@ export const SignUp = props => {
 						placeholder="Phone Number"
 						className="rounded mb-4"
 					/>
-					<button
-						onClick={async event => {
-							event.preventDefault();
-							let result = await actions.signUp(name, email, password, phone);
-							if (result) {
-								history.push("/admin-main-menu");
-							}
-						}}
-						type="submit"
-						name="submit"
-						className="w-50 ml-auto mr-auto rounded bg-white">
-						{"SIGN UP"}
-					</button>
+					<div className="d-flex">
+						<button
+							onClick={async event => {
+								event.preventDefault();
+								let result = await actions.signUp(name, email, password, phone);
+								if (result) {
+									history.push("/admin-main-menu");
+								}
+							}}
+							type="submit"
+							name="submit"
+							className="w-50 ml-auto mr-2 rounded button-background">
+							{"SIGN UP"}
+						</button>
+
+						<button className="w-50 ml-2 mr-auto rounded button-background ">
+							<Link to="/" style={{ color: "white" }}>
+								{"BACK TO HOME"}
+							</Link>
+						</button>
+					</div>
 				</form>
 			</div>
 		</div>

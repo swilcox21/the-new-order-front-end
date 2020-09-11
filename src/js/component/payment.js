@@ -1,13 +1,17 @@
 import React, { useContext, useState } from "react";
 import "../../styles/payment.scss";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 
 export const Payment = () => {
 	const { store, actions } = useContext(Context);
+	const [name, setName] = useState("");
+	const [email, setEmail] = useState("");
+	const [phone, setPhone] = useState("");
 	const subTotal = store.subTotal;
-	const total = subTotal + subTotal * 0.06;
+	const total = subTotal + subTotal * 0.07;
+	let history = useHistory();
 
 	return (
 		<div className="new-container mb-3 mt-5">
@@ -60,18 +64,38 @@ export const Payment = () => {
 						<div className="row">
 							<div className="col-md-12 mb-3">
 								<label htmlFor="Name">{"Name"}</label>
-								<input type="text" className="form-control" id="Name" placeholder="" required />
+								<input
+									type="text"
+									className="form-control"
+									id="Name"
+									placeholder=""
+									required
+									onChange={e => setName(e.target.value)}
+								/>
 							</div>
 						</div>
 
 						<div className="mb-3">
 							<label htmlFor="email">{"Email"}</label>
-							<input type="email" className="form-control" id="email" placeholder="you@example.com" />
+							<input
+								type="email"
+								className="form-control"
+								id="email"
+								placeholder="you@example.com"
+								onChange={e => setEmail(e.target.value)}
+							/>
 						</div>
 
 						<div className="mb-3">
 							<label htmlFor="phone">{"Phone"}</label>
-							<input type="text" className="form-control" id="phone" placeholder="9546783325" required />
+							<input
+								type="text"
+								className="form-control"
+								id="phone"
+								placeholder="9546783325"
+								required
+								onChange={e => setPhone(e.target.value)}
+							/>
 						</div>
 
 						<hr className="mb-4" />
@@ -149,11 +173,27 @@ export const Payment = () => {
 							</div>
 						</div>
 						<hr className="mb-4" />
-						<Link to="/order-confirmation">
-							<button className="btn btn-lg btn-block button-background text-light" type="button">
-								{"CHECKOUT"}
-							</button>
-						</Link>
+						{/* <Link to="/order-confirmation"> */}
+						<button
+							className="btn btn-lg btn-block button-background text-light"
+							type="button"
+							onClick={async event => {
+								event.preventDefault();
+								let result = await actions.addOrder(
+									name,
+									email,
+									phone,
+									store.cart[0].vendor_id,
+									store.subTotal,
+									total
+								);
+								if (result) {
+									history.push("/order-confirmation");
+								}
+							}}>
+							{"CHECKOUT"}
+						</button>
+						{/* </Link> */}
 					</form>
 				</div>
 			</div>

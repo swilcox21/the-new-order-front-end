@@ -1,4 +1,4 @@
-const backendApiUrl = "https://3000-a9e77093-c97a-44b3-b9fd-a511d32e002c.ws-us02.gitpod.io/";
+const backendApiUrl = "https://3000-f75c3e6d-1cce-4471-9ff4-032e22b207f1.ws-us02.gitpod.io/";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -410,20 +410,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ totalCartItems: totalCartItems });
 			},
 
-			addToOrder: async (name, special_instructions, id, unit_price, order_id) => {
-				let response = await fetch(backendApiUrl + "user-main-menu/" + order_id, {
+			addOrder: async (name, email, phone, vendor_id, sub_total_price, total_price) => {
+				let store = getStore();
+				console.log({
+					name: name,
+					email: email,
+					phone: phone,
+					vendor_id: vendor_id,
+					sub_total_price: sub_total_price,
+					total_price: total_price,
+					// order_items: order_items,
+					expected_pickup: "2020-09-22"
+				});
+				let response = await fetch(backendApiUrl + "create-order", {
 					method: "POST",
 					body: JSON.stringify({
 						name: name,
-						special_instructions: special_instructions,
-						id: id,
-						unit_price: unit_price,
-						order_id: order_id
+						email: email,
+						phone: phone,
+						vendor_id: vendor_id,
+						sub_total_price: sub_total_price,
+						total_price: total_price,
+						// order_items: order_items,
+						expected_pickup: "2020-09-22"
 					}),
+
 					headers: {
 						"Content-Type": "application/json"
 					}
 				});
+				if (response.ok) {
+					getActions().loadSomeData();
+					return true;
+				} else {
+					return false;
+				}
 			}
 		}
 	};

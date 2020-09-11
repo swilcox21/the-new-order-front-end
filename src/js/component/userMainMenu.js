@@ -101,7 +101,7 @@ export const UserMainMenu = props => {
 		setCartSub(subTotal);
 	};
 	const tallyUpTotal = subTotal => {
-		const tax = subTotal * 0.06;
+		const tax = subTotal * 0.07;
 		return tax + subTotal;
 	};
 	//remove from cart
@@ -135,8 +135,8 @@ export const UserMainMenu = props => {
 		<div className="container-fluid">
 			<link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet" />
 			<div className="jumbotron2 image mb-3">
-				<h1 className="display-4 text-center text-light">{"Find Your Craving Here"}</h1>
-				<p className="lead text-center text-light">
+				<h1 className="shadow2 display-4 text-center text-light">{"Find Your Craving Here"}</h1>
+				<p className="shadow2 lead text-center text-light">
 					<strong>{"Chefs don't make mistakes; they make new dishes"}</strong>
 				</p>
 				<p className="lead">

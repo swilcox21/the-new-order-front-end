@@ -22,8 +22,8 @@ export const Maps = props => {
 	return (
 		<div className="container-fluid d-flex flex-column" style={{ height: "100vh", width: "100%" }}>
 			<div className="jumbotron8 image mb-3">
-				<h1 className="display-4 text-center text-light">{"Find Your Craving Here"}</h1>
-				<p className="lead text-center text-light">
+				<h1 className="shadow2 display-4 text-center text-white">{"Find Your Craving Here"}</h1>
+				<p className="shadow2 lead text-center text-white">
 					<strong>{"Chefs don't make mistakes; they make new dishes"}</strong>
 				</p>
 				<form className="form-inline my-2 my-lg-0">
