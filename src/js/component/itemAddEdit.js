@@ -24,11 +24,10 @@ export const ItemAddEdit = () => {
 				<p className="lead text-center text-white">
 					<strong>{"Chefs don't make mistakes; they make new dishes"}</strong>
 				</p>
-
-				<button className=" btn btn-dark text-white btn-lg">
+				<button className=" btn-dark text-white">
 					<Link to="/">Home</Link>
 				</button>
-				<button className=" btn btn-dark text-white btn-lg">
+				<button className=" btn-dark text-white">
 					<Link to="admin-main-menu">Back</Link>
 				</button>
 			</div>
