@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const AdminMainMenu = () => {
-	const [color, setColor] = useState("red");
+	const [color, setColor] = useState("#7FFF00");
 	const { store, actions } = useContext(Context);
 	const [draggedOrder, setDraggedOrder] = useState(null);
 	const [showModal, setShowModal] = useState({
@@ -65,7 +65,13 @@ export const AdminMainMenu = () => {
                 </p>*/}
 				<div className="d-flex flex-row">
 					<p className="lead">
-						<a className="btn btn-dark text-white btn-lg" href="#" role="button">
+						<a
+							className="button-clicked btn btn-dark text-white btn-lg"
+							href="#"
+							role="button"
+							onClick={() => {
+								setColor(" #7FFF00");
+							}}>
 							{"Go Online"}
 						</a>
 					</p>
