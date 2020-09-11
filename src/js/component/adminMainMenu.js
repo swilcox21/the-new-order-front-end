@@ -2,7 +2,6 @@ import React, { useContext, useState, useCallback } from "react";
 import "../../styles/adminMainMenu.scss";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-
 export const AdminMainMenu = () => {
 	const [color, setColor] = useState("#7FFF00");
 	const { store, actions } = useContext(Context);
@@ -11,7 +10,9 @@ export const AdminMainMenu = () => {
 		show: false,
 		order_id: null,
 		name: null,
-		items: null
+		items: null,
+		quantity: null,
+		special_instruction: null
 	});
 	const handleDragStart = useCallback(order => setDraggedOrder(order), []);
 	const handleDrop = useCallback(
@@ -59,9 +60,9 @@ export const AdminMainMenu = () => {
 					<strong>{"Chefs don't make mistakes; they make new dishes"}</strong>
 				</p>
 				{/*<p className="lead">
-					<a className="btn btn-dark text-white btn-lg" href="#" role="button">
-						{"View Past Orders"}
-					</a>
+                    <a className="btn btn-dark text-white btn-lg" href="#" role="button">
+                        {"View Past Orders"}
+                    </a>
                 </p>*/}
 				<div className="d-flex flex-row">
 					<p className="lead">
@@ -106,40 +107,40 @@ export const AdminMainMenu = () => {
 							e.stopPropagation();
 						}}
 						onDrop={handleDrop}>
-						{store.token != null &&
-							store.currentVendor.orders.map(order => {
-								if (order.started_at == null && order.cancel_order == null && order.closed_at == null) {
-									return (
-										<div
-											key={order.id}
-											draggable
-											className=" box bg-danger"
-											onDrag={e => {
-												e.preventDefault();
-												e.stopPropagation();
-											}}
-											onDragStart={e => handleDragStart(order)}>
-											<p>{order.name}</p>
-											<p>{order.number}</p>
-											<button
-												className="btn btn-danger"
-												onClick={e =>
-													setShowModal({
-														show: true,
-														order_id: order.id,
-														name: order.name,
-														items: order.order_items
-													})
-												}>
-												View Order
-											</button>
-										</div>
-									);
-								}
-							})}
+						{store.orders.map(order => {
+							if (order.started_at == null && order.cancel_order == null && order.closed_at == null) {
+								return (
+									<div
+										key={order.id}
+										draggable
+										className=" box bg-danger"
+										onDrag={e => {
+											e.preventDefault();
+											e.stopPropagation();
+										}}
+										onDragStart={e => handleDragStart(order)}>
+										<p>{order.name}</p>
+										<p>{order.number}</p>
+										<button
+											className="btn btn-danger"
+											onClick={e =>
+												setShowModal({
+													show: true,
+													order_id: order.id,
+													name: order.name,
+													items: order.order_items,
+													quantity: order.quantity,
+													special_intructions: order.special_instructions
+												})
+											}>
+											View Order
+										</button>
+									</div>
+								);
+							}
+						})}
 					</div>
 				</div>
-
 				<div
 					className="startedOrders d-flex flex-column"
 					style={{ width: "28%", height: "100%", border: "2px solid red" }}>
@@ -239,9 +240,8 @@ export const AdminMainMenu = () => {
 						<div className="modal-content">
 							<div className="modal-header">
 								<h5 className="modal-title" id="exampleModalLabel">
-									{showModal.order_id}
+									{showModal.name}
 								</h5>
-								<p>{showModal.name}</p>
 								<button
 									type="button"
 									className="close"
@@ -257,16 +257,25 @@ export const AdminMainMenu = () => {
 							</div>
 							<div className="modal-body">
 								{showModal.items.map((item, index) => {
-									var product = store.currentVendor.products.find(i => i.id == item.product_id);
+									// var product = store.currentVendor.products.find(i => i.id == item.product_id)
 									return (
 										<div key={index}>
-											<div>{product.name}</div>
-											<div>{product.quantity}</div>
-											<div>{product.special_intructions}</div>
+											<div>{item.name}</div>
+											<div>{item.quantity}</div>
+											<div>{item.special_intructions}</div>
 										</div>
 									);
 								})}
 							</div>
+							{/* <div className="modal-body">
+                                {store.orders.order_items.map(product => {
+                                    <div>
+                                        <div>{product.name}</div>
+                                        <div>{product.quantity}</div>
+                                        <div>{product.special_intructions}</div>
+                                    </div>;
+                                })}
+                            </div> */}
 						</div>
 					</div>
 				</div>
