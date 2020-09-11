@@ -10,7 +10,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			vendor_locations: [
 				{
 					vendor_id: 1,
-					name: "Bob's Burgers",
+					name: "Bob's Fish Shack",
 					lat: 25.7617,
 					lng: -80.1918
 				},
