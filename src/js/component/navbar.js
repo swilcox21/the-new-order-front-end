@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { Modal } from "./modal";
 import "../../styles/navbar.scss";
 import { Context } from "../store/appContext";
+
 export const Navbar = props => {
 	const { store, actions } = useContext(Context);
 	const [state, setState] = useState({
@@ -12,8 +13,8 @@ export const Navbar = props => {
 	const onSubmit = data => {};
 	return (
 		<>
-			<nav className="navbar navbar-expand-lg ">
-				<a className="navbar-brand text-danger" href="#">
+			<nav className="navbar navbar-expand-lg text-white ">
+				<a className="navbar-brand text-danger text-weight-bold" href="#">
 					The New Order
 				</a>
 				<button

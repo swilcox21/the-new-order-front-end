@@ -18,7 +18,7 @@ export const Maps = props => {
 	const handleChange = event => {
 		setSearchName(event.target.value);
 	};
-
+	// {store.vendor_locations.map((vendor_location, index) => {
 	return (
 		<div className="container-fluid d-flex flex-column" style={{ height: "100vh", width: "100%" }}>
 			<div className="jumbotron8 image mb-3">
@@ -34,6 +34,7 @@ export const Maps = props => {
 						aria-label="Search"
 						value={searchName}
 						onChange={handleChange}
+						// onClick={e => history.push(`/user-main-menu/${vendor_location.vendor_id}`)}
 					/>
 					<button
 						className="btn btn-success my-2 my-sm-0"
@@ -50,7 +51,12 @@ export const Maps = props => {
 							return (
 								<li className="list-group-item" key={result.id}>
 									{result.vendor_name}
-									<button type="button" className="close" data-dismiss="modal" aria-label="Close">
+									<button
+										type="button"
+										className="close"
+										onClick={() => actions.resetSearch()}
+										data-dismiss="modal"
+										aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 									</button>
 								</li>

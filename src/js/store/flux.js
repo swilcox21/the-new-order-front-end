@@ -10,7 +10,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			vendor_locations: [
 				{
 					vendor_id: 1,
-					name: "Bob's Burgers",
+					name: "Bob's Fish Shack",
 					lat: 25.7617,
 					lng: -80.1918
 				},
@@ -207,6 +207,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			orderForDetail: {}
 		},
 		actions: {
+			logout: () => {
+				setStore({ token: null });
+			},
 			createProduct: item => {
 				const store = getStore();
 				fetch(backendApiUrl + "menu-items", {
@@ -387,6 +390,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			//user main menu requests
+			resetSearch: () => {
+				setStore({ searchResults: null });
+			},
 			getVendorMenu: async vendor_id => {
 				let response = await fetch(`${backendApiUrl}vendor-public-menu/${vendor_id}`);
 				let menuItems = await response.json();
