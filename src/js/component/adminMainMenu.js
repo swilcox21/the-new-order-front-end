@@ -53,11 +53,7 @@ export const AdminMainMenu = () => {
 		<div className="container-fluid">
 			<div className="jumbotron3 image mb-3">
 				<h1 className="display-4 text-center text-white">{"Your Orders Here"}</h1>
-<<<<<<< HEAD
-				<p className="lead text-center text-white ">
-=======
 				<p className="lead text-center text-white">
->>>>>>> 02459dd3f417b64e48400fbff71013dc3a3a4201
 					<strong>{"Chefs don't make mistakes; they make new dishes"}</strong>
 				</p>
 				{/*<p className="lead">
@@ -65,40 +61,7 @@ export const AdminMainMenu = () => {
 						{"View Past Orders"}
 					</a>
                 </p>*/}
-<<<<<<< HEAD
-				<p className="lead">
-					<a
-						className="btn btn-dark text-white btn-lg"
-						href="#"
-						onClick={() => {
-							setColor("red");
-						}}
-						role="button">
-						{"Go Online"}
-					</a>
-				</p>
-
-				<p className="lead">
-					<a
-						className="btn btn-dark text-white btn-lg"
-						onClick={() => actions.logout()}
-						href="#"
-						role="button">
-						{"Logout"}
-					</a>
-				</p>
-
-				<Link to="/item-add-edit">
-					<p className="lead">
-						<a className="btn btn-dark text-white btn-lg" href="#" role="button">
-							{"Add/Edit Items"}
-						</a>
-					</p>
-				</Link>
-				<Link to="/">
-=======
 				<div className="d-flex flex-row">
->>>>>>> 02459dd3f417b64e48400fbff71013dc3a3a4201
 					<p className="lead">
 						<a className="btn btn-dark text-white btn-lg" href="#" role="button">
 							{"Go Online"}
