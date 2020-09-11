@@ -178,7 +178,11 @@ export const AdminMainMenu = () => {
 											onClick={e =>
 												setShowModal({
 													show: true,
-													order_id: order.id
+													order_id: order.id,
+													name: order.name,
+													items: order.order_items,
+													quantity: order.quantity,
+													special_intructions: order.special_instructions
 												})
 											}>
 											View Order
@@ -222,7 +226,11 @@ export const AdminMainMenu = () => {
 											onClick={e =>
 												setShowModal({
 													show: true,
-													order_id: order.id
+													order_id: order.id,
+													name: order.name,
+													items: order.order_items,
+													quantity: order.quantity,
+													special_intructions: order.special_instructions
 												})
 											}>
 											View Order
