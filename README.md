@@ -61,12 +61,16 @@ Clone the source locally:
 $ git clone https://github.com/NizaV/the-new-order-front-end
 ```
 
-Install project dependencies:
+1. Install project dependencies:
 
 ```sh
 $ npm install
 ```
-Start the app:
+2. Create a .env file:
+```
+$ cp .env.example .env
+```
+3. Start the app:
 
 ```sh
 $ npm start
