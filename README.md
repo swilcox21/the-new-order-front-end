@@ -4,7 +4,7 @@
 
 <h1 align="center">
   <br>
-  <img src="https://github.com/NizaV/the-new-order-front-end/src/img/the-new-order-logo.png" alt="The New Order Logo" width="369">
+  <img src="https://github.com/NizaV/the-new-order-front-end/blob/master/src/img/the-new-order-logo.png" alt="The New Order Logo" width="369">
 </h1>
 
 <h4 align="center">A mobile restaurant ordering app</h4>
@@ -39,6 +39,11 @@ Start the webpack server with live reload:
 ```
 
 
+## API
+Backend can be found here 👉 https://github.com/NizaV/the-new-order-back-end
+<br>
+💡 Make sure this repo is running
+
 ### For developers
 Clone the source locally:
 
@@ -56,7 +61,7 @@ Start the app:
 ```sh
 $ npm start
 ```
-:lightbulb: Note: Components have been converted into functions to support the use of hooks. There is an example using the Context API inside views/demo.js;
+💡 Note: Components have been converted into functions to support the use of hooks. There is an example using the Context API inside views/demo.js;
 
 
 ## Features
