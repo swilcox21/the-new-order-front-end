@@ -12,10 +12,22 @@
 This is the front-end portion of The New Order, a  full-stack interactive web application :computer: that enables mobile food vendors to boost revenue with online ordering and pick-up. It has an active location, menu customization by category, and order organization features :raised_hands: . It is built to enhance food ordering with convenience and also in the midst of health concerns today. It is a developing project with special enhancements coming very soon! :rocket:
 
 # Demo
-👉 Watch it <a href="https://www.youtube.com/watch?v=6SG2Mjpv8YE">here</a>.
-<br>
+### Login
 
-![Restaurant Login](src/gifs/orders.gif)
+![Restaurant Login](src/gifs/the-new-order-demo-login.gif)
+<br>
+### Admin Main Menu (view orders, Add/Edit Menu)
+
+![Restaurant adminMain](src/gifs/orders.gif)
+<br>
+### Select Vendor on Map (view menu)
+
+![Restaurants Map](src/gifs/the-new-order-demo-map.gif)
+<br>
+### Select Vendor on Map (view menu and select order)
+
+![Customer Order Page](src/gifs/the-new-order-demo-userMain.gif)
+<br>
 
 ## Installation
 - Make sure you are using node version 10
