@@ -4,7 +4,7 @@
 
 <h1 align="center">
   <br>
-  <img src="https://github.com/NizaV/the-new-order-front-end/src/img/the-new-order.png" alt="The New Order Logo" width="160">
+  <img src="https://github.com/NizaV/the-new-order-front-end/src/img/the-new-order-logo.png" alt="The New Order Logo" width="369">
 </h1>
 
 <h4 align="center">A mobile restaurant ordering app</h4>
