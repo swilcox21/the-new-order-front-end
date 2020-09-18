@@ -15,9 +15,7 @@ This is the front-end portion of The New Order, a  full-stack interactive web ap
 👉 Watch it <a href="https://www.youtube.com/watch?v=6SG2Mjpv8YE">here</a>.
 <br>
 
-[![Watch demo](https://cloud.githubusercontent.com/assets/2263909/18597112/0622a3b0-7c6a-11e6-897d-13f0aa36b6e4.png)](https://www.youtube.com/watch?v=6SG2Mjpv8YE)
-
-<img src="https://j.gifs.com/BBqE8Y.gif">
+![Restaurant Login](src/gifs/orders.gif)
 
 ## Installation
 - Make sure you are using node version 10
