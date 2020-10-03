@@ -77,6 +77,10 @@ $ npm start
 ```
 💡 Note: Components have been converted into functions to support the use of hooks. There is an example using the Context API inside views/demo.js;
 
+### Your Login
+A user has been created for you. Just head to the login page and enter the information below:
+- email: demo@gmail.com
+- password: demo123
 
 ## Features
 
