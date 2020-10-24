@@ -12,7 +12,7 @@
 Presenting the front-end portion of The New Order, a  full-stack interactive web application :computer: that enables mobile food vendors to boost revenue with online ordering and pick-up. It incorporates React.JS, Flux, Python, SQL Alchemy, Agile/Scrum, REST API, Bootstrap, and SCSS to build a convenient and user-friendly application. It includes an active location, menu customization by category, and order organization features :raised_hands: . It is built to enhance food ordering with convenience and also in the midst of health concerns today. It is a developing project with special enhancements coming soon! :rocket:
 
 ## Check it out!
-👉 https://theneworder-mhxzcx8we.vercel.app/
+👉 https://theneworder.vercel.app/
 
 # Demo
 ### Login
